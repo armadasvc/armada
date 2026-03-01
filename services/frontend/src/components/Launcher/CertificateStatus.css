@@ -1,0 +1,26 @@
+.cert-status {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.cert-status.unknown {
+  background-color: #2d2d2d;
+  color: #808080;
+}
+
+.cert-status.checking {
+  background-color: #2d3a4d;
+  color: #6bb3f8;
+}
+
+.cert-status.accepted {
+  background-color: #1e3a2e;
+  color: #4ec9b0;
+}
+
+.cert-status.pending {
+  background-color: #4d3d00;
+  color: #ffcc00;
+}

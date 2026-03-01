@@ -1,0 +1,6 @@
+{
+  "name": "armada-fingerprint-provider",
+  "version": "1.0.6",
+  "main": "main.py",
+  "license": "MIT"
+}

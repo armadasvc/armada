@@ -1,0 +1,15 @@
+{
+  "name": "documentation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Documentation Hugo + Docsy pour le projet Armada",
+  "scripts": {
+    "serve": "hugo server",
+    "build": "hugo --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.24",
+    "docsy": "github:google/docsy#semver:0.14.2",
+    "postcss-cli": "^11.0.1"
+  }
+}

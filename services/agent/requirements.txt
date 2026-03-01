@@ -1,0 +1,6 @@
+requests==2.31.0
+mitmproxy==10.3.0
+redis==7.1.1
+celery==5.6.2
+pymssql==2.3.13
+setuptools==82.0.0

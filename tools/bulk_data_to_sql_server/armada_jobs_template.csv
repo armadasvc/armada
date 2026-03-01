@@ -1,0 +1,2 @@
+job_uuid,run_uuid,job_datetime,job_associated_agent,job_status
+550e8400-e29b-41d4-a716-446655440000,660e8400-e29b-41d4-a716-446655440000,2026-02-24 10:30:00,agent-1,completed

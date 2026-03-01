@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: armada-fingerprint-provider
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: armada-fingerprint-provider
+  template:
+    metadata:
+      labels:
+        app: armada-fingerprint-provider
+    spec:
+{{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+{{- toYaml . | nindent 8 }}
+{{- end }}
+      containers:
+      - name: armada-fingerprint-provider
+        image: {{ .Values.dockerHubName }}/armada-fingerprint-provider:latest
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        ports:
+        - containerPort: 5005
+        env:
+        - name: SQL_SERVER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_NAME
+        - name: SQL_SERVER_DB
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_DB
+        - name: SQL_SERVER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_PASSWORD
+        - name: SQL_SERVER_USER
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_USER

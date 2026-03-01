@@ -1,0 +1,6 @@
+{
+  "name": "armada-agent",
+  "version": "1.0.33",
+  "main": "main.py",
+  "license": "MIT"
+}

@@ -1,0 +1,38 @@
+.file-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #1e1e1e;
+  border: 1px solid #3c3c3c;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.file-status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.file-status-item.found {
+  color: #4ec9b0;
+}
+
+.file-status-item.missing {
+  color: #f14c4c;
+}
+
+.status-icon {
+  width: 16px;
+  font-weight: bold;
+}
+
+.file-name {
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.file-mapping {
+  color: #808080;
+  margin-left: auto;
+}

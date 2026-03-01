@@ -1,0 +1,66 @@
+services:
+
+  # ── Infrastructure ──────────────────────────────────────────────
+
+  armada-redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  armada-rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  # ── Services applicatifs ────────────────────────────────────────
+
+  armada-proxy-provider:
+    build: ../services/proxy-provider
+    ports:
+      - "5001:5001"
+    env_file:
+      - ../.env
+
+  armada-fingerprint-provider:
+    build: ../services/fingerprint-provider
+    ports:
+      - "5005:5005"
+    env_file:
+      - ../.env
+
+  armada-backend:
+    build: ../services/backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../.env
+
+  armada-orchestrator:
+    build: ../services/orchestrator
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../.env
+    environment:
+      PLATFORM: local
+      RABBITMQ_URL: amqp://armada-rabbitmq:5672
+      REDIS_HOST: armada-redis
+      REDIS_PORT: "6379"
+      PROXY_PROVIDER_URL: http://armada-proxy-provider:5001
+      FINGERPRINT_PROVIDER_URL: http://armada-fingerprint-provider:5005
+      BACKEND_URL: http://armada-backend:8000
+    depends_on:
+      - armada-redis
+      - armada-rabbitmq
+      - armada-proxy-provider
+      - armada-fingerprint-provider
+      - armada-backend
+
+  armada-frontend:
+    build: ../services/frontend
+    ports:
+      - "3000:8080"
+    depends_on:
+      - armada-orchestrator
+      - armada-backend

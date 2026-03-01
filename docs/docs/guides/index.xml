@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>3. Guides on Armada Documentation</title>
+    <link>https://armada.services/docs/guides/</link>
+    <description>Recent content in 3. Guides on Armada Documentation</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://armada.services/docs/guides/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3.1. Database Connector</title>
+      <link>https://armada.services/docs/guides/database-connector/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/guides/database-connector/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;The Database Connector provides direct SQL Server access from your automation scripts. Use it to read input data, write results, or perform any SQL operation your project requires.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ctx_script.py&#xA;  │&#xA;  │  select_from_db(&amp;#34;SELECT ...&amp;#34;)&#xA;  ▼&#xA;DatabaseConnector ──pymssql──► SQL Server (port 1433)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The connector uses parameterized queries to prevent SQL injection and manages connections automatically (one connection per query, opened and closed each time).&lt;/p&gt;&#xA;&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;&#xA;&lt;p&gt;The connector reads its credentials from environment variables — there is no JSON configuration block for it:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>3.2. Proxy Provider</title>
+      <link>https://armada.services/docs/guides/proxy-provider/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/guides/proxy-provider/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;The proxy layer gives each agent a local mitmproxy instance (port 8081) that all browser traffic passes through. Optionally, this local proxy forwards traffic to an &lt;strong&gt;upstream proxy&lt;/strong&gt; fetched from the Proxy Provider service, which serves verified proxies from a database.&lt;/p&gt;&#xA;&lt;p&gt;Beyond routing, the proxy layer also supports &lt;strong&gt;response modifiers&lt;/strong&gt;, &lt;strong&gt;request modifiers&lt;/strong&gt;, and &lt;strong&gt;data retrievers&lt;/strong&gt; — hooks that let you intercept and transform HTTP traffic in real time. For the Proxy Provider service API and deployment reference, see &lt;a href=&#34;https://armada.services/docs/reference/services/proxy-provider/&#34;&gt;Proxy Provider Service&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>3.3. Fingerprint Provider</title>
+      <link>https://armada.services/docs/guides/fingerprint-provider/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/guides/fingerprint-provider/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;The Fingerprint Provider lets your agent fetch realistic browser fingerprints at runtime. This is useful when automating websites protected by antibot solutions (e.g. Arkose) that analyze browser fingerprints to detect bots.&lt;/p&gt;&#xA;&lt;p&gt;The agent calls the Fingerprint Provider service, which returns a fingerprint matching your filters. For the service API and internal architecture, see &lt;a href=&#34;https://armada.services/docs/reference/services/fingerprint-provider/&#34;&gt;Fingerprint Provider Service&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The only vendors supported at that time is fingerprint compatible with an ancient version of Arkose antifingerprinting script (from jan. 2025), the fingerprint is automatically transformed to match the agent&amp;rsquo;s current user agent.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>3.4. Monitoring Client</title>
+      <link>https://armada.services/docs/guides/monitoring-client/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/guides/monitoring-client/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;The Monitoring Client reports job lifecycle events to the Backend API (see &lt;a href=&#34;https://armada.services/docs/reference/services/backend/&#34;&gt;Backend Service&lt;/a&gt;), which stores them in the database and broadcasts them to the frontend dashboard via WebSocket. This lets you track in real time which jobs are running, which succeeded, and which failed.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ctx_script.py&#xA;  │&#xA;  │  record_success_event(&amp;#34;Step done&amp;#34;)&#xA;  ▼&#xA;MonitoringClient ──HTTP POST──► Backend API (port 8000)&#xA;                                      │&#xA;                                      ├──► SQL Server (armada_runs, armada_jobs, armada_events)&#xA;                                      └──► WebSocket ──► Frontend Dashboard&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;lifecycle&#34;&gt;Lifecycle&lt;/h2&gt;&#xA;&lt;p&gt;The monitoring client tracks three levels:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>3.5. CI/CD</title>
+      <link>https://armada.services/docs/guides/ci-cd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/guides/ci-cd/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Armada uses &lt;a href=&#34;https://github.com/changesets/changesets&#34;&gt;Changesets&lt;/a&gt; to manage service versions and GitHub Actions to automatically build and publish Docker images when a version is bumped on &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This guide covers everything you need as a developer to release a new version of a service.&lt;/p&gt;&#xA;&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Node.js installed (for Changesets CLI)&lt;/li&gt;&#xA;&lt;li&gt;Push access to the &lt;code&gt;master&lt;/code&gt; branch (or permission to merge PRs)&lt;/li&gt;&#xA;&lt;li&gt;Run &lt;code&gt;npm install&lt;/code&gt; at the repository root at least once to install the Changesets CLI&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;services-managed-by-the-pipeline&#34;&gt;Services Managed by the Pipeline&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Service&lt;/th&gt;&#xA;          &lt;th&gt;Package Name&lt;/th&gt;&#xA;          &lt;th&gt;Docker Image&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;agent&lt;/td&gt;&#xA;          &lt;td&gt;armada-agent&lt;/td&gt;&#xA;          &lt;td&gt;armada-agent&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;backend&lt;/td&gt;&#xA;          &lt;td&gt;armada-backend&lt;/td&gt;&#xA;          &lt;td&gt;armada-backend&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;orchestrator&lt;/td&gt;&#xA;          &lt;td&gt;armada-orchestrator&lt;/td&gt;&#xA;          &lt;td&gt;armada-orchestrator&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;frontend&lt;/td&gt;&#xA;          &lt;td&gt;armada-frontend&lt;/td&gt;&#xA;          &lt;td&gt;armada-frontend&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;meta&lt;/td&gt;&#xA;          &lt;td&gt;armada-meta&lt;/td&gt;&#xA;          &lt;td&gt;armada-meta&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;project&lt;/td&gt;&#xA;          &lt;td&gt;armada-project&lt;/td&gt;&#xA;          &lt;td&gt;armada-project&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;proxy-provider&lt;/td&gt;&#xA;          &lt;td&gt;armada-proxy-provider&lt;/td&gt;&#xA;          &lt;td&gt;armada-proxy-provider&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;fingerprint-provider&lt;/td&gt;&#xA;          &lt;td&gt;armada-fingerprint-provider&lt;/td&gt;&#xA;          &lt;td&gt;armada-fingerprint-provider&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;See the &lt;a href=&#34;https://armada.services/docs/reference/services/&#34;&gt;Services Reference&lt;/a&gt; for the documentation of each service.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>3.6. Database Management</title>
+      <link>https://armada.services/docs/guides/database-management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/guides/database-management/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;This guide covers bulk data import — a CLI tool to populate Armada&amp;rsquo;s SQL Server tables from CSV files.&lt;/p&gt;&#xA;&lt;p&gt;For the complete database schema (tables, columns, types, relationships), see the &lt;a href=&#34;https://armada.services/docs/reference/deployment/database/&#34;&gt;Database Reference&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;For programmatic access from your automation scripts (SELECT, INSERT, UPDATE), see the &lt;a href=&#34;https://armada.services/docs/guides/database-connector/&#34;&gt;Database Connector&lt;/a&gt; guide.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;bulk-data-import&#34;&gt;Bulk Data Import&lt;/h2&gt;&#xA;&lt;p&gt;The bulk import tool lets you populate tables from CSV files. It is located in &lt;code&gt;tools/bulk_data_to_sql_server/&lt;/code&gt; and provides one script per table.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>3.7. Standard Output</title>
+      <link>https://armada.services/docs/guides/standard-output/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/guides/standard-output/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;The Standard Output lets your automation script write arbitrary JSON data to the &lt;code&gt;armada_output&lt;/code&gt; table, tagged with the current run UUID. Use it to persist results, extracted data, or any structured output that you want to retrieve later.&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ctx_script.py&#xA;  │&#xA;  │  send({&amp;#34;email&amp;#34;: &amp;#34;user@example.com&amp;#34;, &amp;#34;status&amp;#34;: &amp;#34;ok&amp;#34;})&#xA;  ▼&#xA;StandardOutput ──DatabaseConnector──► SQL Server (armada_output)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Each row stores the run UUID, the JSON-serialized data, and a UTC timestamp.&lt;/p&gt;&#xA;&lt;h2 id=&#34;initialization&#34;&gt;Initialization&lt;/h2&gt;&#xA;&lt;p&gt;Create a &lt;code&gt;StandardOutput&lt;/code&gt; instance with the current run ID — typically in &lt;code&gt;ctx_agent_context.py&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

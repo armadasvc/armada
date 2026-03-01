@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>4.3. Deployment on Armada Documentation</title>
+    <link>https://armada.services/docs/reference/deployment/</link>
+    <description>Recent content in 4.3. Deployment on Armada Documentation</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://armada.services/docs/reference/deployment/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4.3.1. Database</title>
+      <link>https://armada.services/docs/reference/deployment/database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/reference/deployment/database/</guid>
+      <description>&lt;h1 id=&#34;database-reference&#34;&gt;Database Reference&lt;/h1&gt;&#xA;&lt;p&gt;Armada uses &lt;strong&gt;Microsoft SQL Server&lt;/strong&gt; as its persistent data store, accessed through the &lt;strong&gt;pymssql&lt;/strong&gt; library (&lt;code&gt;v2.3.13&lt;/code&gt;). There is no ORM — all queries are raw SQL with parameterized placeholders (&lt;code&gt;%s&lt;/code&gt;).&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;connection-credentials&#34;&gt;Connection Credentials&lt;/h2&gt;&#xA;&lt;p&gt;Every service reads the same four environment variables:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Variable&lt;/th&gt;&#xA;          &lt;th&gt;Description&lt;/th&gt;&#xA;          &lt;th&gt;Example&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;SQL_SERVER_NAME&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Server hostname&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;myserver.database.windows.net&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;SQL_SERVER_USER&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Login name&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;myadmin&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;SQL_SERVER_PASSWORD&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Login password&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;••••••&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;code&gt;SQL_SERVER_DB&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Database name&lt;/td&gt;&#xA;          &lt;td&gt;&lt;code&gt;my_db&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;These are stored in the root &lt;code&gt;.env&lt;/code&gt; file and injected into Kubernetes pods via the &lt;code&gt;armada-sql-server-secret&lt;/code&gt; secret.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>4.3.2. Workbench Mode under the hood</title>
+      <link>https://armada.services/docs/reference/deployment/workbench/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/reference/deployment/workbench/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;The workbench is a local execution harness that replicates the production agent lifecycle without Kubernetes, the orchestrator, or Redis. It lives as a &lt;code&gt;workbench/&lt;/code&gt; folder inside each project directory and is responsible for &lt;strong&gt;synthesizing&lt;/strong&gt; the same &lt;code&gt;agent_message&lt;/code&gt; and &lt;code&gt;job_message&lt;/code&gt; that the agent would receive in production — but from local files instead of infrastructure services.&lt;/p&gt;&#xA;&lt;p&gt;The result is that a developer can run their &lt;code&gt;ctx_script.py&lt;/code&gt; locally with the exact same code path that production uses, including &lt;code&gt;exec()&lt;/code&gt; of &lt;code&gt;main.py&lt;/code&gt;, Celery app creation, and the full &lt;code&gt;init_worker&lt;/code&gt; → &lt;code&gt;run_job&lt;/code&gt; → &lt;code&gt;shutdown_worker&lt;/code&gt; lifecycle.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>4.3.3. Security Considerations</title>
+      <link>https://armada.services/docs/reference/deployment/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/reference/deployment/security/</guid>
+      <description>&lt;h2 id=&#34;deployment-boundary&#34;&gt;Deployment Boundary&lt;/h2&gt;&#xA;&lt;p&gt;Armada is designed to run inside a &lt;strong&gt;private, trusted network&lt;/strong&gt; — either a local machine (Docker Compose) or an internal Kubernetes cluster with no ingress exposed to the public internet.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Do not expose the cluster to the outside world.&lt;/strong&gt; The platform has no TLS termination, no user authentication, and executes arbitrary code by design. Exposing any Armada service to the internet would allow unauthenticated users to launch workloads, read configuration data, and execute code on your infrastructure.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>4.3.4. Testing Strategy</title>
+      <link>https://armada.services/docs/reference/deployment/testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/reference/deployment/testing/</guid>
+      <description>&lt;h2 id=&#34;strategy-overview&#34;&gt;Strategy Overview&lt;/h2&gt;&#xA;&lt;p&gt;Armada uses a two-tier testing strategy:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Tier&lt;/th&gt;&#xA;          &lt;th&gt;Scope&lt;/th&gt;&#xA;          &lt;th&gt;Runner&lt;/th&gt;&#xA;          &lt;th&gt;External Dependencies&lt;/th&gt;&#xA;          &lt;th&gt;CI&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Unit tests&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Individual functions and classes, all services&lt;/td&gt;&#xA;          &lt;td&gt;pytest + pytest-asyncio&lt;/td&gt;&#xA;          &lt;td&gt;None (fully mocked)&lt;/td&gt;&#xA;          &lt;td&gt;On every push and PR to &lt;code&gt;master&lt;/code&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;E2E test projects&lt;/strong&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Full agent lifecycle through the workbench&lt;/td&gt;&#xA;          &lt;td&gt;Manual via &lt;code&gt;python -m workbench.run_workbench&lt;/code&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Redis, RabbitMQ, Chrome, Xvfb, SQL Server, proxy/fingerprint providers&lt;/td&gt;&#xA;          &lt;td&gt;Not automated&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Unit tests run in CI on every commit. E2E tests are run manually by operators before releases or when validating changes to the agent, Fantomas, or the project scaffold.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>4.3.5. CI/CD</title>
+      <link>https://armada.services/docs/reference/deployment/cicd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/reference/deployment/cicd/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Armada&amp;rsquo;s CI/CD is built on two GitHub Actions workflows and a Changesets-based versioning system. The pipeline automatically detects which services changed, builds their Docker images, pushes them to Docker Hub, and tags the commit. Unit tests run on every push and pull request.&lt;/p&gt;&#xA;&lt;p&gt;This page describes &lt;strong&gt;how the pipeline works internally&lt;/strong&gt;. For instructions on how to release a new version as a developer, see the &lt;a href=&#34;https://armada.services/docs/guides/ci-cd/&#34;&gt;CI/CD Guide&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;repository-tooling&#34;&gt;Repository Tooling&lt;/h2&gt;&#xA;&lt;h3 id=&#34;npm-workspaces&#34;&gt;npm Workspaces&lt;/h3&gt;&#xA;&lt;p&gt;The root &lt;code&gt;package.json&lt;/code&gt; declares the monorepo structure:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

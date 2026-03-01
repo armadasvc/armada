@@ -1,0 +1,194 @@
+.launcher-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90vw;
+  max-height: 90vh;
+  background-color: #252526;
+  border: 1px solid #3c3c3c;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.launcher-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.launcher-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #cccccc;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #808080;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #cccccc;
+}
+
+.launcher-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.launcher-section {
+  margin-bottom: 20px;
+}
+
+.launcher-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #cccccc;
+}
+
+.url-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.url-input-group .launcher-input {
+  flex: 1;
+}
+
+.cert-btn {
+  padding: 10px 12px;
+  background-color: #4d4d00;
+  border: 1px solid #666600;
+  border-radius: 4px;
+  color: #ffff00;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cert-btn:hover {
+  background-color: #666600;
+}
+
+.launcher-input,
+.launcher-select {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #1e1e1e;
+  border: 1px solid #3c3c3c;
+  border-radius: 4px;
+  color: #cccccc;
+  font-size: 14px;
+}
+
+.launcher-input:focus,
+.launcher-select:focus {
+  outline: none;
+  border-color: #0078d4;
+}
+
+.launcher-input::placeholder {
+  color: #808080;
+}
+
+.launcher-select {
+  cursor: pointer;
+}
+
+.launcher-select option {
+  background-color: #1e1e1e;
+  color: #cccccc;
+}
+
+.launcher-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #cccccc;
+  cursor: pointer;
+}
+
+.launcher-checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.launcher-warning {
+  padding: 12px;
+  background-color: #5a1d1d;
+  border: 1px solid #f14c4c;
+  border-radius: 4px;
+  color: #f48771;
+  font-size: 13px;
+}
+
+.launcher-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid #3c3c3c;
+}
+
+.launcher-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.launcher-btn.cancel {
+  background-color: #3c3c3c;
+  color: #cccccc;
+}
+
+.launcher-btn.cancel:hover {
+  background-color: #4c4c4c;
+}
+
+.launcher-btn.launch {
+  background-color: #0078d4;
+  color: white;
+}
+
+.launcher-btn.launch:hover:not(:disabled) {
+  background-color: #006cbd;
+}
+
+.launcher-btn.launch:disabled {
+  background-color: #3c3c3c;
+  color: #808080;
+  cursor: not-allowed;
+}
+
+/* Overlay backdrop */
+.launcher-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}

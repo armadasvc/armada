@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: armada-backend
+  labels:
+    app: armada-backend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+  selector:
+    app: armada-backend

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: armada-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: armada-redis
+  template:
+    metadata:
+      labels:
+        app: armada-redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:latest
+        command: ["redis-server", "--port", "6379"]
+        ports:
+        - containerPort: 6379

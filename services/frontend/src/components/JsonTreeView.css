@@ -1,0 +1,61 @@
+.json-tree-wrapper {
+  height: 100%;
+  overflow: auto;
+  padding: 16px;
+  background-color: #1e1e1e;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 14px;
+}
+
+.json-tree-container {
+  line-height: 1.6;
+}
+
+.json-tree-child {
+  padding-left: 20px;
+}
+
+.json-tree-label {
+  color: #9cdcfe;
+}
+
+.json-tree-string {
+  color: #ce9178;
+}
+
+.json-tree-number {
+  color: #b5cea8;
+}
+
+.json-tree-boolean {
+  color: #569cd6;
+}
+
+.json-tree-null {
+  color: #569cd6;
+}
+
+.json-tree-undefined {
+  color: #569cd6;
+}
+
+.json-tree-punctuation {
+  color: #d4d4d4;
+}
+
+.json-tree-expand,
+.json-tree-collapse {
+  cursor: pointer;
+  color: #808080;
+  margin-right: 4px;
+}
+
+.json-tree-expand:hover,
+.json-tree-collapse:hover {
+  color: #0078d4;
+}
+
+.json-tree-collapsed {
+  color: #808080;
+  font-style: italic;
+}

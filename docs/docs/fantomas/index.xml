@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>5. Fantomas on Armada Documentation</title>
+    <link>https://armada.services/docs/fantomas/</link>
+    <description>Recent content in 5. Fantomas on Armada Documentation</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="https://armada.services/docs/fantomas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5.1. Why Fantomas</title>
+      <link>https://armada.services/docs/fantomas/why-fantomas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/fantomas/why-fantomas/</guid>
+      <description>&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;&#xA;&lt;p&gt;Modern antibot systems don&amp;rsquo;t just check if your browser fingerprint looks legitimate. They analyze &lt;strong&gt;how you interact&lt;/strong&gt; with the page. Cursor trajectories, click timing, keystroke rhythm, event sequences — all of this is collected, sent to remote servers, and classified by machine learning models as human or bot.&lt;/p&gt;&#xA;&lt;p&gt;A raw automation tool like nodriver gives you an undetected Chrome instance. That solves static detection (no &lt;code&gt;navigator.webdriver&lt;/code&gt; flag, no chromedriver artifacts). Besides, uou can buy, forge or retrieve some fingerprint that you would inject via FingerprintManager. But the moment your script clicks a button — instant cursor teleportation, instant text injection, perfectly regular timing — the behavioral layer flags it as automated.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>5.2. Key Concepts</title>
+      <link>https://armada.services/docs/fantomas/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/fantomas/overview/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Technology:&lt;/strong&gt; Python, nodriver, xdotool&#xA;&lt;strong&gt;Location:&lt;/strong&gt; &lt;code&gt;lib/fantomas/&lt;/code&gt; (pip-installable editable package)&#xA;&lt;strong&gt;Role:&lt;/strong&gt; Custom anti-detection browser automation framework built on top of &lt;code&gt;nodriver&lt;/code&gt;adding display-server-level method&lt;/p&gt;&#xA;&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;FantomasNoDriver&#xA;  └── launch_browser() → FantomasNoDriverBrowser&#xA;                              └── get() → FantomasNoDriverTab&#xA;                                            ├── Native methods : based on nodriver/CDP(xclick_native, xsend_native, ...)&#xA;                                            └── XDO methods : display-server method(xclick_xdo, xsend_xdo, ...)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Each layer wraps and extends the underlying &lt;code&gt;nodriver&lt;/code&gt; object via &lt;code&gt;__getattr__&lt;/code&gt; delegation, adding automation-specific methods.&lt;/p&gt;&#xA;&lt;h2 id=&#34;inheritance-from-nodriver&#34;&gt;Inheritance from nodriver&lt;/h2&gt;&#xA;&lt;p&gt;Fantomas objects inherit from their &lt;code&gt;nodriver&lt;/code&gt; counterparts. Each Fantomas class stores the original nodriver instance internally and delegates any unknown attribute access to it via &lt;code&gt;__getattr__&lt;/code&gt;. This means &lt;strong&gt;all native nodriver methods and properties are directly available&lt;/strong&gt; on Fantomas objects — you don&amp;rsquo;t need to unwrap them.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>5.3. Reference</title>
+      <link>https://armada.services/docs/fantomas/fantomas-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://armada.services/docs/fantomas/fantomas-reference/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Fantomas is a Python anti-detection browser automation library built on top of &lt;a href=&#34;https://github.com/nicholasgriffin/nodriver&#34;&gt;nodriver&lt;/a&gt;. It provides two interaction strategies:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Native  methods&lt;/strong&gt; — browser-level events via Chrome DevTools Protocol and nodriver&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;XDO methods&lt;/strong&gt; — Display-server-level events via &lt;code&gt;xdotool&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Both strategies include human-like cursor movement (WindMouse physics model) and randomized keystroke delays. For a high-level overview of Fantomas&amp;rsquo; architecture and capabilities, see &lt;a href=&#34;https://armada.services/docs/fantomas/overview/&#34;&gt;Fantomas Overview&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;FantomasNoDriver                  # Entry point, wraps nodriver&#xA;  └── launch_browser()&#xA;        → FantomasNoDriverBrowser  # Wraps nodriver Browser&#xA;              ├── get(url)&#xA;              │     → FantomasNoDriverTab  # Wraps nodriver Tab&#xA;              │           ├── Native CDP methods&#xA;              │           └── XDO methods&#xA;              ├── open_new_tab(url)&#xA;              ├── open_new_window(url)&#xA;              └── cookies (CookieJarMonkey)&#xA;&#xA;Screen                             # Virtual display management (Xvfb)&#xA;Identity                           # Fake identity generation&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Each layer delegates unknown attribute access to the underlying &lt;code&gt;nodriver&lt;/code&gt; object via &lt;code&gt;__getattr__&lt;/code&gt;, so all native &lt;code&gt;nodriver&lt;/code&gt; methods remain available. See the &lt;a href=&#34;../overview/#inheritance-from-nodriver&#34;&gt;Key Concepts page&lt;/a&gt; for a full list of inherited methods and usage examples.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

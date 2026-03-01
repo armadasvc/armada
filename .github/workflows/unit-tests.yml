@@ -1,0 +1,42 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y freetds-dev unixodbc-dev
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pytest pytest-asyncio
+          pip install httpx
+
+          pip install -r services/agent/requirements.txt
+          pip install -r services/backend/requirements.txt
+          pip install -r services/orchestrator/requirements.txt
+          pip install -r services/proxy-provider/requirements.txt
+          pip install -r services/fingerprint-provider/requirements.txt
+
+          pip install -e lib/fantomas
+
+      - name: Run unit tests
+        run: pytest tests/unit -v

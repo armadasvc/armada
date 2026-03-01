@@ -1,0 +1,402 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900">
+  <foreignObject x="0" y="0" width="600" height="900">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        .root {
+          background: #ffffff;
+          color: #0f1419;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          width: 600px;
+          height: 900px;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .trending-bar {
+          background: #f7f9f9;
+          padding: 10px 16px;
+          border-bottom: 1px solid #eff3f4;
+        }
+
+        .trending-title {
+          font-size: 17px;
+          font-weight: 800;
+          color: #0f1419;
+        }
+
+        .trending-label {
+          font-size: 12px;
+          color: #536471;
+        }
+
+        .trending-tag {
+          font-weight: 700;
+          font-size: 14px;
+          color: #0f1419;
+          margin: 1px 0;
+        }
+
+        .trending-count {
+          font-size: 12px;
+          color: #536471;
+        }
+
+        #tweet-list {
+          overflow: hidden;
+        }
+
+        .tweet {
+          display: flex;
+          gap: 12px;
+          padding: 12px 16px;
+          border-bottom: 1px solid #eff3f4;
+          opacity: 0;
+          transform: translateY(-24px);
+          animation: slideIn .35s cubic-bezier(.21,1.02,.55,1) forwards;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(-24px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+          flex-shrink: 0;
+        }
+
+        .tweet-body { flex: 1; min-width: 0; }
+
+        .tweet-header {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          flex-wrap: wrap;
+        }
+
+        .tweet-name { font-weight: 700; font-size: 15px; color: #0f1419; }
+        .tweet-handle { font-size: 15px; color: #536471; }
+        .tweet-dot { color: #536471; font-size: 15px; }
+        .tweet-time { font-size: 15px; color: #536471; }
+
+        .tweet-text {
+          margin-top: 4px;
+          font-size: 15px;
+          line-height: 1.45;
+          word-wrap: break-word;
+        }
+
+        .hashtag { color: #1d9bf0; }
+
+        .tweet-actions {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+          max-width: 400px;
+        }
+
+        .tweet-actions span {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          color: #536471;
+          font-size: 13px;
+        }
+
+        .tweet-actions svg { width: 18px; height: 18px; fill: currentColor; }
+      </style>
+
+      <div class="root">
+        <div class="trending-bar">
+          <div class="trending-title">Trends for you</div>
+          <div class="trending-label">Trending</div>
+          <div class="trending-tag">#armada</div>
+          <div class="trending-count"><span id="tweet-counter">0</span> messages</div>
+        </div>
+        <div id="tweet-list"></div>
+      </div>
+
+      <script><![CDATA[
+var csvLines = [
+["Dawson Richardson","Armada is great #armada"],
+["Maximus Gillespie","If you want scalable and flexible automation, Armada is the tool you need #armada"],
+["Dewi Shaffer","Armada streamlines complex workflows and turns automation into a competitive advantage #armada"],
+["Tabitha Lindsay","With Armada, building robust automation pipelines becomes fast and effortless #armada"],
+["Patricia Becker","Armada empowers teams to automate smarter and deploy faster #armada"],
+["Cormac Blankenship","From small tasks to large infrastructures, Armada handles automation seamlessly #armada"],
+["Angelica Peck","Armada transforms repetitive processes into clean and maintainable automation #armada"],
+["Vincent Mckenzie","For modern automation challenges, Armada delivers performance and stability #armada"],
+["Fletcher Orozco","Armada simplifies orchestration and accelerates automation at scale #armada"],
+["Tanisha York","Choosing Armada means choosing efficiency and control in automation #armada"],
+["Remi Wade","Armada helps you design automation systems that are both powerful and resilient #armada"],
+["Yasir Villegas","Automation becomes clearer, faster, and more scalable with Armada #armada"],
+["Sahar Yang","Armada reduces operational complexity through intelligent automation #armada"],
+["Susan Mason","Build, manage, and optimize your automation workflows with Armada #armada"],
+["Rosemary Aguilar","Armada brings clarity and structure to advanced automation environments #armada"],
+["Ethel Glass","Reliable automation starts with a solid foundation like Armada #armada"],
+["Abubakar Simpson","Armada enables high-performance automation without unnecessary overhead #armada"],
+["Huda Cannon","Scale your automation infrastructure confidently with Armada #armada"],
+["Prince Sullivan","Armada is built to power next-generation automation systems #armada"],
+["Eleni Webb","When automation matters, Armada stands out as a dependable solution #armada"],
+["Kieran Frost","Armada changed the way our team thinks about automation #armada"],
+["Naomi Barker","Fast deployment, clean pipelines, total control \u2014 that's Armada #armada"],
+["Idris Harmon","Armada makes even the most complex automation feel manageable #armada"],
+["Felicity Cross","We switched to Armada and never looked back, automation just works now #armada"],
+["Omar Sutton","Armada takes the pain out of orchestrating distributed workflows #armada"],
+["Sienna Delgado","If you care about reliability in automation, Armada is a no-brainer #armada"],
+["Callum Pacheco","Armada gives our engineering team the confidence to automate at scale #armada"],
+["Lydia Whitaker","Automating with Armada feels intuitive and surprisingly powerful #armada"],
+["Hugo Moran","Armada keeps our pipelines fast, stable, and easy to maintain #armada"],
+["Priya Hendricks","Armada is the backbone of our entire automation strategy #armada"],
+["Theodore Buckley","With Armada, we cut our deployment time in half #armada"],
+["Amara Roth","Armada bridges the gap between simple scripts and enterprise automation #armada"],
+["Declan Espinoza","Every team serious about automation should evaluate Armada #armada"],
+["Layla Chambers","Armada handles failover, retries, and scheduling like a charm #armada"],
+["Rowan Pittman","Armada lets us focus on building value instead of managing infrastructure #armada"],
+["Isla Mercado","The flexibility of Armada is unmatched in the automation space #armada"],
+["Finnegan Holt","Armada brought order to our chaotic automation landscape #armada"],
+["Zara Norris","Clean architecture, great docs, reliable execution \u2014 Armada delivers #armada"],
+["Sebastian Reeves","Armada scales effortlessly as our automation needs grow #armada"],
+["Maisie Vaughn","We built our entire CI/CD pipeline on Armada and it runs flawlessly #armada"],
+["Jasper Walton","Armada isn't just a tool, it's a complete automation platform #armada"],
+["Nyla Bates","Armada makes cross-team automation collaboration seamless #armada"],
+["Elliot Dunn","Armada removed every bottleneck in our automation workflow #armada"],
+["Cora Shepherd","The learning curve with Armada is minimal and the payoff is huge #armada"],
+["Malik Townsend","Armada automates what matters, so we can innovate faster #armada"],
+["Ivy Lancaster","Armada gives us the observability we need across all automated processes #armada"],
+["Beckett Love","Scaling automation across regions is trivial with Armada #armada"],
+["Freya Hartman","Robust, elegant, and production-ready \u2014 that's Armada in three words #armada"],
+["Donovan Stein","Armada turned our fragile scripts into a reliable automation engine #armada"],
+["Thea Contreras","Armada handles edge cases in automation that other tools simply ignore #armada"],
+["Brendan Odom","Our ops team swears by Armada for everything automation-related #armada"],
+["Alina Serrano","With Armada, rollback and recovery in automation are built right in #armada"],
+["Griffin Powers","Armada integrates perfectly into our existing tech stack #armada"],
+["Esme Davenport","Armada reduced our incident count by automating error-prone manual steps #armada"],
+["Damien Franco","If automation is your priority, Armada should be your first pick #armada"],
+["Lena Hubbard","Armada brings enterprise-grade reliability to teams of any size #armada"],
+["Arlo Mccall","Armada makes it easy to version and audit every automation change #armada"],
+["Wren Strickland","We tested several platforms and Armada won on speed, clarity, and support #armada"],
+["Tobias Knapp","Armada is the only automation tool that truly scales with our business #armada"],
+["Adriana Maynard","Armada empowers developers to own their automation end to end #armada"],
+["Nolan Burch","Armada handles thousands of jobs daily without breaking a sweat #armada"],
+["Cassidy Monroe","Armada gave us the automation confidence we were missing #armada"],
+["Rhys Underwood","From staging to production, Armada keeps everything in sync #armada"],
+["Emilia Tran","Armada turned weeks of manual work into a single automated pipeline #armada"],
+["Lorenzo Wyatt","Armada provides the guardrails that make automation safe at scale #armada"],
+["Harper Malone","Great automation starts with great tooling, and Armada is exactly that #armada"],
+["Jonah Pruitt","Armada simplified our multi-cloud automation overnight #armada"],
+["Gemma Valencia","Armada lets non-experts build sophisticated automation with ease #armada"],
+["Reid Blackburn","Armada is the most elegant automation framework I have ever used #armada"],
+["Mila Cardenas","Alerts, retries, scheduling \u2014 Armada covers every automation essential #armada"],
+["Sullivan Reese","Armada fits right in, whether you're a startup or an enterprise #armada"],
+["Kira Goodwin","Armada unlocked a level of automation maturity we didn't think was possible #armada"],
+["Maxwell Crane","Our entire infrastructure automation runs on Armada and it just works #armada"],
+["Anika Fleming","Armada keeps our automation pipelines reproducible and predictable #armada"],
+["Barrett Shepherd","Armada is proof that automation tools can be both powerful and simple #armada"],
+["Daphne Cortez","With Armada, spinning up new automated workflows takes minutes not days #armada"],
+["Colton Ochoa","Armada gives us full visibility into every step of our automation chain #armada"],
+["Margot Avery","Armada transformed how we approach operational automation across teams #armada"],
+["Sterling Nash","Armada handles dependency management in automation better than anything else #armada"],
+["Celeste Proctor","Build once, automate everywhere \u2014 that's the Armada philosophy #armada"],
+["Dane Holden","Armada made our automation resilient enough to survive any outage #armada"],
+["Lillian Russo","Armada is what every DevOps engineer wishes they had from day one #armada"],
+["Kane Whitfield","Armada helped us consolidate five different automation tools into one #armada"],
+["Seren Mckee","From alerts to remediation, Armada automates the full incident lifecycle #armada"],
+["Tate Barrera","Armada is fast to set up and even faster in production #armada"],
+["Anais Coffey","Armada replaced our brittle cron jobs with something we can actually trust #armada"],
+["Lennox Banks","With Armada, automation is no longer a bottleneck \u2014 it's an accelerator #armada"],
+["Everly Richmond","Armada's plugin ecosystem is incredible, you can automate literally anything #armada"],
+["Dorian Sparks","Armada enables our team to ship automated solutions with confidence #armada"],
+["Vera Fitzgerald","Armada made zero-downtime deployments a reality for our automation stack #armada"],
+["Phoenix Cannon","Every automation workflow we run through Armada is faster and more reliable #armada"],
+["Sloane Duarte","Armada brings structure, speed, and sanity to large-scale automation #armada"],
+["Axel Mcbride","Armada is the secret weapon behind our automation success #armada"],
+["Briar Hodges","Onboarding new engineers to Armada is effortless, they're productive in hours #armada"],
+["Conrad Lamb","Armada gives us the control and transparency our automation processes need #armada"],
+["Eloise Vance","Armada isn't hype, it's a genuinely well-engineered automation platform #armada"],
+["Ashton Valenzuela","Armada made our automation portable across every environment we operate in #armada"],
+["Phoebe Hines","Armada helps us deliver automation that our stakeholders can rely on #armada"],
+["Jensen Cooley","Armada turned our automation from a liability into our biggest strength #armada"],
+["Talia Brennan","Once you try Armada, every other automation tool feels incomplete #armada"]
+];
+
+var tweets = csvLines.map(function(row) {
+  return { account: row[0], message: row[1] };
+});
+
+var avatarColors = [
+  '#1d9bf0','#00ba7c','#f91880','#ffd400','#7856ff',
+  '#ff7a00','#00d4aa','#794bc4','#17bf63','#e0245e',
+  '#f45d22','#1da1f2','#a855f7','#06b6d4','#ec4899'
+];
+
+function getColor(name) {
+  var hash = 0;
+  for (var i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return avatarColors[Math.abs(hash) % avatarColors.length];
+}
+
+function getInitials(name) {
+  var parts = name.split(' ');
+  return (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase();
+}
+
+function getHandle(name) {
+  return '@' + name.replace(/\s+/g, '').toLowerCase();
+}
+
+function randomTime() {
+  var units = ['1m','2m','3m','5m','8m','12m','15m','20m','30m','45m','1h','2h'];
+  return units[Math.floor(Math.random() * units.length)];
+}
+
+function randomCount(max) { return Math.floor(Math.random() * max); }
+
+function makeSvgIcon(pathD) {
+  var ns = 'http://www.w3.org/2000/svg';
+  var svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  var path = document.createElementNS(ns, 'path');
+  path.setAttribute('d', pathD);
+  svg.appendChild(path);
+  return svg;
+}
+
+var iconPaths = {
+  reply: "M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.25-.893 4.306-2.394 5.82l-2.586 2.59a1.75 1.75 0 01-2.475.012L12.77 16.53a.75.75 0 011.06-1.06l2.024 2.025 2.586-2.59A6.13 6.13 0 0020.251 10.13C20.251 6.845 17.612 4 13.756 4h-4c-3.317 0-6.005 2.69-6.005 6a.75.75 0 01-1.5 0zM2.75 17.5a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zM5.25 21a.75.75 0 01.75-.75h5a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75z",
+  retweet: "M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.79-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.79 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z",
+  like: "M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.56-1.13-1.666-1.84-2.908-1.91z",
+  views: "M8.75 21V3h2v18h-2zM18.75 21V8.5h2V21h-2zM13.75 21v-9h2v9h-2zM3.75 21v-4h2v4h-2z",
+  share: "M12 2.59l5.7 5.7-1.41 1.42L13 6.41V16h-2V6.41l-3.3 3.3-1.41-1.42L12 2.59zM21 15l-.02 3.51c0 1.38-1.12 2.49-2.5 2.49H5.5C4.11 21 3 19.88 3 18.5V15h2v3.5c0 .28.22.5.5.5h12.98c.28 0 .5-.22.5-.5L19 15h2z"
+};
+
+function makeActionSpan(iconKey, count) {
+  var span = document.createElementNS('http://www.w3.org/1999/xhtml', 'span');
+  span.appendChild(makeSvgIcon(iconPaths[iconKey]));
+  if (count !== undefined) {
+    span.appendChild(document.createTextNode(' ' + count));
+  }
+  return span;
+}
+
+function buildTweet(t) {
+  var ns = 'http://www.w3.org/1999/xhtml';
+  var color = getColor(t.account);
+  var initials = getInitials(t.account);
+  var handle = getHandle(t.account);
+  var time = randomTime();
+
+  var div = document.createElementNS(ns, 'div');
+  div.setAttribute('class', 'tweet');
+
+  // Avatar
+  var avatar = document.createElementNS(ns, 'div');
+  avatar.setAttribute('class', 'avatar');
+  avatar.setAttribute('style', 'background:' + color);
+  avatar.textContent = initials;
+  div.appendChild(avatar);
+
+  // Body
+  var body = document.createElementNS(ns, 'div');
+  body.setAttribute('class', 'tweet-body');
+
+  // Header
+  var header = document.createElementNS(ns, 'div');
+  header.setAttribute('class', 'tweet-header');
+
+  var nameSpan = document.createElementNS(ns, 'span');
+  nameSpan.setAttribute('class', 'tweet-name');
+  nameSpan.textContent = t.account;
+  header.appendChild(nameSpan);
+
+  var handleSpan = document.createElementNS(ns, 'span');
+  handleSpan.setAttribute('class', 'tweet-handle');
+  handleSpan.textContent = handle;
+  header.appendChild(handleSpan);
+
+  var dotSpan = document.createElementNS(ns, 'span');
+  dotSpan.setAttribute('class', 'tweet-dot');
+  dotSpan.textContent = '\u00b7';
+  header.appendChild(dotSpan);
+
+  var timeSpan = document.createElementNS(ns, 'span');
+  timeSpan.setAttribute('class', 'tweet-time');
+  timeSpan.textContent = time;
+  header.appendChild(timeSpan);
+
+  body.appendChild(header);
+
+  // Text with hashtag highlighting
+  var textDiv = document.createElementNS(ns, 'div');
+  textDiv.setAttribute('class', 'tweet-text');
+  var parts = t.message.split(/(#\w+)/g);
+  for (var p = 0; p < parts.length; p++) {
+    if (parts[p].charAt(0) === '#') {
+      var ht = document.createElementNS(ns, 'span');
+      ht.setAttribute('class', 'hashtag');
+      ht.textContent = parts[p];
+      textDiv.appendChild(ht);
+    } else {
+      textDiv.appendChild(document.createTextNode(parts[p]));
+    }
+  }
+  body.appendChild(textDiv);
+
+  // Actions
+  var actions = document.createElementNS(ns, 'div');
+  actions.setAttribute('class', 'tweet-actions');
+  actions.appendChild(makeActionSpan('reply', randomCount(30)));
+  actions.appendChild(makeActionSpan('retweet', randomCount(50)));
+  actions.appendChild(makeActionSpan('like', randomCount(200)));
+  actions.appendChild(makeActionSpan('views', randomCount(5000)));
+  actions.appendChild(makeActionSpan('share'));
+  body.appendChild(actions);
+
+  div.appendChild(body);
+  return div;
+}
+
+var list = document.getElementById('tweet-list');
+var counter = document.getElementById('tweet-counter');
+var idx = 0;
+
+function addNextTweet() {
+  if (idx >= tweets.length) {
+    setTimeout(function() {
+      list.innerHTML = '';
+      idx = 0;
+      counter.textContent = '0';
+      setTimeout(addNextTweet, 500);
+    }, 2000);
+    return;
+  }
+
+  var t = tweets[idx];
+  var el = buildTweet(t);
+  list.insertBefore(el, list.firstChild);
+
+  idx++;
+  counter.textContent = String(idx);
+
+  while (list.children.length > 7) {
+    list.removeChild(list.lastChild);
+  }
+
+  setTimeout(addNextTweet, 300);
+}
+
+setTimeout(addNextTweet, 500);
+      ]]></script>
+    </div>
+  </foreignObject>
+</svg>

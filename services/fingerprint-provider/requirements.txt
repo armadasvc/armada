@@ -1,0 +1,5 @@
+fastapi==0.129.0
+uvicorn==0.40.0
+setuptools==82.0.0
+pycryptodome==3.20.0
+pymssql==2.3.13

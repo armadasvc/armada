@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: armada-proxy-provider
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: armada-proxy-provider
+  template:
+    metadata:
+      labels:
+        app: armada-proxy-provider
+    spec:
+{{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+{{- toYaml . | nindent 8 }}
+{{- end }}
+      containers:
+      - name: armada-proxy-provider
+        image: {{ .Values.dockerHubName }}/armada-proxy-provider:latest
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        ports:
+        - containerPort: 5001
+        env:
+        - name: SQL_SERVER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_NAME
+        - name: SQL_SERVER_DB
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_DB
+        - name: SQL_SERVER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_PASSWORD
+        - name: SQL_SERVER_USER
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_USER
+        - name: IPQS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: armada-ipqs-secret
+              key: IPQS_KEY
+              optional: true

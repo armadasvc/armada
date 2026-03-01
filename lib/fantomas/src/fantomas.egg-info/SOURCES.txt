@@ -1,0 +1,17 @@
+pyproject.toml
+src/fantomas/__init__.py
+src/fantomas/fantomas_no_driver.py
+src/fantomas/identity.py
+src/fantomas/random_sleeper.py
+src/fantomas/screen.py
+src/fantomas/utils.py
+src/fantomas/virtual_cursor_path.py
+src/fantomas/xdotool_actions.py
+src/fantomas.egg-info/PKG-INFO
+src/fantomas.egg-info/SOURCES.txt
+src/fantomas.egg-info/dependency_links.txt
+src/fantomas.egg-info/requires.txt
+src/fantomas.egg-info/top_level.txt
+src/fantomas/no_driver/CursorIllustration.py
+src/fantomas/no_driver/Geometry.py
+src/fantomas/no_driver/IframeManager.py

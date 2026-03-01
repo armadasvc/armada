@@ -1,0 +1,62 @@
+{
+  "run_message": {
+    "image_name": "armada-agent",
+    "image_version": "latest",
+    "number_of_agents": 1,
+    "number_of_jobs": 1,
+    "agent_cpu": "500m",
+    "agent_memory": "512Mi"
+  },
+  "default_agent_message": {
+    "config_fantomas": {
+      "config_browser": {
+        "fantomas_browser_options": [
+          "--proxy-server=http://127.0.0.1:8081",
+          "--ignore-certificate-errors",
+          "--window-size=1500,1200",
+          "--disable-infobars",
+          "--disable-blink-features=AutomationControlled",
+          "--disable-site-isolation-trials",
+          "--disable-features=IsolateOrigins,site-per-proces",
+          "--test-type",
+          "--force-device-scale-factor=1",
+          "--hide-crash-restore-bubble",
+          "--disable-crash-reporter",
+          "--start-fullscreen",
+          "about:blank"
+        ],
+        "fantomas_emulate_movement": 1,
+        "fantomas_show_cursor": 0,
+        "fantomas_emulate_keyboard": 1
+      },
+      "config_screen": {
+        "screen_visible": "$env_SCREEN_VISIBLE",
+        "screen_height": 1500,
+        "screen_width": 2000
+      }
+    },
+    "config_proxy": {
+      "upstream_proxy_enabled": 0,
+      "upstream_proxy_broker_type": "provider",
+      "proxy_location": "",
+      "proxy_provider_name": "iproyal",
+      "proxy_type": "",
+      "proxy_rotation_strategy": "",
+      "verify_ip": 0,
+      "verify_location": 0,
+      "verify_quality": 0,
+      "quality_threshold": 70,
+      "max_queries_number": 3
+    },
+    "config_fingerprint": {
+      "antibot_vendor": "arkose",
+      "website": "X",
+      "collection_date_day": "01",
+      "collection_date_month": "12",
+      "collection_date_year": "2025"
+    }
+  },
+  "default_job_message": {
+    "job_content": "default_job_content"
+  }
+}

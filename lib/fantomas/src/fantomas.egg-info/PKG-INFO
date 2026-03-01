@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: fantomas
+Version: 0.1.5
+Summary: Augmented OS-Level Web Automation based on nodriver
+Author-email: Marc Arnal <hello@marcarnal.com>
+License-Expression: MIT
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: nodriver
+Requires-Dist: PyVirtualDisplay
+Requires-Dist: Faker
+Requires-Dist: random-password-generator
+Requires-Dist: numpy
+Requires-Dist: Pillow

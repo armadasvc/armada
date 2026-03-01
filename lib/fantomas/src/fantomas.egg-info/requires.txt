@@ -1,0 +1,6 @@
+nodriver
+PyVirtualDisplay
+Faker
+random-password-generator
+numpy
+Pillow

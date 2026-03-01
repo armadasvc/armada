@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 690" width="900" height="690">
+  <style>
+    @keyframes pulseFantomas {
+      0%, 100% { filter: drop-shadow(0 0 3px rgba(137,87,229,0.3)); }
+      50% { filter: drop-shadow(0 0 8px rgba(137,87,229,0.6)); }
+    }
+    @keyframes pulseBlue {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(31,111,235,0.3)); }
+      50% { filter: drop-shadow(0 0 6px rgba(31,111,235,0.6)); }
+    }
+    @keyframes pulseGreen {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(35,134,54,0.3)); }
+      50% { filter: drop-shadow(0 0 6px rgba(35,134,54,0.6)); }
+    }
+    @keyframes pulseOrange {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(210,153,34,0.3)); }
+      50% { filter: drop-shadow(0 0 6px rgba(210,153,34,0.6)); }
+    }
+    @keyframes pulseRed {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(218,54,51,0.3)); }
+      50% { filter: drop-shadow(0 0 6px rgba(218,54,51,0.6)); }
+    }
+    @keyframes pulseCyan {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(88,166,255,0.3)); }
+      50% { filter: drop-shadow(0 0 6px rgba(88,166,255,0.6)); }
+    }
+    @keyframes pulseChrome {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(50,108,229,0.3)); }
+      50% { filter: drop-shadow(0 0 6px rgba(50,108,229,0.6)); }
+    }
+
+    @keyframes flowRight {
+      0% { offset-distance: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+    @keyframes flowDown {
+      0% { offset-distance: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+
+    /* Modules block → Fantomas */
+    .p-block-fant {
+      offset-path: path('M 445 195 L 490 195');
+      animation: flowRight 1.5s ease-in-out infinite;
+    }
+    .p-block-fant2 {
+      offset-path: path('M 445 195 L 490 195');
+      animation: flowRight 1.5s ease-in-out infinite;
+      animation-delay: 0.75s;
+    }
+
+    /* Fantomas → Native */
+    .p-fant-native {
+      offset-path: path('M 600 362 C 540 380 400 400 300 420');
+      animation: flowDown 2s ease-in-out infinite;
+      animation-delay: 0.8s;
+    }
+    /* Fantomas → XDO */
+    .p-fant-xdo {
+      offset-path: path('M 690 370 C 710 395 720 410 720 420');
+      animation: flowDown 2s ease-in-out infinite;
+      animation-delay: 1.1s;
+    }
+
+    /* Native → Chrome */
+    .p-native-chrome {
+      offset-path: path('M 240 560 C 300 575 380 585 420 590');
+      animation: flowDown 1.8s ease-in-out infinite;
+      animation-delay: 1.5s;
+    }
+    /* XDO → Chrome */
+    .p-xdo-chrome {
+      offset-path: path('M 690 560 C 630 575 550 585 500 590');
+      animation: flowDown 1.8s ease-in-out infinite;
+      animation-delay: 1.7s;
+    }
+  </style>
+
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="690" fill="transparent" rx="12"/>
+
+  <!-- ==================== MODULE BLOCK TITLE ==================== -->
+  <text x="230" y="22" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8b949e" font-weight="600" letter-spacing="2">HUMAN-LIKE EMULATION LAYER</text>
+
+  <!-- ==================== MODULE BLOCK (2×2) with surrounding border ==================== -->
+  <!-- Outer dashed border around the 4 modules -->
+  <rect x="20" y="32" width="420" height="330" rx="14" fill="none" stroke="#8b949e" stroke-width="1" stroke-dasharray="8 4" opacity="0.3"/>
+
+  <!-- WindMouse — x=30, y=42, w=195, h=150 → center=(127.5, 117) -->
+  <g style="animation: pulseBlue 3s ease-in-out infinite;" filter="url(#softShadow)">
+    <rect x="30" y="42" width="195" height="150" rx="10" fill="#161b22" stroke="#1f6feb" stroke-width="1.5"/>
+  </g>
+  <text x="127" y="90" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="#c9d1d9" font-weight="600">WindMouse</text>
+  <text x="127" y="118" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8b949e">Human cursor physics</text>
+  <text x="127" y="142" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#58a6ff">Gravity · Wind · Velocity</text>
+
+  <!-- Keyboard — x=235, y=42, w=195, h=150 → center=(332.5, 117) -->
+  <g style="animation: pulseRed 3s ease-in-out infinite; animation-delay: 0.4s;" filter="url(#softShadow)">
+    <rect x="235" y="42" width="195" height="150" rx="10" fill="#161b22" stroke="#da3633" stroke-width="1.5"/>
+  </g>
+  <text x="332" y="90" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="#c9d1d9" font-weight="600">Keyboard</text>
+  <text x="332" y="118" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8b949e">Randomization emulation</text>
+  <text x="332" y="142" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#f85149">Per-key delay</text>
+
+  <!-- Identity — x=30, y=202, w=195, h=150 → center=(127.5, 277) -->
+  <g style="animation: pulseGreen 3s ease-in-out infinite; animation-delay: 0.8s;" filter="url(#softShadow)">
+    <rect x="30" y="202" width="195" height="150" rx="10" fill="#161b22" stroke="#238636" stroke-width="1.5"/>
+  </g>
+  <text x="127" y="250" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="#c9d1d9" font-weight="600">Identity</text>
+  <text x="127" y="278" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8b949e">Fake profile generator</text>
+  <text x="127" y="302" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#2ea043">Name · DOB · Password</text>
+
+  <!-- Screen — x=235, y=202, w=195, h=150 → center=(332.5, 277) -->
+  <g style="animation: pulseOrange 3s ease-in-out infinite; animation-delay: 1.2s;" filter="url(#softShadow)">
+    <rect x="235" y="202" width="195" height="150" rx="10" fill="#161b22" stroke="#d29922" stroke-width="1.5"/>
+  </g>
+  <text x="332" y="250" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="#c9d1d9" font-weight="600">Screen</text>
+  <text x="332" y="278" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8b949e">Virtual display manager</text>
+  <text x="332" y="302" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#d29922">Xvfb</text>
+
+  <!-- ==================== FLOW: Module Block → Fantomas (single arrow) ==================== -->
+  <line x1="440" y1="197" x2="490" y2="197" stroke="#8957e5" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.4"/>
+
+  <!-- Particles -->
+  <circle class="p-block-fant" r="5" fill="#8957e5" filter="url(#glow)"/>
+  <circle class="p-block-fant2" r="4" fill="#CE93D8" filter="url(#glow)"/>
+
+  <!-- ==================== FANTOMAS MAIN BOX ==================== -->
+  <!-- x=490, y=32, w=390, h=330 → center=(685, 197) -->
+  <g style="animation: pulseFantomas 3s ease-in-out infinite;" filter="url(#softShadow)">
+    <rect x="490" y="32" width="390" height="330" rx="14" fill="#161b22" stroke="#8957e5" stroke-width="2"/>
+    <rect x="495" y="37" width="380" height="320" rx="12" fill="none" stroke="#8957e5" stroke-width="0.5" opacity="0.3"/>
+  </g>
+
+  <!-- Fantomas content centered: title(30)+12+subtitle(18)+12+detail(14) = 86 → start at 197-43=154 -->
+  <text x="685" y="175" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="30" fill="#c9d1d9" font-weight="700">Fantomas</text>
+  <text x="685" y="205" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="18" fill="#8b949e" font-weight="600">Anti-Detection Browser Automation</text>
+  <text x="672" y="233" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8b949e">Built on</text><text x="678" y="233" text-anchor="start" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#CE93D8" font-weight="600">nodriver</text>
+
+  <!-- ==================== FLOW: Fantomas → Strategies ==================== -->
+  <text x="140" y="408" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8b949e" font-weight="600" letter-spacing="2">INTERACTION STRATEGIES</text>
+
+  <path d="M 600 362 C 540 380 400 400 300 420" fill="none" stroke="#58a6ff" stroke-width="2" stroke-dasharray="5 3" opacity="0.3"/>
+  <path d="M 690 362 C 710 385 720 400 720 420" fill="none" stroke="#da3633" stroke-width="2" stroke-dasharray="5 3" opacity="0.3"/>
+
+  <circle class="p-fant-native" r="4" fill="#58a6ff" filter="url(#glow)"/>
+  <circle class="p-fant-xdo" r="4" fill="#f85149" filter="url(#glow)"/>
+
+  <!-- ==================== NATIVE STRATEGY BOX ==================== -->
+  <!-- x=20, y=420, w=420, h=140 → center=(230, 490) -->
+  <g style="animation: pulseCyan 3.5s ease-in-out infinite;" filter="url(#softShadow)">
+    <rect x="20" y="420" width="420" height="140" rx="12" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
+  </g>
+  <text x="230" y="470" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#c9d1d9" font-weight="600">Native Strategy</text>
+  <text x="230" y="498" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#58a6ff">Chrome DevTools Protocol · Nodriver</text>
+  <text x="230" y="526" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#8b949e" font-style="italic">Events via browser internal pipeline</text>
+
+  <!-- ==================== XDO STRATEGY BOX ==================== -->
+  <!-- x=460, y=420, w=420, h=140 → center=(670, 490) -->
+  <g style="animation: pulseRed 3.5s ease-in-out infinite; animation-delay: 0.5s;" filter="url(#softShadow)">
+    <rect x="460" y="420" width="420" height="140" rx="12" fill="#161b22" stroke="#da3633" stroke-width="1.5"/>
+  </g>
+  <text x="670" y="470" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#c9d1d9" font-weight="600">XDO Strategy</text>
+  <text x="670" y="498" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#f85149">OS-level via xdotool</text>
+  <text x="670" y="526" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#f85149" font-weight="600" font-style="italic">Indistinguishable from real hardware input</text>
+
+  <!-- ==================== FLOW: Strategies → Chrome ==================== -->
+  <path d="M 240 560 C 300 575 380 585 420 590" fill="none" stroke="#58a6ff" stroke-width="2" stroke-dasharray="5 3" opacity="0.3"/>
+  <path d="M 690 560 C 630 575 550 585 500 590" fill="none" stroke="#da3633" stroke-width="2" stroke-dasharray="5 3" opacity="0.3"/>
+
+  <circle class="p-native-chrome" r="4" fill="#58a6ff" filter="url(#glow)"/>
+  <circle class="p-xdo-chrome" r="4" fill="#f85149" filter="url(#glow)"/>
+
+  <!-- ==================== CHROME BROWSER BOX ==================== -->
+  <!-- x=160, y=590, w=580, h=80 → center=(450, 630) -->
+  <g style="animation: pulseChrome 3s ease-in-out infinite;" filter="url(#softShadow)">
+    <rect x="160" y="590" width="580" height="80" rx="12" fill="#161b22" stroke="#326CE5" stroke-width="1.5"/>
+  </g>
+  <text x="450" y="625" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#c9d1d9" font-weight="600">Chrome Browser</text>
+  <text x="450" y="650" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#8b949e">Target Website</text>
+
+</svg>

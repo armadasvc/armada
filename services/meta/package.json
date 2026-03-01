@@ -1,0 +1,6 @@
+{
+  "name": "armada-meta",
+  "version": "1.0.1",
+  "main": "main.py",
+  "license": "MIT"
+}

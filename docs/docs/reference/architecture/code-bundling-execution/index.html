@@ -1,0 +1,529 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<title>4.1.4. Code Bundling and Execution | Armada Documentation</title>
+<meta name="description" content="Frontend script bundler, code injection into config, Redis transport, agent-side exec(), and requirements.txt handling">
+<meta property="og:url" content="https://armada.services/docs/reference/architecture/code-bundling-execution/">
+  <meta property="og:site_name" content="Armada Documentation">
+  <meta property="og:title" content="4.1.4. Code Bundling and Execution">
+  <meta property="og:description" content="Frontend script bundler, code injection into config, Redis transport, agent-side exec(), and requirements.txt handling">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+  <meta itemprop="name" content="4.1.4. Code Bundling and Execution">
+  <meta itemprop="description" content="Frontend script bundler, code injection into config, Redis transport, agent-side exec(), and requirements.txt handling">
+  <meta itemprop="wordCount" content="784">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="4.1.4. Code Bundling and Execution">
+  <meta name="twitter:description" content="Frontend script bundler, code injection into config, Redis transport, agent-side exec(), and requirements.txt handling">
+<link rel="preload" href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" as="style" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<link href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" rel="stylesheet" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">Armada Documentation</span></a>
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/"><span>Documentation</span></a>
+      </li>
+      </ul>
+    <div class="scroll-indicator scroll-right"></div>
+  </div>
+  <div class="td-navbar__search d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="td-sidebar-nav collapse foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
+    <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsgetting-started-li">
+    <input type="checkbox" id="m-docsgetting-started-check"/>
+    <label for="m-docsgetting-started-check"><a href="/docs/getting-started/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">1. Getting Started</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedkey_concepts-li">
+    <input type="checkbox" id="m-docsgetting-startedkey_concepts-check"/>
+    <label for="m-docsgetting-startedkey_concepts-check"><a href="/docs/getting-started/key_concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedkey_concepts"><span class="">1.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-kubernetes-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-kubernetes-check"/>
+    <label for="m-docsgetting-startedquickstart-kubernetes-check"><a href="/docs/getting-started/quickstart-kubernetes/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-kubernetes"><span class="">1.2. Quick-Start / Installation</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-local-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-local-check"/>
+    <label for="m-docsgetting-startedquickstart-local-check"><a href="/docs/getting-started/quickstart-local/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-local"><span class="">1.3. Local Development</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssetting-up-project-li">
+    <input type="checkbox" id="m-docssetting-up-project-check"/>
+    <label for="m-docssetting-up-project-check"><a href="/docs/setting-up-project/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docssetting-up-project"><span class="">2. Setting Up a Project</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectkey-concepts-li">
+    <input type="checkbox" id="m-docssetting-up-projectkey-concepts-check"/>
+    <label for="m-docssetting-up-projectkey-concepts-check"><a href="/docs/setting-up-project/key-concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectkey-concepts"><span class="">2.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectjson-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectjson-config-check"/>
+    <label for="m-docssetting-up-projectjson-config-check"><a href="/docs/setting-up-project/json-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectjson-config"><span class="">2.2. JSON Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectcsv-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectcsv-config-check"/>
+    <label for="m-docssetting-up-projectcsv-config-check"><a href="/docs/setting-up-project/csv-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectcsv-config"><span class="">2.3. CSV Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectpython-files-li">
+    <input type="checkbox" id="m-docssetting-up-projectpython-files-check"/>
+    <label for="m-docssetting-up-projectpython-files-check"><a href="/docs/setting-up-project/python-files/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectpython-files"><span class="">2.4. Python Files</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsguides-li">
+    <input type="checkbox" id="m-docsguides-check"/>
+    <label for="m-docsguides-check"><a href="/docs/guides/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsguides"><span class="">3. Guides</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-connector-li">
+    <input type="checkbox" id="m-docsguidesdatabase-connector-check"/>
+    <label for="m-docsguidesdatabase-connector-check"><a href="/docs/guides/database-connector/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-connector"><span class="">3.1. Database Connector</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesproxy-provider-li">
+    <input type="checkbox" id="m-docsguidesproxy-provider-check"/>
+    <label for="m-docsguidesproxy-provider-check"><a href="/docs/guides/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesproxy-provider"><span class="">3.2. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsguidesfingerprint-provider-check"/>
+    <label for="m-docsguidesfingerprint-provider-check"><a href="/docs/guides/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesfingerprint-provider"><span class="">3.3. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesmonitoring-client-li">
+    <input type="checkbox" id="m-docsguidesmonitoring-client-check"/>
+    <label for="m-docsguidesmonitoring-client-check"><a href="/docs/guides/monitoring-client/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesmonitoring-client"><span class="">3.4. Monitoring Client</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesci-cd-li">
+    <input type="checkbox" id="m-docsguidesci-cd-check"/>
+    <label for="m-docsguidesci-cd-check"><a href="/docs/guides/ci-cd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesci-cd"><span class="">3.5. CI/CD</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-management-li">
+    <input type="checkbox" id="m-docsguidesdatabase-management-check"/>
+    <label for="m-docsguidesdatabase-management-check"><a href="/docs/guides/database-management/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-management"><span class="">3.6. Database Management</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesstandard-output-li">
+    <input type="checkbox" id="m-docsguidesstandard-output-check"/>
+    <label for="m-docsguidesstandard-output-check"><a href="/docs/guides/standard-output/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesstandard-output"><span class="">3.7. Standard Output</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsreference-li">
+    <input type="checkbox" id="m-docsreference-check" checked/>
+    <label for="m-docsreference-check"><a href="/docs/reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreference"><span class="">4. Reference</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsreferencearchitecture-li">
+    <input type="checkbox" id="m-docsreferencearchitecture-check" checked/>
+    <label for="m-docsreferencearchitecture-check"><a href="/docs/reference/architecture/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencearchitecture"><span class="">4.1. Architecture</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureoverview-li">
+    <input type="checkbox" id="m-docsreferencearchitectureoverview-check"/>
+    <label for="m-docsreferencearchitectureoverview-check"><a href="/docs/reference/architecture/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureoverview"><span class="">4.1.1. Overview</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturerun-lifecycle-li">
+    <input type="checkbox" id="m-docsreferencearchitecturerun-lifecycle-check"/>
+    <label for="m-docsreferencearchitecturerun-lifecycle-check"><a href="/docs/reference/architecture/run-lifecycle/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturerun-lifecycle"><span class="">4.1.2. Run Lifecycle</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureconfiguration-pipeline-li">
+    <input type="checkbox" id="m-docsreferencearchitectureconfiguration-pipeline-check"/>
+    <label for="m-docsreferencearchitectureconfiguration-pipeline-check"><a href="/docs/reference/architecture/configuration-pipeline/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureconfiguration-pipeline"><span class="">4.1.3. Configuration Pipeline</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsreferencearchitecturecode-bundling-execution-li">
+    <input type="checkbox" id="m-docsreferencearchitecturecode-bundling-execution-check" checked/>
+    <label for="m-docsreferencearchitecturecode-bundling-execution-check"><a href="/docs/reference/architecture/code-bundling-execution/" class="align-left ps-0  active td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturecode-bundling-execution"><span class="td-sidebar-nav-active-item">4.1.4. Code Bundling and Execution</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureagent-internals-li">
+    <input type="checkbox" id="m-docsreferencearchitectureagent-internals-check"/>
+    <label for="m-docsreferencearchitectureagent-internals-check"><a href="/docs/reference/architecture/agent-internals/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureagent-internals"><span class="">4.1.5. Agent Internals</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureenvironment-variables-li">
+    <input type="checkbox" id="m-docsreferencearchitectureenvironment-variables-check"/>
+    <label for="m-docsreferencearchitectureenvironment-variables-check"><a href="/docs/reference/architecture/environment-variables/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureenvironment-variables"><span class="">4.1.6. Environment Variables</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturehelm-values-li">
+    <input type="checkbox" id="m-docsreferencearchitecturehelm-values-check"/>
+    <label for="m-docsreferencearchitecturehelm-values-check"><a href="/docs/reference/architecture/helm-values/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturehelm-values"><span class="">4.1.7. Helm Values</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureinfrastructure-li">
+    <input type="checkbox" id="m-docsreferencearchitectureinfrastructure-check"/>
+    <label for="m-docsreferencearchitectureinfrastructure-check"><a href="/docs/reference/architecture/infrastructure/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureinfrastructure"><span class="">4.1.8. Resource Topology</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturebootstrap-scripts-li">
+    <input type="checkbox" id="m-docsreferencearchitecturebootstrap-scripts-check"/>
+    <label for="m-docsreferencearchitecturebootstrap-scripts-check"><a href="/docs/reference/architecture/bootstrap-scripts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturebootstrap-scripts"><span class="">4.1.9. Bootstrap Scripts</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferenceservices-li">
+    <input type="checkbox" id="m-docsreferenceservices-check"/>
+    <label for="m-docsreferenceservices-check"><a href="/docs/reference/services/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferenceservices"><span class="">4.2. Services</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesorchestrator-li">
+    <input type="checkbox" id="m-docsreferenceservicesorchestrator-check"/>
+    <label for="m-docsreferenceservicesorchestrator-check"><a href="/docs/reference/services/orchestrator/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesorchestrator"><span class="">4.2.1. Orchestrator</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesagent-li">
+    <input type="checkbox" id="m-docsreferenceservicesagent-check"/>
+    <label for="m-docsreferenceservicesagent-check"><a href="/docs/reference/services/agent/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesagent"><span class="">4.2.2. Agent</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfrontend-li">
+    <input type="checkbox" id="m-docsreferenceservicesfrontend-check"/>
+    <label for="m-docsreferenceservicesfrontend-check"><a href="/docs/reference/services/frontend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfrontend"><span class="">4.2.3. Frontend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesbackend-li">
+    <input type="checkbox" id="m-docsreferenceservicesbackend-check"/>
+    <label for="m-docsreferenceservicesbackend-check"><a href="/docs/reference/services/backend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesbackend"><span class="">4.2.4. Backend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesproxy-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesproxy-provider-check"/>
+    <label for="m-docsreferenceservicesproxy-provider-check"><a href="/docs/reference/services/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesproxy-provider"><span class="">4.2.5. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesfingerprint-provider-check"/>
+    <label for="m-docsreferenceservicesfingerprint-provider-check"><a href="/docs/reference/services/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfingerprint-provider"><span class="">4.2.6. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesmeta-li">
+    <input type="checkbox" id="m-docsreferenceservicesmeta-check"/>
+    <label for="m-docsreferenceservicesmeta-check"><a href="/docs/reference/services/meta/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesmeta"><span class="">4.2.7. Meta</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferencedeployment-li">
+    <input type="checkbox" id="m-docsreferencedeployment-check"/>
+    <label for="m-docsreferencedeployment-check"><a href="/docs/reference/deployment/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencedeployment"><span class="">4.3. Deployment</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentdatabase-li">
+    <input type="checkbox" id="m-docsreferencedeploymentdatabase-check"/>
+    <label for="m-docsreferencedeploymentdatabase-check"><a href="/docs/reference/deployment/database/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentdatabase"><span class="">4.3.1. Database</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentworkbench-li">
+    <input type="checkbox" id="m-docsreferencedeploymentworkbench-check"/>
+    <label for="m-docsreferencedeploymentworkbench-check"><a href="/docs/reference/deployment/workbench/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentworkbench"><span class="">4.3.2. Workbench Mode under the hood</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentsecurity-li">
+    <input type="checkbox" id="m-docsreferencedeploymentsecurity-check"/>
+    <label for="m-docsreferencedeploymentsecurity-check"><a href="/docs/reference/deployment/security/" title="4.3.3. Security Considerations" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentsecurity"><span class="">4.3.3. Security</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymenttesting-li">
+    <input type="checkbox" id="m-docsreferencedeploymenttesting-check"/>
+    <label for="m-docsreferencedeploymenttesting-check"><a href="/docs/reference/deployment/testing/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymenttesting"><span class="">4.3.4. Testing Strategy</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentcicd-li">
+    <input type="checkbox" id="m-docsreferencedeploymentcicd-check"/>
+    <label for="m-docsreferencedeploymentcicd-check"><a href="/docs/reference/deployment/cicd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentcicd"><span class="">4.3.5. CI/CD</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceglossary-li">
+    <input type="checkbox" id="m-docsreferenceglossary-check"/>
+    <label for="m-docsreferenceglossary-check"><a href="/docs/reference/glossary/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceglossary"><span class="">4.4. Glossary</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencehugo-docsy-li">
+    <input type="checkbox" id="m-docsreferencehugo-docsy-check"/>
+    <label for="m-docsreferencehugo-docsy-check"><a href="/docs/reference/hugo-docsy/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencehugo-docsy"><span class="">4.5. Docsy Documentation and landing page</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencenext-steps-li">
+    <input type="checkbox" id="m-docsreferencenext-steps-check"/>
+    <label for="m-docsreferencenext-steps-check"><a href="/docs/reference/next-steps/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencenext-steps"><span class="">4.6. Next Steps</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsfantomas-li">
+    <input type="checkbox" id="m-docsfantomas-check"/>
+    <label for="m-docsfantomas-check"><a href="/docs/fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsfantomas"><span class="">5. Fantomas</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomaswhy-fantomas-li">
+    <input type="checkbox" id="m-docsfantomaswhy-fantomas-check"/>
+    <label for="m-docsfantomaswhy-fantomas-check"><a href="/docs/fantomas/why-fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomaswhy-fantomas"><span class="">5.1. Why Fantomas</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasoverview-li">
+    <input type="checkbox" id="m-docsfantomasoverview-check"/>
+    <label for="m-docsfantomasoverview-check"><a href="/docs/fantomas/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasoverview"><span class="">5.2. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasfantomas-reference-li">
+    <input type="checkbox" id="m-docsfantomasfantomas-reference-check"/>
+    <label for="m-docsfantomasfantomas-reference-check"><a href="/docs/fantomas/fantomas-reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasfantomas-reference"><span class="">5.3. Reference</span></a></label>
+    
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </nav>
+</div>
+          </aside>
+          <aside class="td-sidebar-toc">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem">The Problem</a></li>
+    <li><a href="#the-solution-bundle-transport-exec">The Solution: Bundle, Transport, <code>exec()</code></a></li>
+    <li><a href="#step-1--frontend-script-bundler">Step 1 — Frontend Script Bundler</a>
+      <ul>
+        <li><a href="#inlining-rules">Inlining rules</a></li>
+        <li><a href="#recursion">Recursion</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-2--code-injection-into-config">Step 2 — Code Injection into Config</a></li>
+    <li><a href="#step-3--agent-side-exec">Step 3 — Agent-Side <code>exec()</code></a>
+      <ul>
+        <li><a href="#what-exec-does">What <code>exec()</code> does</a></li>
+        <li><a href="#what-the-projects-mainpy-defines">What the project’s <code>main.py</code> defines</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-4--extra-dependencies-requirementstxt">Step 4 — Extra Dependencies (<code>requirements.txt</code>)</a></li>
+    <li><a href="#why-exec-instead-of-alternatives">Why <code>exec()</code> Instead of Alternatives</a></li>
+    <li><a href="#workbench-mode-variant">Workbench mode Variant</a></li>
+  </ul>
+</nav>
+  </div>
+
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/docs/">Documentation</a></li>
+  <li class="breadcrumb-item">
+    <a href="/docs/reference/">4. Reference</a></li>
+  <li class="breadcrumb-item">
+    <a href="/docs/reference/architecture/">4.1. Architecture</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    4.1.4. Code Bundling and Execution</li>
+  </ol>
+</nav>
+<div class="td-content">
+	<h1>4.1.4. Code Bundling and Execution</h1>
+	<div class="lead">Frontend script bundler, code injection into config, Redis transport, agent-side exec(), and requirements.txt handling</div>
+	<header class="article-meta">
+		
+</header>
+	<h2 id="the-problem">The Problem</h2>
+<p>Armada uses a single, generic Docker image for the agent (<code>armada-agent</code>). This image contains the Python runtime, Chrome, Xvfb, mitmproxy, and all base libraries — but <strong>no project-specific code</strong>. The user&rsquo;s automation logic (<code>ctx_script.py</code>, <code>ctx_agent_context.py</code>, <code>addon/</code> modules, etc.) must be delivered at runtime without rebuilding the image.</p>
+<h2 id="the-solution-bundle-transport-exec">The Solution: Bundle, Transport, <code>exec()</code></h2>
+<pre tabindex="0"><code>Frontend                    Orchestrator              Redis                  Agent Pod
+   │                            │                      │                       │
+   ├─ Bundle main.py ─────────▶ │                      │                       │
+   │  (inline ctx_*, addon/*)   │                      │                       │
+   │                            │                      │                       │
+   ├─ Inject code into config ─▶│                      │                       │
+   │                            ├─ Redis SET ─────────▶│                       │
+   │                            │  (agent_message      │                       │
+   │                            │   with &#34;code&#34; field) │                       │
+   │                            │                      │                       │
+   │                            │                      │◀── Redis GET ─────────┤
+   │                            │                      │    (on pod startup)   │
+   │                            │                      │                       │
+   │                            │                      │                       │ exec(code, {app,agent_message})
+   │                            │                      │                       │
+</code></pre><hr>
+<h2 id="step-1--frontend-script-bundler">Step 1 — Frontend Script Bundler</h2>
+<p>The bundler (<code>services/frontend/src/utils/launcher/scriptBundler.ts</code>) takes <code>main.py</code> and recursively inlines specific imports into a single Python string.</p>
+<h3 id="inlining-rules">Inlining rules</h3>
+<p>A <code>from X import Y</code> statement is inlined if <code>X</code> matches one of these criteria:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Criterion</th>
+          <th>Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>File is in the <code>addon/</code> directory</td>
+          <td><code>from addon.my_modifier import modify_response</code></td>
+      </tr>
+      <tr>
+          <td>Filename starts with <code>ctx</code></td>
+          <td><code>from ctx_script import ctx_script</code> (see <a href="/docs/setting-up-project/python-files/">Python Files</a>)</td>
+      </tr>
+  </tbody>
+</table>
+<p>All other imports (standard library, pip packages, <code>celery</code>, <code>asyncio</code>, etc.) are left as-is because they are available in the agent&rsquo;s Docker image.</p>
+<h3 id="recursion">Recursion</h3>
+<p>The bundler is recursive. If <code>ctx_agent_context.py</code> itself imports from <code>addon/some_helper.py</code>, that helper is also inlined. A <code>Set&lt;string&gt;</code> of already-processed files prevents infinite loops and duplicate inlining.</p>
+<hr>
+<h2 id="step-2--code-injection-into-config">Step 2 — Code Injection into Config</h2>
+<p>After bundling, the frontend injects the Python string into the config under <code>default_agent_message.code</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">// services/frontend/src/utils/launcher/configProcessor.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">function</span> <span style="color:#000">addUuidAndCodeToConfig</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">config</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">code</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">default_agent_message</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">code</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">code</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">default_agent_message</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">run_id</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">uuidv4</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">default_job_message</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">run_id</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">runId</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000">config</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">run_message</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">run_id</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">runId</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">config</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>The code travels as a JSON string field through the entire pipeline:</p>
+<ol>
+<li>Frontend → Orchestrator (HTTP POST, inside JSON body)</li>
+<li>Orchestrator → Redis (Redis SET, inside serialized agent message)</li>
+<li>Redis → Agent (Redis GET at pod startup)</li>
+</ol>
+<hr>
+<h2 id="step-3--agent-side-exec">Step 3 — Agent-Side <code>exec()</code></h2>
+<p>The agent&rsquo;s own <code>main.py</code> (<code>services/agent/main.py</code>) is minimal:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">src.load_agent_message</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">load_agent_message</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">celery</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Celery</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">os</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">agent_message</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">load_agent_message</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">app</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Celery</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;celery_app&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">update</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">broker_url</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">os</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">getenv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;RABBITMQ_URL&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;amqp://localhost:5672&#34;</span><span style="color:#000;font-weight:bold">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">exec</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">agent_message</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;code&#34;</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#39;app&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">app</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;agent_message&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">agent_message</span><span style="color:#000;font-weight:bold">})</span>
+</span></span></code></pre></div><h3 id="what-exec-does">What <code>exec()</code> does</h3>
+<p><code>exec(code, namespace)</code> executes the Python string <code>code</code> inside the provided <code>namespace</code> dict. The namespace serves as both the global and local scope for the executed code. This means:</p>
+<ul>
+<li>The project&rsquo;s <code>main.py</code> can reference <code>app</code> (the Celery instance) without importing it</li>
+<li>The project&rsquo;s <code>main.py</code> can reference <code>agent_message</code> (the full config dict) without importing it</li>
+<li>Any functions, classes, or variables defined by the executed code are accessible via the namespace</li>
+</ul>
+<h3 id="what-the-projects-mainpy-defines">What the project&rsquo;s <code>main.py</code> defines</h3>
+<p>After <code>exec()</code>, the project&rsquo;s code has registered:</p>
+<ol>
+<li><strong><code>init_worker</code></strong> — Celery <code>worker_process_init</code> signal handler that creates <code>AgentContext</code></li>
+<li><strong><code>shutdown_worker</code></strong> — Celery <code>worker_process_shutdown</code> signal handler that tears down <code>AgentContext</code></li>
+<li><strong><code>run_job</code></strong> — Celery task <code>tasks.consume_message</code> that processes a single job message</li>
+</ol>
+<p>The Celery worker (started by <code>entrypoint.sh</code>) then calls these through its normal signal and task dispatch mechanisms.</p>
+<hr>
+<h2 id="step-4--extra-dependencies-requirementstxt">Step 4 — Extra Dependencies (<code>requirements.txt</code>)</h2>
+<p>If the user includes a <code>requirements.txt</code> in their project, the frontend sends it as a separate form part. The orchestrator base64-encodes the file content and passes it as the <code>REQUIREMENTS_TXT</code> environment variable on the Kubernetes pod.</p>
+<p>At pod startup, <code>entrypoint.sh</code> decodes and installs the packages before starting the Celery worker:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span> <span style="color:#ce5c00;font-weight:bold">[</span> -n <span style="color:#4e9a06">&#34;</span><span style="color:#000">$REQUIREMENTS_TXT</span><span style="color:#4e9a06">&#34;</span> <span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#34;</span><span style="color:#000">$REQUIREMENTS_TXT</span><span style="color:#4e9a06">&#34;</span> <span style="color:#000;font-weight:bold">|</span> base64 -d &gt; /tmp/requirements.txt
+</span></span><span style="display:flex;"><span>  pip install -r /tmp/requirements.txt
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">fi</span>
+</span></span></code></pre></div><p>This allows projects to use pip packages that are not in the base agent image. See <a href="/docs/setting-up-project/python-files/#requirementstxt--extra-dependencies">Python Files — requirements.txt</a> for what the base image already includes.</p>
+<hr>
+<h2 id="why-exec-instead-of-alternatives">Why <code>exec()</code> Instead of Alternatives</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Alternative</th>
+          <th>Why it was not chosen</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Rebuild Docker image per project</td>
+          <td>Slow, requires Docker daemon access, scales poorly</td>
+      </tr>
+      <tr>
+          <td>Mount code as ConfigMap/volume</td>
+          <td>Kubernetes ConfigMaps have a 1MB size limit; volume mounts add complexity</td>
+      </tr>
+      <tr>
+          <td>Download code from a file server</td>
+          <td>Adds another service to maintain; Redis already stores the config</td>
+      </tr>
+      <tr>
+          <td><code>importlib</code> dynamic import</td>
+          <td>Requires files on disk; <code>exec()</code> works directly from a string</td>
+      </tr>
+  </tbody>
+</table>
+<p>The <code>exec()</code> approach enables a <strong>single immutable agent image</strong> to run arbitrary project code. The trade-off is that all user code must be bundleable into a single Python string (no binary assets, no complex package structures). Do not expose the cluster to the outside world, see <a href="/docs/reference/deployment/security/">Security</a></p>
+<hr>
+<h2 id="workbench-mode-variant">Workbench mode Variant</h2>
+<p>In the local workbench mode, the same <code>exec()</code> pattern is used, but the code comes from disk instead of Redis:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># services/project/workbench/run_workbench.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">with</span> <span style="color:#204a87">open</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;main.py&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#39;r&#39;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">f</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">main_code</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">f</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">read</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">namespace</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#39;app&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">app</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#39;agent_message&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">agent_message</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#39;job_message&#39;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">job_message</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">exec</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">main_code</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">namespace</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Then call the functions directly</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">namespace</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;init_worker&#39;</span><span style="color:#000;font-weight:bold">](</span><span style="color:#000">sender</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;local-test&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">namespace</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;run_job&#39;</span><span style="color:#000;font-weight:bold">](</span><span style="color:#000">job_message</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">namespace</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;shutdown_worker&#39;</span><span style="color:#000;font-weight:bold">](</span><span style="color:#000">sender</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;local-test&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><p>The only difference is that the workbench does not go through Celery&rsquo;s signal mechanism — it calls <code>init_worker</code>, <code>run_job</code>, and <code>shutdown_worker</code> as regular functions.</p>
+
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.84ebdea7c8b518711780f1e70e9941e62f87902362b45772946a84042a14873f.js" integrity="sha256-hOvep8i1GHEXgPHnDplB5i&#43;HkCNitFdylGqEBCoUhz8=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

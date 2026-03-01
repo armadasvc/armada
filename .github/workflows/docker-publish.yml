@@ -1,0 +1,168 @@
+name: Publish Docker image on version bump
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'services/**/package.json'
+
+  workflow_dispatch:
+    inputs:
+      service:
+        description: "Service name to manually rebuild (e.g. services/api)"
+        required: false
+        default: ""
+      create_tag:
+        description: "Create/overwrite Git tag if manual build succeeds"
+        required: false
+        default: "true"
+      run_name:
+        description: "Name shown in the workflow runs list (e.g. bumping armada_agent)"
+        required: false
+        default: "Manual run"
+
+# 🏷️ Dynamic run name (visible in the workflow runs list)
+run-name: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_name || github.event.head_commit.message }}
+
+permissions:
+  contents: write
+
+jobs:
+  detect-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Detect changed services
+        id: detect
+        run: |
+          echo "changed_services=" >> $GITHUB_OUTPUT
+          rm -f changed.txt
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.service }}" ]; then
+            SERVICE="${{ github.event.inputs.service }}"
+            FILE="$SERVICE/package.json"
+
+            if [ ! -f "$FILE" ]; then
+              echo "❌ File $FILE not found"
+              exit 1
+            fi
+
+            NAME=$(node -p "require('./$FILE').name")
+            VERSION=$(node -p "require('./$FILE').version")
+            IMAGE_NAME=$(echo "$NAME" | sed 's/^@//; s/\//-/g')
+
+            echo "🧩 Manual mode: rebuilding $SERVICE ($IMAGE_NAME@$VERSION)"
+            echo "{\"image\":\"$IMAGE_NAME\",\"version\":\"$VERSION\",\"dir\":\"$SERVICE\"}" >> changed.txt
+          else
+            echo "🔎 Auto mode: detecting modified package.json files"
+            git diff --name-only HEAD~1 HEAD | grep "^services/.*/package.json$" | while read file; do
+              if [[ "$file" == *"node_modules"* ]]; then
+                continue
+              fi
+              if [ ! -f "$file" ]; then
+                echo "⚠️ $file not found (service deleted or moved) — skipping"
+                continue
+              fi
+              DIR=$(dirname "$file")
+              NAME=$(node -p "require('./$file').name")
+              VERSION=$(node -p "require('./$file').version")
+              IMAGE_NAME=$(echo "$NAME" | sed 's/^@//; s/\//-/g')
+              echo "📦 Detected change in $NAME (v$VERSION)"
+              echo "{\"image\":\"$IMAGE_NAME\",\"version\":\"$VERSION\",\"dir\":\"$DIR\"}" >> changed.txt
+            done
+          fi
+
+          if [ -s changed.txt ]; then
+            JSON=$(jq -s -c '.' changed.txt)
+            {
+              echo "changed_services<<EOF"
+              echo "$JSON"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+          cat changed.txt || echo "No relevant package.json changed."
+
+      - name: Show detected services
+        if: steps.detect.outputs.changed_services != ''
+        run: |
+          echo "🔍 Changed services detected:"
+          JSON='${{ steps.detect.outputs.changed_services }}'
+          echo "$JSON" | jq '.'
+
+      - name: Login to Docker Hub
+        if: steps.detect.outputs.changed_services != ''
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & push changed Docker images
+        id: docker_build
+        if: steps.detect.outputs.changed_services != ''
+        run: |
+          JSON='${{ steps.detect.outputs.changed_services }}'
+          echo "$JSON" | jq -c '.[]' | while read pair; do
+            IMAGE_NAME=$(echo "$pair" | jq -r '.image')
+            VERSION=$(echo "$pair" | jq -r '.version')
+            DIR=$(echo "$pair" | jq -r '.dir')
+
+            if [ ! -f "$DIR/Dockerfile" ]; then
+              echo "⚠️ No Dockerfile found in $DIR — skipping $IMAGE_NAME"
+              continue
+            fi
+
+            echo "🐳 Building Docker image for $IMAGE_NAME:$VERSION"
+            docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:latest \
+                        -t ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$VERSION \
+                        $DIR
+
+            docker push ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:latest
+            docker push ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$VERSION
+          done
+
+      - name: Create and push tags (after success)
+        if: success() && steps.detect.outputs.changed_services != ''
+        run: |
+          echo "🏷️ Creating Git tags for successfully built images..."
+          JSON='${{ steps.detect.outputs.changed_services }}'
+
+          echo "$JSON" | jq -c '.[]' | while read pair; do
+            IMAGE_NAME=$(echo "$pair" | jq -r '.image')
+            VERSION=$(echo "$pair" | jq -r '.version')
+            TAG="${IMAGE_NAME}@${VERSION}"
+
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+
+            if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+              CREATE_TAG="${{ github.event.inputs.create_tag }}"
+              if [ "$CREATE_TAG" = "true" ]; then
+                echo "🔄 Forcing update of tag $TAG"
+                git tag -fa "$TAG" -m "Re-release $TAG"
+              else
+                echo "⚙️ Skipping tag creation (create_tag=false)"
+                continue
+              fi
+            else
+              echo "🔖 Tagging $TAG (auto mode)"
+              git tag -a "$TAG" -m "Release $TAG"
+            fi
+          done
+
+          echo "📤 Pushing tags to origin..."
+          git push origin --tags --force

@@ -1,0 +1,1290 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<title>5.3. Reference | Armada Documentation</title>
+<meta name="description" content="Full API reference — FantomasNoDriver, browser, tab (native and XDO methods), Screen, Identity, and WindMouse cursor path">
+<meta property="og:url" content="https://armada.services/docs/fantomas/fantomas-reference/">
+  <meta property="og:site_name" content="Armada Documentation">
+  <meta property="og:title" content="5.3. Reference">
+  <meta property="og:description" content="Full API reference — FantomasNoDriver, browser, tab (native and XDO methods), Screen, Identity, and WindMouse cursor path">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+  <meta itemprop="name" content="5.3. Reference">
+  <meta itemprop="description" content="Full API reference — FantomasNoDriver, browser, tab (native and XDO methods), Screen, Identity, and WindMouse cursor path">
+  <meta itemprop="wordCount" content="2577">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="5.3. Reference">
+  <meta name="twitter:description" content="Full API reference — FantomasNoDriver, browser, tab (native and XDO methods), Screen, Identity, and WindMouse cursor path">
+<link rel="preload" href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" as="style" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<link href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" rel="stylesheet" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">Armada Documentation</span></a>
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/"><span>Documentation</span></a>
+      </li>
+      </ul>
+    <div class="scroll-indicator scroll-right"></div>
+  </div>
+  <div class="td-navbar__search d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="td-sidebar-nav collapse foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
+    <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsgetting-started-li">
+    <input type="checkbox" id="m-docsgetting-started-check"/>
+    <label for="m-docsgetting-started-check"><a href="/docs/getting-started/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">1. Getting Started</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedkey_concepts-li">
+    <input type="checkbox" id="m-docsgetting-startedkey_concepts-check"/>
+    <label for="m-docsgetting-startedkey_concepts-check"><a href="/docs/getting-started/key_concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedkey_concepts"><span class="">1.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-kubernetes-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-kubernetes-check"/>
+    <label for="m-docsgetting-startedquickstart-kubernetes-check"><a href="/docs/getting-started/quickstart-kubernetes/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-kubernetes"><span class="">1.2. Quick-Start / Installation</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-local-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-local-check"/>
+    <label for="m-docsgetting-startedquickstart-local-check"><a href="/docs/getting-started/quickstart-local/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-local"><span class="">1.3. Local Development</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssetting-up-project-li">
+    <input type="checkbox" id="m-docssetting-up-project-check"/>
+    <label for="m-docssetting-up-project-check"><a href="/docs/setting-up-project/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docssetting-up-project"><span class="">2. Setting Up a Project</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectkey-concepts-li">
+    <input type="checkbox" id="m-docssetting-up-projectkey-concepts-check"/>
+    <label for="m-docssetting-up-projectkey-concepts-check"><a href="/docs/setting-up-project/key-concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectkey-concepts"><span class="">2.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectjson-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectjson-config-check"/>
+    <label for="m-docssetting-up-projectjson-config-check"><a href="/docs/setting-up-project/json-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectjson-config"><span class="">2.2. JSON Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectcsv-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectcsv-config-check"/>
+    <label for="m-docssetting-up-projectcsv-config-check"><a href="/docs/setting-up-project/csv-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectcsv-config"><span class="">2.3. CSV Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectpython-files-li">
+    <input type="checkbox" id="m-docssetting-up-projectpython-files-check"/>
+    <label for="m-docssetting-up-projectpython-files-check"><a href="/docs/setting-up-project/python-files/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectpython-files"><span class="">2.4. Python Files</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsguides-li">
+    <input type="checkbox" id="m-docsguides-check"/>
+    <label for="m-docsguides-check"><a href="/docs/guides/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsguides"><span class="">3. Guides</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-connector-li">
+    <input type="checkbox" id="m-docsguidesdatabase-connector-check"/>
+    <label for="m-docsguidesdatabase-connector-check"><a href="/docs/guides/database-connector/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-connector"><span class="">3.1. Database Connector</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesproxy-provider-li">
+    <input type="checkbox" id="m-docsguidesproxy-provider-check"/>
+    <label for="m-docsguidesproxy-provider-check"><a href="/docs/guides/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesproxy-provider"><span class="">3.2. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsguidesfingerprint-provider-check"/>
+    <label for="m-docsguidesfingerprint-provider-check"><a href="/docs/guides/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesfingerprint-provider"><span class="">3.3. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesmonitoring-client-li">
+    <input type="checkbox" id="m-docsguidesmonitoring-client-check"/>
+    <label for="m-docsguidesmonitoring-client-check"><a href="/docs/guides/monitoring-client/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesmonitoring-client"><span class="">3.4. Monitoring Client</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesci-cd-li">
+    <input type="checkbox" id="m-docsguidesci-cd-check"/>
+    <label for="m-docsguidesci-cd-check"><a href="/docs/guides/ci-cd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesci-cd"><span class="">3.5. CI/CD</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-management-li">
+    <input type="checkbox" id="m-docsguidesdatabase-management-check"/>
+    <label for="m-docsguidesdatabase-management-check"><a href="/docs/guides/database-management/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-management"><span class="">3.6. Database Management</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesstandard-output-li">
+    <input type="checkbox" id="m-docsguidesstandard-output-check"/>
+    <label for="m-docsguidesstandard-output-check"><a href="/docs/guides/standard-output/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesstandard-output"><span class="">3.7. Standard Output</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreference-li">
+    <input type="checkbox" id="m-docsreference-check"/>
+    <label for="m-docsreference-check"><a href="/docs/reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreference"><span class="">4. Reference</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferencearchitecture-li">
+    <input type="checkbox" id="m-docsreferencearchitecture-check"/>
+    <label for="m-docsreferencearchitecture-check"><a href="/docs/reference/architecture/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencearchitecture"><span class="">4.1. Architecture</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureoverview-li">
+    <input type="checkbox" id="m-docsreferencearchitectureoverview-check"/>
+    <label for="m-docsreferencearchitectureoverview-check"><a href="/docs/reference/architecture/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureoverview"><span class="">4.1.1. Overview</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturerun-lifecycle-li">
+    <input type="checkbox" id="m-docsreferencearchitecturerun-lifecycle-check"/>
+    <label for="m-docsreferencearchitecturerun-lifecycle-check"><a href="/docs/reference/architecture/run-lifecycle/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturerun-lifecycle"><span class="">4.1.2. Run Lifecycle</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureconfiguration-pipeline-li">
+    <input type="checkbox" id="m-docsreferencearchitectureconfiguration-pipeline-check"/>
+    <label for="m-docsreferencearchitectureconfiguration-pipeline-check"><a href="/docs/reference/architecture/configuration-pipeline/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureconfiguration-pipeline"><span class="">4.1.3. Configuration Pipeline</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturecode-bundling-execution-li">
+    <input type="checkbox" id="m-docsreferencearchitecturecode-bundling-execution-check"/>
+    <label for="m-docsreferencearchitecturecode-bundling-execution-check"><a href="/docs/reference/architecture/code-bundling-execution/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturecode-bundling-execution"><span class="">4.1.4. Code Bundling and Execution</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureagent-internals-li">
+    <input type="checkbox" id="m-docsreferencearchitectureagent-internals-check"/>
+    <label for="m-docsreferencearchitectureagent-internals-check"><a href="/docs/reference/architecture/agent-internals/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureagent-internals"><span class="">4.1.5. Agent Internals</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureenvironment-variables-li">
+    <input type="checkbox" id="m-docsreferencearchitectureenvironment-variables-check"/>
+    <label for="m-docsreferencearchitectureenvironment-variables-check"><a href="/docs/reference/architecture/environment-variables/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureenvironment-variables"><span class="">4.1.6. Environment Variables</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturehelm-values-li">
+    <input type="checkbox" id="m-docsreferencearchitecturehelm-values-check"/>
+    <label for="m-docsreferencearchitecturehelm-values-check"><a href="/docs/reference/architecture/helm-values/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturehelm-values"><span class="">4.1.7. Helm Values</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureinfrastructure-li">
+    <input type="checkbox" id="m-docsreferencearchitectureinfrastructure-check"/>
+    <label for="m-docsreferencearchitectureinfrastructure-check"><a href="/docs/reference/architecture/infrastructure/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureinfrastructure"><span class="">4.1.8. Resource Topology</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturebootstrap-scripts-li">
+    <input type="checkbox" id="m-docsreferencearchitecturebootstrap-scripts-check"/>
+    <label for="m-docsreferencearchitecturebootstrap-scripts-check"><a href="/docs/reference/architecture/bootstrap-scripts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturebootstrap-scripts"><span class="">4.1.9. Bootstrap Scripts</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferenceservices-li">
+    <input type="checkbox" id="m-docsreferenceservices-check"/>
+    <label for="m-docsreferenceservices-check"><a href="/docs/reference/services/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferenceservices"><span class="">4.2. Services</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesorchestrator-li">
+    <input type="checkbox" id="m-docsreferenceservicesorchestrator-check"/>
+    <label for="m-docsreferenceservicesorchestrator-check"><a href="/docs/reference/services/orchestrator/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesorchestrator"><span class="">4.2.1. Orchestrator</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesagent-li">
+    <input type="checkbox" id="m-docsreferenceservicesagent-check"/>
+    <label for="m-docsreferenceservicesagent-check"><a href="/docs/reference/services/agent/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesagent"><span class="">4.2.2. Agent</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfrontend-li">
+    <input type="checkbox" id="m-docsreferenceservicesfrontend-check"/>
+    <label for="m-docsreferenceservicesfrontend-check"><a href="/docs/reference/services/frontend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfrontend"><span class="">4.2.3. Frontend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesbackend-li">
+    <input type="checkbox" id="m-docsreferenceservicesbackend-check"/>
+    <label for="m-docsreferenceservicesbackend-check"><a href="/docs/reference/services/backend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesbackend"><span class="">4.2.4. Backend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesproxy-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesproxy-provider-check"/>
+    <label for="m-docsreferenceservicesproxy-provider-check"><a href="/docs/reference/services/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesproxy-provider"><span class="">4.2.5. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesfingerprint-provider-check"/>
+    <label for="m-docsreferenceservicesfingerprint-provider-check"><a href="/docs/reference/services/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfingerprint-provider"><span class="">4.2.6. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesmeta-li">
+    <input type="checkbox" id="m-docsreferenceservicesmeta-check"/>
+    <label for="m-docsreferenceservicesmeta-check"><a href="/docs/reference/services/meta/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesmeta"><span class="">4.2.7. Meta</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferencedeployment-li">
+    <input type="checkbox" id="m-docsreferencedeployment-check"/>
+    <label for="m-docsreferencedeployment-check"><a href="/docs/reference/deployment/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencedeployment"><span class="">4.3. Deployment</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentdatabase-li">
+    <input type="checkbox" id="m-docsreferencedeploymentdatabase-check"/>
+    <label for="m-docsreferencedeploymentdatabase-check"><a href="/docs/reference/deployment/database/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentdatabase"><span class="">4.3.1. Database</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentworkbench-li">
+    <input type="checkbox" id="m-docsreferencedeploymentworkbench-check"/>
+    <label for="m-docsreferencedeploymentworkbench-check"><a href="/docs/reference/deployment/workbench/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentworkbench"><span class="">4.3.2. Workbench Mode under the hood</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentsecurity-li">
+    <input type="checkbox" id="m-docsreferencedeploymentsecurity-check"/>
+    <label for="m-docsreferencedeploymentsecurity-check"><a href="/docs/reference/deployment/security/" title="4.3.3. Security Considerations" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentsecurity"><span class="">4.3.3. Security</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymenttesting-li">
+    <input type="checkbox" id="m-docsreferencedeploymenttesting-check"/>
+    <label for="m-docsreferencedeploymenttesting-check"><a href="/docs/reference/deployment/testing/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymenttesting"><span class="">4.3.4. Testing Strategy</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentcicd-li">
+    <input type="checkbox" id="m-docsreferencedeploymentcicd-check"/>
+    <label for="m-docsreferencedeploymentcicd-check"><a href="/docs/reference/deployment/cicd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentcicd"><span class="">4.3.5. CI/CD</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceglossary-li">
+    <input type="checkbox" id="m-docsreferenceglossary-check"/>
+    <label for="m-docsreferenceglossary-check"><a href="/docs/reference/glossary/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceglossary"><span class="">4.4. Glossary</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencehugo-docsy-li">
+    <input type="checkbox" id="m-docsreferencehugo-docsy-check"/>
+    <label for="m-docsreferencehugo-docsy-check"><a href="/docs/reference/hugo-docsy/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencehugo-docsy"><span class="">4.5. Docsy Documentation and landing page</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencenext-steps-li">
+    <input type="checkbox" id="m-docsreferencenext-steps-check"/>
+    <label for="m-docsreferencenext-steps-check"><a href="/docs/reference/next-steps/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencenext-steps"><span class="">4.6. Next Steps</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsfantomas-li">
+    <input type="checkbox" id="m-docsfantomas-check" checked/>
+    <label for="m-docsfantomas-check"><a href="/docs/fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsfantomas"><span class="">5. Fantomas</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomaswhy-fantomas-li">
+    <input type="checkbox" id="m-docsfantomaswhy-fantomas-check"/>
+    <label for="m-docsfantomaswhy-fantomas-check"><a href="/docs/fantomas/why-fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomaswhy-fantomas"><span class="">5.1. Why Fantomas</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasoverview-li">
+    <input type="checkbox" id="m-docsfantomasoverview-check"/>
+    <label for="m-docsfantomasoverview-check"><a href="/docs/fantomas/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasoverview"><span class="">5.2. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsfantomasfantomas-reference-li">
+    <input type="checkbox" id="m-docsfantomasfantomas-reference-check" checked/>
+    <label for="m-docsfantomasfantomas-reference-check"><a href="/docs/fantomas/fantomas-reference/" class="align-left ps-0  active td-sidebar-link td-sidebar-link__page" id="m-docsfantomasfantomas-reference"><span class="td-sidebar-nav-active-item">5.3. Reference</span></a></label>
+    
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </nav>
+</div>
+          </aside>
+          <aside class="td-sidebar-toc">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#common-argument-types">Common Argument Types</a>
+      <ul>
+        <li><a href="#selector_list">selector_list</a></li>
+        <li><a href="#sleep_list">sleep_list</a></li>
+        <li><a href="#proportion_list">proportion_list</a></li>
+        <li><a href="#other-recurring-parameters">Other recurring parameters</a></li>
+      </ul>
+    </li>
+    <li><a href="#fantomasnodriver">FantomasNoDriver</a>
+      <ul>
+        <li><a href="#constructor">Constructor</a></li>
+        <li><a href="#launch_browser">launch_browser()</a></li>
+      </ul>
+    </li>
+    <li><a href="#fantomasnodriverbrowser">FantomasNoDriverBrowser</a>
+      <ul>
+        <li><a href="#geturl">get(url)</a></li>
+        <li><a href="#open_new_taburl">open_new_tab(url)</a></li>
+        <li><a href="#open_new_windowurl">open_new_window(url)</a></li>
+        <li><a href="#cookies">cookies</a></li>
+      </ul>
+    </li>
+    <li><a href="#fantomasnodrivertab--native-methods-based-on-nodrivercdp">FantomasNoDriverTab — Native Methods (based on nodriver/CDP)</a>
+      <ul>
+        <li><a href="#xclick_nativeselector_list-sleep_list-proportion_list">xclick_native(selector_list, sleep_list, proportion_list)</a></li>
+        <li><a href="#xsend_nativeselector_list-sleep_list-text">xsend_native(selector_list, sleep_list, text)</a></li>
+        <li><a href="#xmove_nativeselector_list">xmove_native(selector_list)</a></li>
+        <li><a href="#xsleepsleeping_time">xsleep(sleeping_time)</a></li>
+        <li><a href="#xwaitercss_selector-timeout_delay-sleep_list">xwaiter(css_selector, timeout_delay, sleep_list)</a></li>
+        <li><a href="#xdetectorcss_selector-sleep_list">xdetector(css_selector, sleep_list)</a></li>
+        <li><a href="#xselect_nativeselector_list-sleep_list-option_value-option_text-option_index">xselect_native(selector_list, sleep_list, option_value, option_text, option_index)</a></li>
+        <li><a href="#xinject_jsjs_command">xinject_js(js_command)</a></li>
+        <li><a href="#xupload_fileselector_list-file_path">xupload_file(selector_list, file_path)</a></li>
+        <li><a href="#xtemporary_zoomvalue_zoom">xtemporary_zoom(value_zoom)</a></li>
+        <li><a href="#xscrape_attribute_in_iframeiframe_number-selector_list-targetted_attribute">xscrape_attribute_in_iframe(iframe_number, selector_list, targetted_attribute)</a></li>
+        <li><a href="#xscrape_html_in_iframeiframe_number-selector_list">xscrape_html_in_iframe(iframe_number, selector_list)</a></li>
+      </ul>
+    </li>
+    <li><a href="#fantomasnodrivertab--xdo-methods">FantomasNoDriverTab — XDO Methods</a>
+      <ul>
+        <li><a href="#xclick_xdoselector_list-sleep_list-proportion_list">xclick_xdo(selector_list, sleep_list, proportion_list)</a></li>
+        <li><a href="#xsend_xdoselector_list-sleep_list-text-proportion_list">xsend_xdo(selector_list, sleep_list, text, proportion_list)</a></li>
+        <li><a href="#xmove_xdoselector_list">xmove_xdo(selector_list)</a></li>
+        <li><a href="#xclick_iframe_xdoiframe_number-selector_list-sleep_list-proportion_list">xclick_iframe_xdo(iframe_number, selector_list, sleep_list, proportion_list)</a></li>
+        <li><a href="#xsend_iframe_xdoiframe_number-selector_list-sleep_list-text-proportion_list">xsend_iframe_xdo(iframe_number, selector_list, sleep_list, text, proportion_list)</a></li>
+        <li><a href="#xmove_xdo_iframeselector_list-iframe_number">xmove_xdo_iframe(selector_list, iframe_number)</a></li>
+      </ul>
+    </li>
+    <li><a href="#screen">Screen</a>
+      <ul>
+        <li><a href="#constructor-1">Constructor</a></li>
+        <li><a href="#launch_screen">launch_screen()</a></li>
+        <li><a href="#screenshot_screen">screenshot_screen()</a></li>
+        <li><a href="#stop_screen">stop_screen()</a></li>
+      </ul>
+    </li>
+    <li><a href="#identity">Identity</a>
+      <ul>
+        <li><a href="#constructor-2">Constructor</a></li>
+        <li><a href="#launch_identity_creation">launch_identity_creation()</a></li>
+      </ul>
+    </li>
+    <li><a href="#mouse-position">Mouse Position</a>
+      <ul>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#native-vs-xdo-behavior">Native vs XDO behavior</a></li>
+        <li><a href="#path-generation-windmouse-algorithm">Path generation: WindMouse algorithm</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/docs/">Documentation</a></li>
+  <li class="breadcrumb-item">
+    <a href="/docs/fantomas/">5. Fantomas</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    5.3. Reference</li>
+  </ol>
+</nav>
+<div class="td-content">
+	<h1>5.3. Reference</h1>
+	<div class="lead">Full API reference — FantomasNoDriver, browser, tab (native and XDO methods), Screen, Identity, and WindMouse cursor path</div>
+	<header class="article-meta">
+		
+</header>
+	<h2 id="overview">Overview</h2>
+<p>Fantomas is a Python anti-detection browser automation library built on top of <a href="https://github.com/nicholasgriffin/nodriver">nodriver</a>. It provides two interaction strategies:</p>
+<ul>
+<li><strong>Native  methods</strong> — browser-level events via Chrome DevTools Protocol and nodriver</li>
+<li><strong>XDO methods</strong> — Display-server-level events via <code>xdotool</code></li>
+</ul>
+<p>Both strategies include human-like cursor movement (WindMouse physics model) and randomized keystroke delays. For a high-level overview of Fantomas&rsquo; architecture and capabilities, see <a href="/docs/fantomas/overview/">Fantomas Overview</a>.</p>
+<h2 id="architecture">Architecture</h2>
+<pre tabindex="0"><code>FantomasNoDriver                  # Entry point, wraps nodriver
+  └── launch_browser()
+        → FantomasNoDriverBrowser  # Wraps nodriver Browser
+              ├── get(url)
+              │     → FantomasNoDriverTab  # Wraps nodriver Tab
+              │           ├── Native CDP methods
+              │           └── XDO methods
+              ├── open_new_tab(url)
+              ├── open_new_window(url)
+              └── cookies (CookieJarMonkey)
+
+Screen                             # Virtual display management (Xvfb)
+Identity                           # Fake identity generation
+</code></pre><p>Each layer delegates unknown attribute access to the underlying <code>nodriver</code> object via <code>__getattr__</code>, so all native <code>nodriver</code> methods remain available. See the <a href="../overview/#inheritance-from-nodriver">Key Concepts page</a> for a full list of inherited methods and usage examples.</p>
+<hr>
+<h2 id="common-argument-types">Common Argument Types</h2>
+<p>Most Fantomas methods share a set of recurring parameter patterns. Understanding these conventions makes the entire API predictable.</p>
+<h3 id="selector_list">selector_list</h3>
+<p>A list of exactly <strong>2 elements</strong>: <code>[css_selector, index]</code>.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Position</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>0</code></td>
+          <td><code>str</code></td>
+          <td>A standard CSS selector (e.g. <code>&quot;#submit&quot;</code>, <code>&quot;.item&quot;</code>, <code>&quot;input[type=email]&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>1</code></td>
+          <td><code>int</code></td>
+          <td>Zero-based index selecting which match to target when multiple elements match the selector</td>
+      </tr>
+  </tbody>
+</table>
+<p>The selector is evaluated against the current DOM. If there are 5 elements matching <code>&quot;.item&quot;</code>, passing <code>[&quot;.item&quot;, 2]</code> targets the <strong>third</strong> one.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;#unique-button&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>       <span style="color:#8f5902;font-style:italic"># First (and likely only) match for an ID selector</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;.card&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">]</span>                <span style="color:#8f5902;font-style:italic"># Fourth element with class &#34;card&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;input[type=text]&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>     <span style="color:#8f5902;font-style:italic"># First text input on the page</span>
+</span></span></code></pre></div><h3 id="sleep_list">sleep_list</h3>
+<p>A list of exactly <strong>2 elements</strong>: <code>[sleep_before, sleep_after]</code>, both in <strong>seconds</strong>.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Position</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>0</code></td>
+          <td><code>float</code></td>
+          <td>Duration to sleep <strong>before</strong> the action executes</td>
+      </tr>
+      <tr>
+          <td><code>1</code></td>
+          <td><code>float</code></td>
+          <td>Duration to sleep <strong>after</strong> the action completes</td>
+      </tr>
+  </tbody>
+</table>
+<p>Each value is passed through <code>xsleep()</code> internally, which applies randomized jitter (see <a href="/docs/fantomas/fantomas-reference/#xsleepsleeping_time">xsleep</a> for the exact behavior). This means the actual wait time is never exactly the value you pass — it is humanized.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>       <span style="color:#8f5902;font-style:italic"># No delay before or after</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">]</span>   <span style="color:#8f5902;font-style:italic"># ~0.15-0.6s before, ~0.15-0.6s after</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]</span>       <span style="color:#8f5902;font-style:italic"># ~1.5-2.5s before, ~0.5-1.5s after</span>
+</span></span></code></pre></div><h3 id="proportion_list">proportion_list</h3>
+<p>A list of exactly <strong>2 elements</strong>: <code>[x_ratio, y_ratio]</code>, both floats between <code>0.0</code> and <code>1.0</code>. Defaults to <code>[0.5, 0.5]</code> (center of the element).</p>
+<table>
+  <thead>
+      <tr>
+          <th>Position</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>0</code></td>
+          <td><code>float</code></td>
+          <td>Horizontal position within the element (<code>0.0</code> = left edge, <code>1.0</code> = right edge)</td>
+      </tr>
+      <tr>
+          <td><code>1</code></td>
+          <td><code>float</code></td>
+          <td>Vertical position within the element (<code>0.0</code> = top edge, <code>1.0</code> = bottom edge)</td>
+      </tr>
+  </tbody>
+</table>
+<p>The actual pixel coordinate is computed as:</p>
+<ul>
+<li><code>click_x = element_x + x_ratio * element_width</code></li>
+<li><code>click_y = element_y + y_ratio * element_height</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">]</span>    <span style="color:#8f5902;font-style:italic"># Center of the element (default)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.0</span><span style="color:#000;font-weight:bold">]</span>    <span style="color:#8f5902;font-style:italic"># Top-left corner</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1.0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1.0</span><span style="color:#000;font-weight:bold">]</span>    <span style="color:#8f5902;font-style:italic"># Bottom-right corner</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.25</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.75</span><span style="color:#000;font-weight:bold">]</span>  <span style="color:#8f5902;font-style:italic"># 25% from left, 75% from top</span>
+</span></span></code></pre></div><p>This is useful for large clickable areas, sliders, or when you need to avoid clicking dead zones within an element.</p>
+<h3 id="other-recurring-parameters">Other recurring parameters</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>css_selector</code></td>
+          <td><code>str</code></td>
+          <td>A plain CSS selector string (used by <code>xwaiter</code> and <code>xdetector</code> which don&rsquo;t need an index)</td>
+      </tr>
+      <tr>
+          <td><code>timeout_delay</code></td>
+          <td><code>int</code></td>
+          <td>Maximum wait time in seconds before giving up</td>
+      </tr>
+      <tr>
+          <td><code>iframe_number</code></td>
+          <td><code>int</code></td>
+          <td>Zero-based index of the target iframe on the page</td>
+      </tr>
+      <tr>
+          <td><code>text</code></td>
+          <td><code>str</code></td>
+          <td>The text string to type into an input element</td>
+      </tr>
+      <tr>
+          <td><code>js_command</code></td>
+          <td><code>str</code></td>
+          <td>JavaScript code to execute in the page context</td>
+      </tr>
+      <tr>
+          <td><code>file_path</code></td>
+          <td><code>str</code></td>
+          <td>Absolute filesystem path (e.g. for file uploads)</td>
+      </tr>
+      <tr>
+          <td><code>targetted_attribute</code></td>
+          <td><code>str</code></td>
+          <td>Name of an HTML attribute to read (e.g. <code>&quot;href&quot;</code>, <code>&quot;data-id&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>value_zoom</code></td>
+          <td><code>float</code></td>
+          <td>Page zoom factor (<code>1.0</code> = 100%, <code>0.5</code> = 50%)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="fantomasnodriver">FantomasNoDriver</h2>
+<p>Entry point. Configures and launches the browser.</p>
+<h3 id="constructor">Constructor</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">fantomas</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">FantomasNoDriver</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># With default settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">fantomas</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">FantomasNoDriver</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># With a config dict</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">fantomas</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">FantomasNoDriver</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">fantomas_params</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;fantomas_emulate_movement&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;fantomas_show_cursor&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;fantomas_emulate_keyboard&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;fantomas_headless&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">False</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;fantomas_lang&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;en-US&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;fantomas_browser_executable_path&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;/bin/google-chrome&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;fantomas_user_data_dir&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;/tmp/uc_tbr34hha&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;fantomas_browser_options&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;--no-sandbox&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;--disable-gpu&#34;</span><span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># With a JSON config file path</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">fantomas</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">FantomasNoDriver</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">fantomas_params</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/path/to/config.json&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>fantomas_emulate_movement</code></td>
+          <td><code>int</code></td>
+          <td><code>0</code></td>
+          <td>Enable WindMouse cursor emulation (1/0)</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_show_cursor</code></td>
+          <td><code>int</code></td>
+          <td><code>0</code></td>
+          <td>Show debug cursor overlay (1/0)</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_emulate_keyboard</code></td>
+          <td><code>int</code></td>
+          <td><code>0</code></td>
+          <td>Enable human-like keystroke delays (1/0)</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_headless</code></td>
+          <td><code>bool</code></td>
+          <td><code>False</code></td>
+          <td>Run Chrome in headless mode</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_lang</code></td>
+          <td><code>str</code></td>
+          <td><code>&quot;en-US&quot;</code></td>
+          <td>Browser language</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_browser_executable_path</code></td>
+          <td><code>str</code></td>
+          <td><code>&quot;/bin/google-chrome&quot;</code></td>
+          <td>Path to Chrome binary</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_user_data_dir</code></td>
+          <td><code>str</code></td>
+          <td><code>&quot;/tmp/uc_tbr34hha&quot;</code></td>
+          <td>Chrome user data directory</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_browser_options</code></td>
+          <td><code>list</code></td>
+          <td><code>None</code></td>
+          <td>Additional Chrome launch arguments</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="launch_browser">launch_browser()</h3>
+<p>Launches the browser and returns a <code>FantomasNoDriverBrowser</code> instance. Automatically kills any lingering Chrome processes before starting.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">browser</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">fantomas</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">launch_browser</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><hr>
+<h2 id="fantomasnodriverbrowser">FantomasNoDriverBrowser</h2>
+<p>Wraps the <code>nodriver</code> Browser object with additional methods.</p>
+<h3 id="geturl">get(url)</h3>
+<p>Navigates to a URL and returns a <code>FantomasNoDriverTab</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">tab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">browser</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;https://example.com&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="open_new_taburl">open_new_tab(url)</h3>
+<p>Opens a URL in a new tab and returns a <code>FantomasNoDriverTab</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">tab2</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">browser</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">open_new_tab</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;https://example.com/other&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># ... do work ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab2</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">close</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><h3 id="open_new_windowurl">open_new_window(url)</h3>
+<p>Opens a URL in a new browser window and returns a <code>FantomasNoDriverTab</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">tab3</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">browser</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">open_new_window</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;https://example.com/other&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># ... do work ...</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab3</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">close</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><h3 id="cookies">cookies</h3>
+<p>Cookie management with an enhanced <code>set_all()</code> method. Cookies are passed as plain dictionaries — no need to import <code>cdp.network.CookieParam</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set a single cookie</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">browser</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">cookies</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">set_all</span><span style="color:#000;font-weight:bold">([</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;session&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;abc123&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;https://example.com&#34;</span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Set multiple cookies with extra options</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">browser</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">cookies</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">set_all</span><span style="color:#000;font-weight:bold">([</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;session&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;abc123&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;domain&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;.example.com&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;path&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;/&#34;</span><span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;token&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;xyz789&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;domain&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;.example.com&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;secure&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;http_only&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">True</span><span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Get all cookies (inherited from nodriver)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">all_cookies</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">browser</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">cookies</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">get_all</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><p>Available cookie fields:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code></td>
+          <td><code>str</code></td>
+          <td>yes</td>
+          <td>Cookie name</td>
+      </tr>
+      <tr>
+          <td><code>value</code></td>
+          <td><code>str</code></td>
+          <td>yes</td>
+          <td>Cookie value</td>
+      </tr>
+      <tr>
+          <td><code>url</code></td>
+          <td><code>str</code></td>
+          <td>no</td>
+          <td>URL to associate the cookie with</td>
+      </tr>
+      <tr>
+          <td><code>domain</code></td>
+          <td><code>str</code></td>
+          <td>no</td>
+          <td>Cookie domain (e.g. <code>&quot;.example.com&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>path</code></td>
+          <td><code>str</code></td>
+          <td>no</td>
+          <td>Cookie path (e.g. <code>&quot;/&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>secure</code></td>
+          <td><code>bool</code></td>
+          <td>no</td>
+          <td>HTTPS only</td>
+      </tr>
+      <tr>
+          <td><code>http_only</code></td>
+          <td><code>bool</code></td>
+          <td>no</td>
+          <td>Not accessible via JavaScript</td>
+      </tr>
+      <tr>
+          <td><code>same_site</code></td>
+          <td><code>str</code></td>
+          <td>no</td>
+          <td>SameSite policy (<code>&quot;Strict&quot;</code>, <code>&quot;Lax&quot;</code>, <code>&quot;None&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>expires</code></td>
+          <td><code>float</code></td>
+          <td>no</td>
+          <td>Expiration as Unix timestamp</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="fantomasnodrivertab--native-methods-based-on-nodrivercdp">FantomasNoDriverTab — Native Methods (based on nodriver/CDP)</h2>
+<p>These methods interact with the browser through the Chrome DevTools Protocol. The <code>selector_list</code> parameter is always <code>[css_selector, index]</code> where <code>index</code> selects which match to target (0 for the first). The <code>sleep_list</code> parameter is always <code>[sleep_before, sleep_after]</code> in seconds.</p>
+<h3 id="xclick_nativeselector_list-sleep_list-proportion_list">xclick_native(selector_list, sleep_list, proportion_list)</h3>
+<p>Clicks an element. If cursor emulation is enabled, moves the cursor to the element first using a human-like path.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Click the first button matching &#34;#submit&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#submit&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Click with no delays</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#submit&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Click at a specific position within the element (25% from left, 75% from top)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#large-area&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.25</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.75</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Click a checkbox</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#checkbox_test&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Click the second element matching &#34;.item&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;.item&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.2</span><span style="color:#000;font-weight:bold">])</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>selector_list</code></td>
+          <td><code>list</code></td>
+          <td>required</td>
+          <td><code>[css_selector, index]</code></td>
+      </tr>
+      <tr>
+          <td><code>sleep_list</code></td>
+          <td><code>list</code></td>
+          <td>required</td>
+          <td><code>[sleep_before, sleep_after]</code> in seconds</td>
+      </tr>
+      <tr>
+          <td><code>proportion_list</code></td>
+          <td><code>list</code></td>
+          <td><code>[0.5, 0.5]</code></td>
+          <td>Click position within the element <code>[x_ratio, y_ratio]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="xsend_nativeselector_list-sleep_list-text">xsend_native(selector_list, sleep_list, text)</h3>
+<p>Types text into an input element. Clicks the element first, then types. If <code>fantomas_emulate_keyboard=1</code>, types character by character with a random delay between <strong>0.01s and 0.7s</strong> per keystroke. If disabled, the entire text is sent at once via CDP.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Type into an input field</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xsend_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#username&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;john_doe&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Type into a password field with no delays</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xsend_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#password&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;s3cureP@ss&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Type into the third input matching &#34;.field&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xsend_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;.field&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;some text&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>selector_list</code></td>
+          <td><code>list</code></td>
+          <td>required</td>
+          <td><code>[css_selector, index]</code></td>
+      </tr>
+      <tr>
+          <td><code>sleep_list</code></td>
+          <td><code>list</code></td>
+          <td>required</td>
+          <td><code>[sleep_before, sleep_after]</code> in seconds</td>
+      </tr>
+      <tr>
+          <td><code>text</code></td>
+          <td><code>str</code></td>
+          <td><code>None</code></td>
+          <td>Text to type</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="xmove_nativeselector_list">xmove_native(selector_list)</h3>
+<p>Moves the cursor to an element using a WindMouse human-like path via CDP mouse events. Returns the new cursor position <code>[x, y]</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Move cursor to an element</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">new_position</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xmove_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#target&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span></code></pre></div><h3 id="xsleepsleeping_time">xsleep(sleeping_time)</h3>
+<p>Randomized sleep. Adds jitter of +/-0.5s around the target time. A value of <code>0</code> sleeps for exactly 0s. A value of <code>0.5</code> sleeps between 0.15s and 0.6s.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xsleep</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">)</span>    <span style="color:#8f5902;font-style:italic"># Sleeps between 1.5s and 2.5s</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xsleep</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">)</span>  <span style="color:#8f5902;font-style:italic"># Sleeps between 0.15s and 0.6s</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xsleep</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">)</span>    <span style="color:#8f5902;font-style:italic"># No sleep</span>
+</span></span></code></pre></div><h3 id="xwaitercss_selector-timeout_delay-sleep_list">xwaiter(css_selector, timeout_delay, sleep_list)</h3>
+<p>Waits for an element matching the CSS selector to appear in the DOM, with a configurable timeout.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Wait up to 10 seconds for the element to appear</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xwaiter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">css_selector</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;#results&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">timeout_delay</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">sleep_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Wait with surrounding delays</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xwaiter</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">css_selector</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;.modal&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">timeout_delay</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">sleep_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">])</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>css_selector</code></td>
+          <td><code>str</code></td>
+          <td>required</td>
+          <td>CSS selector to wait for</td>
+      </tr>
+      <tr>
+          <td><code>timeout_delay</code></td>
+          <td><code>int</code></td>
+          <td>required</td>
+          <td>Max wait time in seconds</td>
+      </tr>
+      <tr>
+          <td><code>sleep_list</code></td>
+          <td><code>list</code></td>
+          <td>required</td>
+          <td><code>[sleep_before, sleep_after]</code> in seconds</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="xdetectorcss_selector-sleep_list">xdetector(css_selector, sleep_list)</h3>
+<p>Checks whether an element exists in the DOM. Returns <code>True</code> if found, <code>False</code> otherwise. Uses a 10-second internal timeout.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Check if a CAPTCHA is present</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">captcha_present</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xdetector</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">css_selector</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;#captcha&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">sleep_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">captcha_present</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;CAPTCHA detected!&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Check if a success message appeared</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">success</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xdetector</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">css_selector</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;.success-message&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">sleep_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span></code></pre></div><h3 id="xselect_nativeselector_list-sleep_list-option_value-option_text-option_index">xselect_native(selector_list, sleep_list, option_value, option_text, option_index)</h3>
+<p>Selects an option in a <code>&lt;select&gt;</code> dropdown. Exactly one of <code>option_value</code>, <code>option_text</code>, or <code>option_index</code> must be provided.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Select by value attribute</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xselect_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#country&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000">option_value</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;be&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Select by visible text</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xselect_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#country&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000">option_text</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Canada&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Select by index (0-based, among &lt;option&gt; elements)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xselect_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#country&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000">option_index</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>selector_list</code></td>
+          <td><code>list</code></td>
+          <td>required</td>
+          <td><code>[css_selector, index]</code></td>
+      </tr>
+      <tr>
+          <td><code>sleep_list</code></td>
+          <td><code>list</code></td>
+          <td>required</td>
+          <td><code>[sleep_before, sleep_after]</code> in seconds</td>
+      </tr>
+      <tr>
+          <td><code>option_value</code></td>
+          <td><code>str</code></td>
+          <td><code>None</code></td>
+          <td>Match by <code>value</code> attribute</td>
+      </tr>
+      <tr>
+          <td><code>option_text</code></td>
+          <td><code>str</code></td>
+          <td><code>None</code></td>
+          <td>Match by visible text content</td>
+      </tr>
+      <tr>
+          <td><code>option_index</code></td>
+          <td><code>int</code></td>
+          <td><code>None</code></td>
+          <td>Match by position index</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="xinject_jsjs_command">xinject_js(js_command)</h3>
+<p>Executes arbitrary JavaScript in the page and returns the result.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Evaluate an expression</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">result</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xinject_js</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;1 + 1&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">result</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">value</span>  <span style="color:#8f5902;font-style:italic"># 2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Read a DOM property</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xinject_js</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;document.title&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">title</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">)</span>  <span style="color:#8f5902;font-style:italic"># &#34;My Page&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Read an input value</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">val</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xinject_js</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;document.querySelector(&#34;#email&#34;).value&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Trigger a DOM manipulation</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xinject_js</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;document.body.style.backgroundColor = &#34;red&#34;&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="xupload_fileselector_list-file_path">xupload_file(selector_list, file_path)</h3>
+<p>Uploads a file by setting the file path on an <code>&lt;input type=&quot;file&quot;&gt;</code> element via the DOM.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xupload_file</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#39;input[type=&#34;file&#34;]&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;/home/user/document.pdf&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Verify the upload</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">result</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xinject_js</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;document.querySelector(&#34;input[type=file]&#34;).value&#39;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">result</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">)</span>  <span style="color:#8f5902;font-style:italic"># &#34;C:\fakepath\document.pdf&#34;</span>
+</span></span></code></pre></div><h3 id="xtemporary_zoomvalue_zoom">xtemporary_zoom(value_zoom)</h3>
+<p>Changes the page zoom level. Useful for fitting more content in the viewport or working with high-DPI pages.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Zoom out to 30%</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xtemporary_zoom</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Reset to normal</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xtemporary_zoom</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="xscrape_attribute_in_iframeiframe_number-selector_list-targetted_attribute">xscrape_attribute_in_iframe(iframe_number, selector_list, targetted_attribute)</h3>
+<p>Extracts an HTML attribute value from an element inside an iframe.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Get the &#34;data-custom&#34; attribute from the first element matching &#34;#iframe_text&#34; inside the first iframe</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">value</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xscrape_attribute_in_iframe</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">iframe_number</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">selector_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;#iframe_text&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">targetted_attribute</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;data-custom&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">value</span><span style="color:#000;font-weight:bold">)</span>  <span style="color:#8f5902;font-style:italic"># &#34;iframe_value&#34;</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>iframe_number</code></td>
+          <td><code>int</code></td>
+          <td>required</td>
+          <td>Index of the iframe (0-based)</td>
+      </tr>
+      <tr>
+          <td><code>selector_list</code></td>
+          <td><code>list</code></td>
+          <td>required</td>
+          <td><code>[css_selector, index]</code></td>
+      </tr>
+      <tr>
+          <td><code>targetted_attribute</code></td>
+          <td><code>str</code></td>
+          <td>required</td>
+          <td>Name of the attribute to read</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="xscrape_html_in_iframeiframe_number-selector_list">xscrape_html_in_iframe(iframe_number, selector_list)</h3>
+<p>Extracts the outer HTML of an element inside an iframe.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">html</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xscrape_html_in_iframe</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">iframe_number</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">selector_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;.iframe_span&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">html</span><span style="color:#000;font-weight:bold">)</span>  <span style="color:#8f5902;font-style:italic"># &#39;&lt;span class=&#34;iframe_span&#34;&gt;Span in iframe&lt;/span&gt;&#39;</span>
+</span></span></code></pre></div><hr>
+<h2 id="fantomasnodrivertab--xdo-methods">FantomasNoDriverTab — XDO Methods</h2>
+<p>These methods use <code>xdotool</code> for OS-level mouse and keyboard interaction. Events originate from the X11 window system, making them harder for antibot systems to detect. Requires a running X11 display (real or virtual via Xvfb).</p>
+<h3 id="xclick_xdoselector_list-sleep_list-proportion_list">xclick_xdo(selector_list, sleep_list, proportion_list)</h3>
+<p>Clicks an element using OS-level mouse events.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_xdo</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#submit-btn&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Click at a specific position within the element</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_xdo</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#large-area&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.25</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.75</span><span style="color:#000;font-weight:bold">])</span>
+</span></span></code></pre></div><h3 id="xsend_xdoselector_list-sleep_list-text-proportion_list">xsend_xdo(selector_list, sleep_list, text, proportion_list)</h3>
+<p>Types text into an element using OS-level keyboard events. Clicks the element first, then types character by character with random delays.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xsend_xdo</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#search&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#4e9a06">&#34;search query&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="xmove_xdoselector_list">xmove_xdo(selector_list)</h3>
+<p>Moves the OS-level cursor to an element using a WindMouse human-like path.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xmove_xdo</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#target-element&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">cursor_position</span><span style="color:#000;font-weight:bold">)</span>  <span style="color:#8f5902;font-style:italic"># [x, y]</span>
+</span></span></code></pre></div><h3 id="xclick_iframe_xdoiframe_number-selector_list-sleep_list-proportion_list">xclick_iframe_xdo(iframe_number, selector_list, sleep_list, proportion_list)</h3>
+<p>Clicks an element inside an iframe using OS-level mouse events.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_iframe_xdo</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">iframe_number</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">selector_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;#iframe_btn&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">sleep_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="xsend_iframe_xdoiframe_number-selector_list-sleep_list-text-proportion_list">xsend_iframe_xdo(iframe_number, selector_list, sleep_list, text, proportion_list)</h3>
+<p>Types text into an element inside an iframe using OS-level keyboard events.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xsend_iframe_xdo</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">iframe_number</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">selector_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;#iframe_input&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">sleep_list</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">text</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;hello from xdo&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="xmove_xdo_iframeselector_list-iframe_number">xmove_xdo_iframe(selector_list, iframe_number)</h3>
+<p>Moves the OS-level cursor to an element inside an iframe.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xmove_xdo_iframe</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#iframe_move_target&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000">iframe_number</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><hr>
+<h2 id="screen">Screen</h2>
+<p>Manages a virtual display via Xvfb (X virtual framebuffer). Required for headless environments or when running without a physical display. In a project, Screen is typically initialized in the <a href="/docs/setting-up-project/python-files/#ctx_agent_contextpy--the-agent-context">Agent Context</a>.</p>
+<h3 id="constructor-1">Constructor</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">fantomas</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Screen</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Default: 1200x800, visible</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">screen</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Screen</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Custom configuration</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">screen</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Screen</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">screen_params</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;screen_visible&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;screen_height&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1920</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;screen_width&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1080</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># From JSON config file</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">screen</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Screen</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">screen_params</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;/path/to/config.json&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>screen_visible</code></td>
+          <td><code>int</code></td>
+          <td><code>1</code></td>
+          <td>Show virtual display window (1/0)</td>
+      </tr>
+      <tr>
+          <td><code>screen_height</code></td>
+          <td><code>int</code></td>
+          <td><code>1200</code></td>
+          <td>Display height in pixels</td>
+      </tr>
+      <tr>
+          <td><code>screen_width</code></td>
+          <td><code>int</code></td>
+          <td><code>800</code></td>
+          <td>Display width in pixels</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="launch_screen">launch_screen()</h3>
+<p>Starts the virtual display.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">screen</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Screen</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">screen_params</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;screen_visible&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;screen_height&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1920</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;screen_width&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1080</span><span style="color:#000;font-weight:bold">})</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">screen</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">launch_screen</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><h3 id="screenshot_screen">screenshot_screen()</h3>
+<p>Captures a screenshot of the entire virtual display using ImageMagick. Returns a <code>BytesIO</code> object containing a PNG image.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">image_bytes</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">screen</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">screenshot_screen</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Save to file</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">with</span> <span style="color:#204a87">open</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;screenshot.png&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;wb&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#204a87;font-weight:bold">as</span> <span style="color:#000">f</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">f</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">write</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">image_bytes</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">read</span><span style="color:#000;font-weight:bold">())</span>
+</span></span></code></pre></div><h3 id="stop_screen">stop_screen()</h3>
+<p>Stops the virtual display.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">screen</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">stop_screen</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><hr>
+<h2 id="identity">Identity</h2>
+<p>Generates fake identities using the <a href="https://faker.readthedocs.io/">Faker</a> library. Names are cleaned (accents removed, hyphens/apostrophes stripped).</p>
+<h3 id="constructor-2">Constructor</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">fantomas</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">Identity</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Default: French locale, age 18-80</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">identity</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Identity</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Custom configuration</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">identity</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Identity</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">identity_params</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;en_US&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;min_year&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">25</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;max_year&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">45</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;min_len_password&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">16</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;max_len_password&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">20</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#4e9a06">&#34;enable_special_character_password&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">})</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>language</code></td>
+          <td><code>str</code></td>
+          <td><code>&quot;fr_FR&quot;</code></td>
+          <td>Faker locale</td>
+      </tr>
+      <tr>
+          <td><code>min_year</code></td>
+          <td><code>int</code></td>
+          <td><code>18</code></td>
+          <td>Minimum age</td>
+      </tr>
+      <tr>
+          <td><code>max_year</code></td>
+          <td><code>int</code></td>
+          <td><code>80</code></td>
+          <td>Maximum age</td>
+      </tr>
+      <tr>
+          <td><code>min_len_password</code></td>
+          <td><code>int</code></td>
+          <td><code>12</code></td>
+          <td>Minimum password length</td>
+      </tr>
+      <tr>
+          <td><code>max_len_password</code></td>
+          <td><code>int</code></td>
+          <td><code>14</code></td>
+          <td>Maximum password length</td>
+      </tr>
+      <tr>
+          <td><code>enable_special_character_password</code></td>
+          <td><code>int</code></td>
+          <td><code>1</code></td>
+          <td>Strip special characters from password (1/0)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="launch_identity_creation">launch_identity_creation()</h3>
+<p>Generates and returns a fake identity dictionary.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">identity</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Identity</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">identity_params</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;language&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;en_US&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;min_year&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">25</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;max_year&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">40</span><span style="color:#000;font-weight:bold">})</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">data</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">identity</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">launch_identity_creation</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">data</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># {</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#     &#34;first_name&#34;: &#34;John&#34;,</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#     &#34;name&#34;: &#34;Smith&#34;,</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#     &#34;alias&#34;: &#34;johnsmith10001&#34;,</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#     &#34;birth_day&#34;: 15,</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#     &#34;birth_month&#34;: 3,</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#     &#34;birth_year&#34;: 1988,</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">#     &#34;password&#34;: &#34;xK7mRt2pLqNw&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># }</span>
+</span></span></code></pre></div><hr>
+<h2 id="mouse-position">Mouse Position</h2>
+<p>Fantomas tracks the cursor position across actions. Each tab maintains a <code>cursor_position</code> attribute (<code>[x, y]</code>) that <strong>persists between calls</strong> — every move or click updates it, and the next action starts its movement from wherever the cursor was left.</p>
+<h3 id="how-it-works">How it works</h3>
+<ol>
+<li>
+<p><strong>Initial position</strong>: When a tab is created, the cursor starts at <code>[0, 0]</code> (top-left corner of the viewport).</p>
+</li>
+<li>
+<p><strong>Every movement-based action updates the position</strong>: After <code>xclick_native</code>, <code>xmove_native</code>, <code>xclick_xdo</code>, <code>xmove_xdo</code>, etc., <code>cursor_position</code> is updated to the target element&rsquo;s coordinates.</p>
+</li>
+<li>
+<p><strong>The next action starts from the previous position</strong>: When you call <code>xclick_native</code> on element B after clicking element A, the WindMouse path is computed <strong>from A&rsquo;s position to B&rsquo;s position</strong> — not from <code>[0, 0]</code>.</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># cursor_position starts at [0, 0]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#button-a&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># cursor_position is now ~[200, 150] (wherever #button-a is)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xclick_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#button-b&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># WindMouse path goes from [200, 150] → #button-b&#39;s position</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># cursor_position is now ~[800, 400]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">tab</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">xmove_native</span><span style="color:#000;font-weight:bold">([</span><span style="color:#4e9a06">&#34;#logo&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># WindMouse path goes from [800, 400] → #logo&#39;s position</span>
+</span></span></code></pre></div><h3 id="native-vs-xdo-behavior">Native vs XDO behavior</h3>
+<ul>
+<li>
+<p><strong>Native methods</strong> (<code>xclick_native</code>, <code>xmove_native</code>, <code>xsend_native</code>): Only generate WindMouse movement paths when <code>fantomas_emulate_movement=1</code>. If disabled, the action still occurs (click/type happens) but without a realistic movement path. The cursor position is still updated regardless.</p>
+</li>
+<li>
+<p><strong>XDO methods</strong> (<code>xclick_xdo</code>, <code>xmove_xdo</code>, <code>xsend_xdo</code>): Always perform OS-level cursor movement through the WindMouse path, regardless of the <code>fantomas_emulate_movement</code> setting.</p>
+</li>
+</ul>
+<p>For both strategies, the position state is shared — switching between native and XDO methods within the same tab continues from the last known position.</p>
+<h3 id="path-generation-windmouse-algorithm">Path generation: WindMouse algorithm</h3>
+<p>Every movement path is computed by the <code>VirtualCursorPath</code> class using a physics-based WindMouse model. It takes the tab&rsquo;s current <code>cursor_position</code> as the starting point and the target element&rsquo;s coordinates as the destination, then generates a curved, human-like trajectory constrained within the viewport.</p>
+<p>The algorithm uses four internal physics parameters:</p>
+<ul>
+<li><strong>Gravity</strong> (<code>G_0=5</code>): Attraction force toward the target — increases as the cursor gets closer</li>
+<li><strong>Wind</strong> (<code>W_0=10</code>): Random lateral force (Wiener process noise) — creates natural-looking curves</li>
+<li><strong>Max velocity</strong> (<code>M_0=15</code>): Speed cap preventing unrealistically fast jumps</li>
+<li><strong>Distance threshold</strong> (<code>D_0=30</code>): Below this distance, wind force is reduced for a smooth approach to the target</li>
+</ul>
+<p>All coordinates are clamped to stay within viewport bounds, preventing the cursor from &ldquo;escaping&rdquo; the screen.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">fantomas</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">VirtualCursorPath</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Standalone usage (called internally by all move/click methods)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">path</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">VirtualCursorPath</span><span style="color:#000;font-weight:bold">()</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">get_virtual_cursor_path</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">current_position</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">desired_position</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">500</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">300</span><span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">viewport_width</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1920</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">viewport_height</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1080</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># path[0] = list of x coordinates</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># path[1] = list of y coordinates</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">f</span><span style="color:#4e9a06">&#34;Path has </span><span style="color:#4e9a06">{</span><span style="color:#204a87">len</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">path</span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">])</span><span style="color:#4e9a06">}</span><span style="color:#4e9a06"> steps&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div>
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.84ebdea7c8b518711780f1e70e9941e62f87902362b45772946a84042a14873f.js" integrity="sha256-hOvep8i1GHEXgPHnDplB5i&#43;HkCNitFdylGqEBCoUhz8=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

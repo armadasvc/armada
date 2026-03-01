@@ -1,0 +1,6 @@
+{
+  "name": "armada-orchestrator",
+  "version": "1.0.28",
+  "main": "main.py",
+  "license": "MIT"
+}

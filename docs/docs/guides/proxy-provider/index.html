@@ -1,0 +1,752 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<title>3.2. Proxy Provider | Armada Documentation</title>
+<meta name="description" content="Configure the mitmproxy layer, upstream proxy modes, traffic modifiers, data retrievers, and proxy rotation">
+<meta property="og:url" content="https://armada.services/docs/guides/proxy-provider/">
+  <meta property="og:site_name" content="Armada Documentation">
+  <meta property="og:title" content="3.2. Proxy Provider">
+  <meta property="og:description" content="Configure the mitmproxy layer, upstream proxy modes, traffic modifiers, data retrievers, and proxy rotation">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+  <meta itemprop="name" content="3.2. Proxy Provider">
+  <meta itemprop="description" content="Configure the mitmproxy layer, upstream proxy modes, traffic modifiers, data retrievers, and proxy rotation">
+  <meta itemprop="wordCount" content="1408">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="3.2. Proxy Provider">
+  <meta name="twitter:description" content="Configure the mitmproxy layer, upstream proxy modes, traffic modifiers, data retrievers, and proxy rotation">
+<link rel="preload" href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" as="style" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<link href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" rel="stylesheet" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">Armada Documentation</span></a>
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/"><span>Documentation</span></a>
+      </li>
+      </ul>
+    <div class="scroll-indicator scroll-right"></div>
+  </div>
+  <div class="td-navbar__search d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="td-sidebar-nav collapse foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
+    <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsgetting-started-li">
+    <input type="checkbox" id="m-docsgetting-started-check"/>
+    <label for="m-docsgetting-started-check"><a href="/docs/getting-started/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">1. Getting Started</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedkey_concepts-li">
+    <input type="checkbox" id="m-docsgetting-startedkey_concepts-check"/>
+    <label for="m-docsgetting-startedkey_concepts-check"><a href="/docs/getting-started/key_concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedkey_concepts"><span class="">1.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-kubernetes-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-kubernetes-check"/>
+    <label for="m-docsgetting-startedquickstart-kubernetes-check"><a href="/docs/getting-started/quickstart-kubernetes/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-kubernetes"><span class="">1.2. Quick-Start / Installation</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-local-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-local-check"/>
+    <label for="m-docsgetting-startedquickstart-local-check"><a href="/docs/getting-started/quickstart-local/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-local"><span class="">1.3. Local Development</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssetting-up-project-li">
+    <input type="checkbox" id="m-docssetting-up-project-check"/>
+    <label for="m-docssetting-up-project-check"><a href="/docs/setting-up-project/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docssetting-up-project"><span class="">2. Setting Up a Project</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectkey-concepts-li">
+    <input type="checkbox" id="m-docssetting-up-projectkey-concepts-check"/>
+    <label for="m-docssetting-up-projectkey-concepts-check"><a href="/docs/setting-up-project/key-concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectkey-concepts"><span class="">2.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectjson-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectjson-config-check"/>
+    <label for="m-docssetting-up-projectjson-config-check"><a href="/docs/setting-up-project/json-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectjson-config"><span class="">2.2. JSON Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectcsv-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectcsv-config-check"/>
+    <label for="m-docssetting-up-projectcsv-config-check"><a href="/docs/setting-up-project/csv-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectcsv-config"><span class="">2.3. CSV Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectpython-files-li">
+    <input type="checkbox" id="m-docssetting-up-projectpython-files-check"/>
+    <label for="m-docssetting-up-projectpython-files-check"><a href="/docs/setting-up-project/python-files/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectpython-files"><span class="">2.4. Python Files</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsguides-li">
+    <input type="checkbox" id="m-docsguides-check" checked/>
+    <label for="m-docsguides-check"><a href="/docs/guides/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsguides"><span class="">3. Guides</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-connector-li">
+    <input type="checkbox" id="m-docsguidesdatabase-connector-check"/>
+    <label for="m-docsguidesdatabase-connector-check"><a href="/docs/guides/database-connector/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-connector"><span class="">3.1. Database Connector</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsguidesproxy-provider-li">
+    <input type="checkbox" id="m-docsguidesproxy-provider-check" checked/>
+    <label for="m-docsguidesproxy-provider-check"><a href="/docs/guides/proxy-provider/" class="align-left ps-0  active td-sidebar-link td-sidebar-link__page" id="m-docsguidesproxy-provider"><span class="td-sidebar-nav-active-item">3.2. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsguidesfingerprint-provider-check"/>
+    <label for="m-docsguidesfingerprint-provider-check"><a href="/docs/guides/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesfingerprint-provider"><span class="">3.3. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesmonitoring-client-li">
+    <input type="checkbox" id="m-docsguidesmonitoring-client-check"/>
+    <label for="m-docsguidesmonitoring-client-check"><a href="/docs/guides/monitoring-client/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesmonitoring-client"><span class="">3.4. Monitoring Client</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesci-cd-li">
+    <input type="checkbox" id="m-docsguidesci-cd-check"/>
+    <label for="m-docsguidesci-cd-check"><a href="/docs/guides/ci-cd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesci-cd"><span class="">3.5. CI/CD</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-management-li">
+    <input type="checkbox" id="m-docsguidesdatabase-management-check"/>
+    <label for="m-docsguidesdatabase-management-check"><a href="/docs/guides/database-management/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-management"><span class="">3.6. Database Management</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesstandard-output-li">
+    <input type="checkbox" id="m-docsguidesstandard-output-check"/>
+    <label for="m-docsguidesstandard-output-check"><a href="/docs/guides/standard-output/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesstandard-output"><span class="">3.7. Standard Output</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreference-li">
+    <input type="checkbox" id="m-docsreference-check"/>
+    <label for="m-docsreference-check"><a href="/docs/reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreference"><span class="">4. Reference</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferencearchitecture-li">
+    <input type="checkbox" id="m-docsreferencearchitecture-check"/>
+    <label for="m-docsreferencearchitecture-check"><a href="/docs/reference/architecture/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencearchitecture"><span class="">4.1. Architecture</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureoverview-li">
+    <input type="checkbox" id="m-docsreferencearchitectureoverview-check"/>
+    <label for="m-docsreferencearchitectureoverview-check"><a href="/docs/reference/architecture/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureoverview"><span class="">4.1.1. Overview</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturerun-lifecycle-li">
+    <input type="checkbox" id="m-docsreferencearchitecturerun-lifecycle-check"/>
+    <label for="m-docsreferencearchitecturerun-lifecycle-check"><a href="/docs/reference/architecture/run-lifecycle/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturerun-lifecycle"><span class="">4.1.2. Run Lifecycle</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureconfiguration-pipeline-li">
+    <input type="checkbox" id="m-docsreferencearchitectureconfiguration-pipeline-check"/>
+    <label for="m-docsreferencearchitectureconfiguration-pipeline-check"><a href="/docs/reference/architecture/configuration-pipeline/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureconfiguration-pipeline"><span class="">4.1.3. Configuration Pipeline</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturecode-bundling-execution-li">
+    <input type="checkbox" id="m-docsreferencearchitecturecode-bundling-execution-check"/>
+    <label for="m-docsreferencearchitecturecode-bundling-execution-check"><a href="/docs/reference/architecture/code-bundling-execution/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturecode-bundling-execution"><span class="">4.1.4. Code Bundling and Execution</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureagent-internals-li">
+    <input type="checkbox" id="m-docsreferencearchitectureagent-internals-check"/>
+    <label for="m-docsreferencearchitectureagent-internals-check"><a href="/docs/reference/architecture/agent-internals/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureagent-internals"><span class="">4.1.5. Agent Internals</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureenvironment-variables-li">
+    <input type="checkbox" id="m-docsreferencearchitectureenvironment-variables-check"/>
+    <label for="m-docsreferencearchitectureenvironment-variables-check"><a href="/docs/reference/architecture/environment-variables/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureenvironment-variables"><span class="">4.1.6. Environment Variables</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturehelm-values-li">
+    <input type="checkbox" id="m-docsreferencearchitecturehelm-values-check"/>
+    <label for="m-docsreferencearchitecturehelm-values-check"><a href="/docs/reference/architecture/helm-values/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturehelm-values"><span class="">4.1.7. Helm Values</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureinfrastructure-li">
+    <input type="checkbox" id="m-docsreferencearchitectureinfrastructure-check"/>
+    <label for="m-docsreferencearchitectureinfrastructure-check"><a href="/docs/reference/architecture/infrastructure/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureinfrastructure"><span class="">4.1.8. Resource Topology</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturebootstrap-scripts-li">
+    <input type="checkbox" id="m-docsreferencearchitecturebootstrap-scripts-check"/>
+    <label for="m-docsreferencearchitecturebootstrap-scripts-check"><a href="/docs/reference/architecture/bootstrap-scripts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturebootstrap-scripts"><span class="">4.1.9. Bootstrap Scripts</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferenceservices-li">
+    <input type="checkbox" id="m-docsreferenceservices-check"/>
+    <label for="m-docsreferenceservices-check"><a href="/docs/reference/services/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferenceservices"><span class="">4.2. Services</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesorchestrator-li">
+    <input type="checkbox" id="m-docsreferenceservicesorchestrator-check"/>
+    <label for="m-docsreferenceservicesorchestrator-check"><a href="/docs/reference/services/orchestrator/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesorchestrator"><span class="">4.2.1. Orchestrator</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesagent-li">
+    <input type="checkbox" id="m-docsreferenceservicesagent-check"/>
+    <label for="m-docsreferenceservicesagent-check"><a href="/docs/reference/services/agent/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesagent"><span class="">4.2.2. Agent</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfrontend-li">
+    <input type="checkbox" id="m-docsreferenceservicesfrontend-check"/>
+    <label for="m-docsreferenceservicesfrontend-check"><a href="/docs/reference/services/frontend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfrontend"><span class="">4.2.3. Frontend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesbackend-li">
+    <input type="checkbox" id="m-docsreferenceservicesbackend-check"/>
+    <label for="m-docsreferenceservicesbackend-check"><a href="/docs/reference/services/backend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesbackend"><span class="">4.2.4. Backend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesproxy-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesproxy-provider-check"/>
+    <label for="m-docsreferenceservicesproxy-provider-check"><a href="/docs/reference/services/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesproxy-provider"><span class="">4.2.5. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesfingerprint-provider-check"/>
+    <label for="m-docsreferenceservicesfingerprint-provider-check"><a href="/docs/reference/services/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfingerprint-provider"><span class="">4.2.6. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesmeta-li">
+    <input type="checkbox" id="m-docsreferenceservicesmeta-check"/>
+    <label for="m-docsreferenceservicesmeta-check"><a href="/docs/reference/services/meta/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesmeta"><span class="">4.2.7. Meta</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferencedeployment-li">
+    <input type="checkbox" id="m-docsreferencedeployment-check"/>
+    <label for="m-docsreferencedeployment-check"><a href="/docs/reference/deployment/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencedeployment"><span class="">4.3. Deployment</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentdatabase-li">
+    <input type="checkbox" id="m-docsreferencedeploymentdatabase-check"/>
+    <label for="m-docsreferencedeploymentdatabase-check"><a href="/docs/reference/deployment/database/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentdatabase"><span class="">4.3.1. Database</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentworkbench-li">
+    <input type="checkbox" id="m-docsreferencedeploymentworkbench-check"/>
+    <label for="m-docsreferencedeploymentworkbench-check"><a href="/docs/reference/deployment/workbench/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentworkbench"><span class="">4.3.2. Workbench Mode under the hood</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentsecurity-li">
+    <input type="checkbox" id="m-docsreferencedeploymentsecurity-check"/>
+    <label for="m-docsreferencedeploymentsecurity-check"><a href="/docs/reference/deployment/security/" title="4.3.3. Security Considerations" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentsecurity"><span class="">4.3.3. Security</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymenttesting-li">
+    <input type="checkbox" id="m-docsreferencedeploymenttesting-check"/>
+    <label for="m-docsreferencedeploymenttesting-check"><a href="/docs/reference/deployment/testing/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymenttesting"><span class="">4.3.4. Testing Strategy</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentcicd-li">
+    <input type="checkbox" id="m-docsreferencedeploymentcicd-check"/>
+    <label for="m-docsreferencedeploymentcicd-check"><a href="/docs/reference/deployment/cicd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentcicd"><span class="">4.3.5. CI/CD</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceglossary-li">
+    <input type="checkbox" id="m-docsreferenceglossary-check"/>
+    <label for="m-docsreferenceglossary-check"><a href="/docs/reference/glossary/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceglossary"><span class="">4.4. Glossary</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencehugo-docsy-li">
+    <input type="checkbox" id="m-docsreferencehugo-docsy-check"/>
+    <label for="m-docsreferencehugo-docsy-check"><a href="/docs/reference/hugo-docsy/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencehugo-docsy"><span class="">4.5. Docsy Documentation and landing page</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencenext-steps-li">
+    <input type="checkbox" id="m-docsreferencenext-steps-check"/>
+    <label for="m-docsreferencenext-steps-check"><a href="/docs/reference/next-steps/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencenext-steps"><span class="">4.6. Next Steps</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsfantomas-li">
+    <input type="checkbox" id="m-docsfantomas-check"/>
+    <label for="m-docsfantomas-check"><a href="/docs/fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsfantomas"><span class="">5. Fantomas</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomaswhy-fantomas-li">
+    <input type="checkbox" id="m-docsfantomaswhy-fantomas-check"/>
+    <label for="m-docsfantomaswhy-fantomas-check"><a href="/docs/fantomas/why-fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomaswhy-fantomas"><span class="">5.1. Why Fantomas</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasoverview-li">
+    <input type="checkbox" id="m-docsfantomasoverview-check"/>
+    <label for="m-docsfantomasoverview-check"><a href="/docs/fantomas/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasoverview"><span class="">5.2. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasfantomas-reference-li">
+    <input type="checkbox" id="m-docsfantomasfantomas-reference-check"/>
+    <label for="m-docsfantomasfantomas-reference-check"><a href="/docs/fantomas/fantomas-reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasfantomas-reference"><span class="">5.3. Reference</span></a></label>
+    
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </nav>
+</div>
+          </aside>
+          <aside class="td-sidebar-toc">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#configuration">Configuration</a>
+      <ul>
+        <li><a href="#fields">Fields</a></li>
+      </ul>
+    </li>
+    <li><a href="#initialization">Initialization</a></li>
+    <li><a href="#proxy-modes">Proxy Modes</a>
+      <ul>
+        <li><a href="#no-upstream-proxy">No upstream proxy</a></li>
+        <li><a href="#fetch-from-proxy-provider">Fetch from Proxy Provider</a></li>
+        <li><a href="#how-the-request-is-built">How the request is built</a></li>
+        <li><a href="#how-the-response-is-built">How the response is built</a></li>
+        <li><a href="#direct-proxy-url">Direct proxy URL</a></li>
+      </ul>
+    </li>
+    <li><a href="#addon-registration-and-proxy-lifecycle">Addon Registration and Proxy Lifecycle</a>
+      <ul>
+        <li><a href="#registration-must-happen-before-launch">Registration must happen before launch</a></li>
+        <li><a href="#what-happens-after-launch">What happens after launch</a></li>
+        <li><a href="#proxy-switching-re-applies-addons">Proxy switching re-applies addons</a></li>
+        <li><a href="#pickling-constraint">Pickling constraint</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage-in-ctx_scriptpy">Usage in ctx_script.py</a>
+      <ul>
+        <li><a href="#switching-proxy-mid-run">Switching proxy mid-run</a></li>
+        <li><a href="#adding-response-modifiers">Adding response modifiers</a></li>
+        <li><a href="#adding-request-modifiers">Adding request modifiers</a></li>
+        <li><a href="#adding-data-retrievers">Adding data retrievers</a></li>
+        <li><a href="#execution-order-inside-the-proxy">Execution order inside the proxy</a></li>
+        <li><a href="#monitoring-bandwidth">Monitoring bandwidth</a></li>
+      </ul>
+    </li>
+    <li><a href="#disabling-the-proxy-layer">Disabling the Proxy Layer</a></li>
+  </ul>
+</nav>
+  </div>
+
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/docs/">Documentation</a></li>
+  <li class="breadcrumb-item">
+    <a href="/docs/guides/">3. Guides</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    3.2. Proxy Provider</li>
+  </ol>
+</nav>
+<div class="td-content">
+	<h1>3.2. Proxy Provider</h1>
+	<div class="lead">Configure the mitmproxy layer, upstream proxy modes, traffic modifiers, data retrievers, and proxy rotation</div>
+	<header class="article-meta">
+		
+</header>
+	<h2 id="overview">Overview</h2>
+<p>The proxy layer gives each agent a local mitmproxy instance (port 8081) that all browser traffic passes through. Optionally, this local proxy forwards traffic to an <strong>upstream proxy</strong> fetched from the Proxy Provider service, which serves verified proxies from a database.</p>
+<p>Beyond routing, the proxy layer also supports <strong>response modifiers</strong>, <strong>request modifiers</strong>, and <strong>data retrievers</strong> — hooks that let you intercept and transform HTTP traffic in real time. For the Proxy Provider service API and deployment reference, see <a href="/docs/reference/services/proxy-provider/">Proxy Provider Service</a>.</p>
+<pre tabindex="0"><code>Browser ──► mitmproxy (localhost:8081) ──► Upstream Proxy ──► Internet
+                │
+                ├─ request modifiers
+                ├─ response modifiers
+                └─ data retrievers
+</code></pre><h2 id="configuration">Configuration</h2>
+<p>Add a <code>config_proxy</code> block to <code>default_agent_message</code> in your <code>config_template.json</code> (see <a href="/docs/setting-up-project/json-config/">JSON Configuration</a>):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;default_agent_message&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;config_proxy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_enabled&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_broker_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;provider&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;proxy_provider_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iproyal&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;proxy_location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;proxy_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;proxy_rotation_strategy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;verify_ip&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;verify_quality&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;verify_location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;quality_threshold&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">70</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;max_queries_number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="fields">Fields</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>upstream_proxy_enabled</code></td>
+          <td>int</td>
+          <td><code>0</code> = no upstream proxy (local mitmproxy only), <code>1</code>= enable upstream proxy</td>
+      </tr>
+      <tr>
+          <td><code>upstream_proxy_broker_type</code></td>
+          <td>string</td>
+          <td><code>&quot;provider&quot;</code> = fetch from Proxy Provider service, <code>&quot;direct&quot;</code> = use a hardcoded proxy URL</td>
+      </tr>
+      <tr>
+          <td><code>proxy_provider_name</code></td>
+          <td>string</td>
+          <td>Filter proxies by provider name (e.g. <code>&quot;iproyal&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>proxy_location</code></td>
+          <td>string</td>
+          <td>Filter by geographic location (e.g. <code>&quot;Europe&quot;</code>, <code>&quot;US&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>proxy_type</code></td>
+          <td>string</td>
+          <td>Filter by proxy type (<code>residential</code>, <code>mobile</code>)</td>
+      </tr>
+      <tr>
+          <td><code>proxy_rotation_strategy</code></td>
+          <td>string</td>
+          <td>Filter by rotation strategy (<code>sticky</code>, <code>rotating</code>)</td>
+      </tr>
+      <tr>
+          <td><code>verify_ip</code></td>
+          <td>int</td>
+          <td><code>1</code> = resolve and return the proxy&rsquo;s outbound IP</td>
+      </tr>
+      <tr>
+          <td><code>verify_quality</code></td>
+          <td>int</td>
+          <td><code>1</code> = run an IPQualityScore fraud check</td>
+      </tr>
+      <tr>
+          <td><code>verify_location</code></td>
+          <td>int</td>
+          <td><code>1</code> = verify the proxy IP matches <code>proxy_location</code></td>
+      </tr>
+      <tr>
+          <td><code>quality_threshold</code></td>
+          <td>int</td>
+          <td>Minimum quality score (0-100) to accept a proxy</td>
+      </tr>
+      <tr>
+          <td><code>max_queries_number</code></td>
+          <td>int</td>
+          <td>Max retry attempts if proxy checks fail</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="initialization">Initialization</h2>
+<p>The <code>ProxyManager</code> is initialized in <code>ctx_agent_context.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">src.proxy_manager</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">ProxyManager</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">AgentContext</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">__init__</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">agent_message</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">agent_message</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">agent_message</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">instantiate_default</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">ProxyManager</span><span style="color:#000;font-weight:bold">(</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">agent_message</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;config_proxy&#34;</span><span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">launch_proxy</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><p>On <code>launch_proxy()</code>, the manager:</p>
+<ol>
+<li>Kills any existing process on port 8081</li>
+<li>Fetches an upstream proxy from the Proxy Provider (if enabled)</li>
+<li>Starts a local mitmproxy subprocess on port 8081</li>
+</ol>
+<p>The browser is automatically configured to use this proxy via the <code>--proxy-server=http://127.0.0.1:8081</code> Chrome flag in <code>config_fantomas.config_browser</code>.</p>
+<h2 id="proxy-modes">Proxy Modes</h2>
+<h3 id="no-upstream-proxy">No upstream proxy</h3>
+<p>Set <code>upstream_proxy_enabled</code> to <code>0</code>. Traffic flows through the local mitmproxy only (useful for local development or when you just need traffic interception without IP masking):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;config_proxy&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_enabled&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="fetch-from-proxy-provider">Fetch from Proxy Provider</h3>
+<p>Set <code>upstream_proxy_enabled</code> to <code>1</code> and <code>upstream_proxy_broker_type</code> to <code>&quot;provider&quot;</code>. The manager queries the Proxy Provider service for a random proxy matching your filters:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;config_proxy&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_enabled&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_broker_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;provider&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;proxy_provider_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iproyal&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;proxy_location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Europe&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;verify_quality&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;quality_threshold&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">70</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;max_queries_number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="how-the-request-is-built">How the request is built</h3>
+<p>When <code>upstream_proxy_broker_type</code> is <code>&quot;provider&quot;</code>, the <code>ProxyManager</code> builds a GET request to the Proxy Provider&rsquo;s <code>/fetch_proxy</code> endpoint. Only config fields with truthy values are included as query parameters — fields set to <code>0</code>, <code>&quot;&quot;</code>, or <code>None</code> are omitted.</p>
+<p>For example, with this config:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;config_proxy&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_enabled&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_broker_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;provider&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;proxy_provider_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iproyal&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;proxy_location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Europe&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;proxy_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;proxy_rotation_strategy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;verify_ip&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;verify_quality&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;verify_location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;quality_threshold&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">70</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;max_queries_number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>The resulting HTTP request would be:</p>
+<pre tabindex="0"><code>GET http://127.0.0.1:5001/fetch_proxy?proxy_provider_name=iproyal&amp;proxy_location=Europe&amp;verify_ip=1&amp;verify_quality=1&amp;quality_threshold=70&amp;max_queries_number=3
+</code></pre><p>Note that <code>proxy_type</code>, <code>proxy_rotation_strategy</code>, and <code>verify_location</code> are excluded because their values are falsy.</p>
+<h3 id="how-the-response-is-built">How the response is built</h3>
+<p>The response from the Proxy Provider is <strong>adaptive</strong> — it only includes fields for the checks you actually requested. This keeps the response minimal and avoids unnecessary work on the server side.</p>
+<p><strong>Always included:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>proxy_url</code></td>
+          <td>The proxy address (e.g. <code>http://user:pass@host:port</code>)</td>
+      </tr>
+      <tr>
+          <td><code>attempt</code></td>
+          <td>Which retry attempt returned this proxy (starts at 1)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Conditionally included — only if the corresponding <code>verify_*</code> flag is set to <code>1</code>:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Included when</th>
+          <th>Content</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>verify_ip</code></td>
+          <td><code>verify_ip=1</code></td>
+          <td><code>{&quot;ip&quot;: &quot;1.2.3.4&quot;}</code> or <code>{&quot;ip&quot;: null}</code> if resolution failed</td>
+      </tr>
+      <tr>
+          <td><code>verify_quality</code></td>
+          <td><code>verify_quality=1</code></td>
+          <td><code>{&quot;fraud_score_inverted&quot;: 92, &quot;quality_threshold&quot;: 70, &quot;quality_pass&quot;: true}</code></td>
+      </tr>
+      <tr>
+          <td><code>verify_location</code></td>
+          <td><code>verify_location=1</code></td>
+          <td><code>{&quot;actual_timezone&quot;: &quot;Europe/Paris&quot;, &quot;expected_location&quot;: &quot;Europe&quot;, &quot;location_match&quot;: true}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Example — all checks enabled:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;proxy_url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://user:pass@proxy.example.com:8080&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;attempt&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;verify_ip&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;ip&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;185.230.12.45&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;verify_quality&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;fraud_score_inverted&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">92</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;quality_threshold&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">70</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;quality_pass&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;verify_location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;actual_timezone&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Europe/Paris&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;expected_location&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Europe&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;location_match&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p><strong>Example — no checks enabled:</strong></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;proxy_url&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;http://user:pass@proxy.example.com:8080&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;attempt&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>If a check fails (e.g. quality score below threshold or location mismatch), the service automatically retries with a new proxy, up to <code>max_queries_number</code> attempts.</p>
+<h3 id="direct-proxy-url">Direct proxy URL</h3>
+<p>Set <code>upstream_proxy_broker_type</code> to <code>&quot;direct&quot;</code>. Instead of querying the service, the manager uses the URL from the <code>PROXY_PROVIDER_URL</code> environment variable (see <a href="/docs/reference/architecture/environment-variables/">Environment Variables</a>) directly as the upstream proxy:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;config_proxy&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_enabled&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_broker_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;direct&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="addon-registration-and-proxy-lifecycle">Addon Registration and Proxy Lifecycle</h2>
+<p>The <code>ProxyManager</code> runs mitmproxy in a <strong>separate subprocess</strong> (via <code>billiard.Process</code>). When <code>launch_proxy()</code> is called, the current modifier and retriever arrays are copied into the child process. This has important implications for when addons can be registered.</p>
+<h3 id="registration-must-happen-before-launch">Registration must happen before launch</h3>
+<p>Addons (request modifiers, response modifiers, data retrievers) <strong>must</strong> be registered before calling <code>launch_proxy()</code>. Once the mitmproxy subprocess starts, it holds its own copy of the arrays — any addon added to the parent process afterward will not be seen by the running proxy.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">AgentContext</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">instantiate_default</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># 1. Create the ProxyManager (no subprocess yet)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">ProxyManager</span><span style="color:#000;font-weight:bold">(</span><span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">agent_message</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;config_proxy&#34;</span><span style="color:#000;font-weight:bold">])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># 2. Register addons while still in the parent process</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add_request_modifier</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">my_request_modifier</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add_modifier</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">my_response_modifier</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add_retriever</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;my_queue&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">my_retriever</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic"># 3. Launch — arrays are copied into the subprocess</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#3465a4">self</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">launch_proxy</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><h3 id="what-happens-after-launch">What happens after launch</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Action</th>
+          <th>Effect</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Register addon <strong>before</strong> <code>launch_proxy()</code></td>
+          <td>Addon is active in the proxy subprocess</td>
+      </tr>
+      <tr>
+          <td>Register addon <strong>after</strong> <code>launch_proxy()</code></td>
+          <td>Addon is <strong>ignored</strong> — the running subprocess has its own copy</td>
+      </tr>
+      <tr>
+          <td>Register addon <strong>after</strong> launch, then call <code>switch_upstream_proxy()</code></td>
+          <td>Addon becomes active — <code>switch_upstream_proxy()</code> kills the old subprocess and starts a new one with the current arrays</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="proxy-switching-re-applies-addons">Proxy switching re-applies addons</h3>
+<p><code>switch_upstream_proxy()</code> internally calls <code>exit_local_proxy()</code> followed by <code>launch_proxy()</code>. The new subprocess is created with the <strong>current</strong> state of the modifier and retriever arrays. This means:</p>
+<ul>
+<li>All previously registered addons are preserved across switches.</li>
+<li>Any addon added after the initial launch but before a switch will be picked up by the new subprocess.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">async</span> <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">ctx_script</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">job_ctx</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">agent_ctx</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># Proxy is already running with initial addons</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># This modifier won&#39;t be active yet (subprocess already running)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add_request_modifier</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">extra_modifier</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># After switch, ALL addons (initial + extra_modifier) are active</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">switch_upstream_proxy</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><h3 id="pickling-constraint">Pickling constraint</h3>
+<p>Since the subprocess receives addons via serialization, all modifier and retriever functions <strong>must be picklable</strong>. In practice this means they must be defined at <strong>module level</strong> — not as lambdas, closures, or nested functions.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Good — module-level function, picklable</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">remove_csp_header</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">flow</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#4e9a06">&#34;content-security-policy&#34;</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">headers</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">del</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">headers</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;content-security-policy&#34;</span><span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Bad — lambda, not picklable</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">remove_csp</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">lambda</span> <span style="color:#000">flow</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">headers</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">pop</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;content-security-policy&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">None</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Bad — closure, not picklable</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">make_modifier</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">header_name</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">modifier</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">flow</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">del</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">headers</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">header_name</span><span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">modifier</span>
+</span></span></code></pre></div><p>A recommended pattern is to place each addon in its own file inside the <code>addon/</code> directory (see <a href="/docs/setting-up-project/python-files/#addon--reusable-python-modules">Reusable Python Modules</a>) and import them where needed:</p>
+<pre tabindex="0"><code>project/
+└── addon/
+    ├── request_modifier_add_custom_header.py
+    ├── response_modifier_remove_csp.py
+    └── retriever_capture_api.py
+</code></pre><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">addon.request_modifier_add_custom_header</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">request_modifier_add_custom_header</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">addon.response_modifier_remove_csp</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">response_modifier_remove_csp</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">addon.retriever_capture_api</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#000">retriever_capture_api</span>
+</span></span></code></pre></div><h2 id="usage-in-ctx_scriptpy">Usage in ctx_script.py</h2>
+<h3 id="switching-proxy-mid-run">Switching proxy mid-run</h3>
+<p>To get a fresh upstream proxy during a job (e.g. after a block), call <code>switch_upstream_proxy()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">async</span> <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">ctx_script</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">job_ctx</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">agent_ctx</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># ... some automation ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># IP got blocked, rotate to a new proxy</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">switch_upstream_proxy</span><span style="color:#000;font-weight:bold">()</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># Continue with a new IP</span>
+</span></span></code></pre></div><p>This stops the current mitmproxy process, fetches a new upstream proxy, and restarts mitmproxy. All previously registered addons remain active.</p>
+<h3 id="adding-response-modifiers">Adding response modifiers</h3>
+<p>Response modifiers intercept and alter HTTP responses passing through the proxy. They receive a <code>flow</code> object with access to <code>flow.response.headers</code>, <code>flow.response.content</code>, etc.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">remove_csp_header</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">flow</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span> <span style="color:#204a87;font-weight:bold">and</span> <span style="color:#4e9a06">&#34;content-security-policy&#34;</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">headers</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">del</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">headers</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;content-security-policy&#34;</span><span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add_modifier</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">remove_csp_header</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="adding-request-modifiers">Adding request modifiers</h3>
+<p>Request modifiers intercept outgoing requests. They receive a <code>flow</code> object with access to <code>flow.request.headers</code>, <code>flow.request.url</code>, etc.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">add_custom_header</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">flow</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">request</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">headers</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;X-Custom&#34;</span><span style="color:#000;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;my-value&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add_request_modifier</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">add_custom_header</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="adding-data-retrievers">Adding data retrievers</h3>
+<p>Retrievers extract data from responses and store it in a named queue you can read later. They receive <code>flow</code> and <code>queue</code> as arguments:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">capture_api_response</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">flow</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">queue</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">if</span> <span style="color:#4e9a06">&#34;/api/data&#34;</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">request</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">url</span> <span style="color:#204a87;font-weight:bold">and</span> <span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span><span style="color:#000;font-weight:bold">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000">queue</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">put</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">flow</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">response</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">text</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">add_retriever</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;api_data&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">capture_api_response</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><p>Then in your script, retrieve the captured data:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">async</span> <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">ctx_script</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">job_ctx</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">agent_ctx</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># Navigate to a page that triggers the API call</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">tab</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#204a87;font-weight:bold">await</span> <span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">browser</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;https://example.com&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8f5902;font-style:italic"># Retrieve the last captured value from the queue</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">data</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">retrieve</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#34;api_data&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></div><h3 id="execution-order-inside-the-proxy">Execution order inside the proxy</h3>
+<p>When a response arrives, the <code>ProxyAddOn</code> processes hooks in this order:</p>
+<ol>
+<li><strong>Data counting</strong> — cumulative <code>Content-Length</code> tracking</li>
+<li><strong>Retrievers</strong> — data extraction into queues</li>
+<li><strong>Response modifiers</strong> — header/body transformations</li>
+</ol>
+<p>This means retrievers see the <strong>original</strong> response before any modifier alters it.</p>
+<p>For requests, <strong>request modifiers</strong> run before the request is forwarded upstream.</p>
+<h3 id="monitoring-bandwidth">Monitoring bandwidth</h3>
+<p>The proxy tracks total data transferred. Access it with:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000">total_bytes</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">proxy_manager</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">get_data_count</span><span style="color:#000;font-weight:bold">()</span>
+</span></span></code></pre></div><h2 id="disabling-the-proxy-layer">Disabling the Proxy Layer</h2>
+<p>If your project does not need any proxy (no upstream, no traffic interception), remove the <code>ProxyManager</code> from <code>ctx_agent_context.py</code> and remove <code>--proxy-server=http://127.0.0.1:8081</code> from the browser options in <code>config_template.json</code>.</p>
+
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.84ebdea7c8b518711780f1e70e9941e62f87902362b45772946a84042a14873f.js" integrity="sha256-hOvep8i1GHEXgPHnDplB5i&#43;HkCNitFdylGqEBCoUhz8=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

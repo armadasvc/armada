@@ -1,0 +1,14 @@
+{
+  "run_message": {
+    "image_name": "armada-agent",
+    "image_version": "latest",
+    "number_of_agents": 1,
+    "number_of_jobs": 1,
+    "agent_cpu": "500m",
+    "agent_memory": "512Mi"
+  },
+  "default_agent_message": {},
+  "default_job_message": {
+    "job_content": "default_job_content"
+  }
+}

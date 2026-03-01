@@ -1,0 +1,6 @@
+{
+  "name": "armada-proxy-provider",
+  "version": "1.0.8",
+  "main": "main.py",
+  "license": "MIT"
+}

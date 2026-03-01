@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Try</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #e7e9ea;
+            min-height: 100vh;
+        }
+
+        .layout {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        /* --- Sidebar left --- */
+        .sidebar-left {
+            width: 68px;
+            padding: 12px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #2f3336;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #1d9bf0;
+            margin-bottom: 32px;
+            cursor: pointer;
+        }
+
+        .nav-item {
+            padding: 12px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .nav-item:hover {
+            background: #181818;
+        }
+
+        .nav-icon {
+            width: 26px;
+            height: 26px;
+            fill: #e7e9ea;
+        }
+
+        /* --- Main feed --- */
+        .main-feed {
+            flex: 1;
+            max-width: 600px;
+            border-right: 1px solid #2f3336;
+            min-height: 100vh;
+        }
+
+        .feed-header {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(12px);
+            padding: 12px 16px;
+            border-bottom: 1px solid #2f3336;
+            z-index: 10;
+        }
+
+        .feed-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* --- Compose --- */
+        .compose-box {
+            padding: 16px;
+            border-bottom: 1px solid #2f3336;
+            display: flex;
+            gap: 12px;
+        }
+
+        .compose-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1d9bf0, #1a73c7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .compose-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .compose-input {
+            background: none;
+            border: none;
+            color: #e7e9ea;
+            font-size: 20px;
+            font-family: inherit;
+            resize: none;
+            outline: none;
+            min-height: 52px;
+            padding: 8px 0;
+        }
+
+        .compose-input::placeholder {
+            color: #71767b;
+        }
+
+        .compose-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #2f3336;
+        }
+
+        .char-count {
+            font-size: 13px;
+            color: #71767b;
+        }
+
+        .char-count.warning {
+            color: #f4212e;
+        }
+
+        .btn-tweet {
+            background: #1d9bf0;
+            color: #fff;
+            border: none;
+            border-radius: 9999px;
+            padding: 8px 20px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-tweet:hover {
+            background: #1a8cd8;
+        }
+
+        .btn-tweet:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* --- Tweets --- */
+        .tweet {
+            padding: 16px;
+            border-bottom: 1px solid #2f3336;
+            display: flex;
+            gap: 12px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .tweet:hover {
+            background: #080808;
+        }
+
+        .tweet-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #2f3336;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .tweet-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .tweet-username {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .tweet-handle {
+            color: #71767b;
+            font-size: 15px;
+        }
+
+        .tweet-time {
+            color: #71767b;
+            font-size: 15px;
+        }
+
+        .tweet-content {
+            margin-top: 4px;
+            font-size: 15px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .hashtag {
+            color: #1d9bf0;
+        }
+
+        .tweet-actions {
+            display: flex;
+            gap: 48px;
+            margin-top: 12px;
+        }
+
+        .tweet-action {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #71767b;
+            font-size: 13px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .tweet-action:hover {
+            color: #1d9bf0;
+        }
+
+        .tweet-action svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* --- Sidebar right (trending) --- */
+        .sidebar-right {
+            width: 350px;
+            padding: 12px 24px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .search-box {
+            background: #202327;
+            border-radius: 9999px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-box svg {
+            width: 18px;
+            height: 18px;
+            fill: #71767b;
+            flex-shrink: 0;
+        }
+
+        .search-box input {
+            background: none;
+            border: none;
+            color: #e7e9ea;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            width: 100%;
+        }
+
+        .search-box input::placeholder {
+            color: #71767b;
+        }
+
+        .trending-card {
+            background: #16181c;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .trending-header {
+            padding: 16px;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .trending-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .trending-item:hover {
+            background: #1d1f23;
+        }
+
+        .trending-category {
+            font-size: 13px;
+            color: #71767b;
+        }
+
+        .trending-tag {
+            font-size: 15px;
+            font-weight: 700;
+            margin-top: 2px;
+            color: #e7e9ea;
+        }
+
+        .trending-count {
+            font-size: 13px;
+            color: #71767b;
+            margin-top: 2px;
+        }
+
+        .trending-divider {
+            border: none;
+            border-top: 1px solid #2f3336;
+        }
+
+        /* --- Loading & empty state --- */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #71767b;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #2f3336;
+            border-top-color: #1d9bf0;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- Toast notification --- */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1d9bf0;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1000px) {
+            .sidebar-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .sidebar-left {
+                display: none;
+            }
+            .main-feed {
+                border-right: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar left -->
+        <nav class="sidebar-left">
+            <div class="logo">T</div>
+            <div class="nav-item" title="Home">
+                <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 1.696L.622 8.807l1.06 1.696L3 9.679V19.5C3 20.881 4.119 22 5.5 22h13c1.381 0 2.5-1.119 2.5-2.5V9.679l1.318.824 1.06-1.696L12 1.696zM12 16.5c-1.933 0-3.5-1.567-3.5-3.5s1.567-3.5 3.5-3.5 3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5z"/></svg>
+            </div>
+        </nav>
+
+        <!-- Main feed -->
+        <main class="main-feed">
+            <div class="feed-header">
+                <h2>Home</h2>
+            </div>
+
+            <!-- Compose -->
+            <div class="compose-box">
+                <div class="compose-avatar">V</div>
+                <div class="compose-form">
+                    <textarea class="compose-input" id="composeInput" placeholder="What's happening?!" maxlength="280"></textarea>
+                    <div class="compose-footer">
+                        <span class="char-count" id="charCount">280</span>
+                        <button class="btn-tweet" id="btnTweet" disabled>Post</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tweets -->
+            <div id="tweetsContainer">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading...
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar right -->
+        <aside class="sidebar-right">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24"><path d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.419-.726 4.596-1.904 1.178-1.177 1.904-2.801 1.904-4.596 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.815-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.447 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z"/></svg>
+                <input type="text" placeholder="Search">
+            </div>
+
+            <div class="trending-card">
+                <div class="trending-header">Top Hashtags</div>
+                <div id="trendingContainer">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const composeInput = document.getElementById('composeInput');
+        const charCount = document.getElementById('charCount');
+        const btnTweet = document.getElementById('btnTweet');
+        const tweetsContainer = document.getElementById('tweetsContainer');
+        const trendingContainer = document.getElementById('trendingContainer');
+        const toast = document.getElementById('toast');
+
+        // --- Compose ---
+        composeInput.addEventListener('input', () => {
+            const remaining = 280 - composeInput.value.length;
+            charCount.textContent = remaining;
+            charCount.classList.toggle('warning', remaining < 20);
+            btnTweet.disabled = composeInput.value.trim().length === 0;
+        });
+
+        // Auto-resize textarea
+        composeInput.addEventListener('input', () => {
+            composeInput.style.height = 'auto';
+            composeInput.style.height = composeInput.scrollHeight + 'px';
+        });
+
+        btnTweet.addEventListener('click', postTweet);
+
+        // Ctrl+Enter to post
+        composeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                if (composeInput.value.trim()) postTweet();
+            }
+        });
+
+        async function postTweet() {
+            const content = composeInput.value.trim();
+            if (!content) return;
+
+            btnTweet.disabled = true;
+            try {
+                const res = await fetch('/api/tweets', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ content })
+                });
+                if (res.ok) {
+                    composeInput.value = '';
+                    charCount.textContent = '280';
+                    composeInput.style.height = 'auto';
+                    showToast('Tweet posted!');
+                    loadTweets();
+                    loadTrending();
+                } else {
+                    const data = await res.json();
+                    showToast(data.error || 'Error');
+                }
+            } catch {
+                showToast('Network error');
+            }
+        }
+
+        // --- Load tweets ---
+        async function loadTweets() {
+            try {
+                const res = await fetch('/api/tweets');
+                const tweets = await res.json();
+                if (tweets.length === 0) {
+                    tweetsContainer.innerHTML = '<div class="loading">No tweets yet</div>';
+                    return;
+                }
+                tweetsContainer.innerHTML = tweets.map(renderTweet).join('');
+            } catch {
+                tweetsContainer.innerHTML = '<div class="loading">Failed to load</div>';
+            }
+        }
+
+        function renderTweet(tweet) {
+            const initial = tweet.username.charAt(0).toUpperCase();
+            const colors = ['#1d9bf0', '#00ba7c', '#f91880', '#ffd400', '#7856ff', '#ff7a00'];
+            const color = colors[tweet.id % colors.length];
+            const timeAgo = formatTime(tweet.created_at);
+            const content = highlightHashtags(escapeHtml(tweet.content));
+
+            return `
+                <div class="tweet">
+                    <div class="tweet-avatar" style="background:${color}">${initial}</div>
+                    <div class="tweet-body">
+                        <div class="tweet-header">
+                            <span class="tweet-username">${escapeHtml(tweet.username)}</span>
+                            <span class="tweet-handle">${escapeHtml(tweet.handle)}</span>
+                            <span class="tweet-time">· ${timeAgo}</span>
+                        </div>
+                        <div class="tweet-content">${content}</div>
+                        <div class="tweet-actions">
+                            <div class="tweet-action">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.25-.862 4.394-2.428 5.99l-8.075 8.22-1.43-1.406 8.075-8.22c1.253-1.278 1.858-2.988 1.858-4.584 0-3.39-2.744-6.13-6.129-6.13H9.756c-3.317 0-6.005 2.69-6.005 6h-2z"/></svg>
+                            </div>
+                            <div class="tweet-action">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3.88l4.432 4.14-1.364 1.46L5.5 7.55V16c0 1.1.896 2 2 2H13v2H7.5c-2.209 0-4-1.791-4-4V7.55L1.432 9.48.068 8.02 4.5 3.88zM16.5 6H11V4h5.5c2.209 0 4 1.791 4 4v8.45l2.068-1.93 1.364 1.46-4.432 4.14-4.432-4.14 1.364-1.46 2.068 1.93V8c0-1.1-.896-2-2-2z"/></svg>
+                            </div>
+                            <div class="tweet-action">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.697 5.5c-1.222-.06-2.679.51-3.89 2.16l-.805 1.09-.806-1.09C9.984 6.01 8.526 5.44 7.304 5.5c-1.243.07-2.349.78-2.91 1.91-.552 1.12-.633 2.78.479 4.82 1.074 1.97 3.257 4.27 7.129 6.61 3.87-2.34 6.052-4.64 7.126-6.61 1.111-2.04 1.03-3.7.477-4.82-.56-1.13-1.666-1.84-2.908-1.91zm4.187 7.69c-1.351 2.48-4.001 5.12-8.379 7.67l-.503.3-.504-.3c-4.379-2.55-7.029-5.19-8.382-7.67-1.36-2.5-1.41-4.86-.514-6.67.887-1.79 2.647-2.91 4.601-3.01 1.651-.09 3.368.56 4.798 2.01 1.429-1.45 3.146-2.1 4.796-2.01 1.954.1 3.714 1.22 4.601 3.01.896 1.81.846 4.17-.514 6.67z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function highlightHashtags(text) {
+            return text.replace(/(#\w+)/g, '<span class="hashtag">$1</span>');
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function formatTime(dateStr) {
+            const date = new Date(dateStr + 'Z');
+            const now = new Date();
+            const diff = Math.floor((now - date) / 1000);
+            if (diff < 60) return `${diff}s`;
+            if (diff < 3600) return `${Math.floor(diff / 60)}min`;
+            if (diff < 86400) return `${Math.floor(diff / 3600)}h`;
+            return date.toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
+        }
+
+        // --- Trending ---
+        async function loadTrending() {
+            try {
+                const res = await fetch('/api/trending');
+                const tags = await res.json();
+                if (tags.length === 0) {
+                    trendingContainer.innerHTML = '<div class="trending-item"><span class="trending-category">No hashtags</span></div>';
+                    return;
+                }
+                trendingContainer.innerHTML = tags.map((t, i) => `
+                    <div class="trending-item">
+                        <div class="trending-category">Trending #${i + 1}</div>
+                        <div class="trending-tag">#${escapeHtml(t.tag)}</div>
+                        <div class="trending-count">${t.count} tweet${t.count > 1 ? 's' : ''}</div>
+                    </div>
+                    ${i < tags.length - 1 ? '<hr class="trending-divider">' : ''}
+                `).join('');
+            } catch {
+                trendingContainer.innerHTML = '<div class="loading">Error</div>';
+            }
+        }
+
+        // --- Toast ---
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // --- Init ---
+        loadTweets();
+        loadTrending();
+    </script>
+</body>
+</html>

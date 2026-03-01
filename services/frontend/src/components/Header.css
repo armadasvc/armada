@@ -1,0 +1,153 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #252526;
+  border-bottom: 1px solid #3c3c3c;
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0078d4;
+  white-space: nowrap;
+}
+
+.folder-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #cccccc;
+  font-size: 14px;
+  padding: 4px 10px;
+  background-color: #3c3c3c;
+  border-radius: 4px;
+}
+
+.modified-count {
+  font-size: 11px;
+  padding: 2px 6px;
+  background-color: #e2c08d;
+  color: #1e1e1e;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.file-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #9cdcfe;
+  font-size: 13px;
+  padding: 4px 8px;
+  background-color: #2d2d2d;
+  border-radius: 4px;
+  border: 1px solid #3c3c3c;
+}
+
+.modified-indicator {
+  color: #e2c08d;
+  font-size: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: 1px solid #3c3c3c;
+  border-radius: 4px;
+  background-color: #3c3c3c;
+  color: #cccccc;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  background-color: #4c4c4c;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #0078d4;
+  border-color: #0078d4;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #006cbd;
+}
+
+.btn-danger {
+  background-color: #c42b1c;
+  border-color: #c42b1c;
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #a62414;
+}
+
+.btn-launch {
+  background-color: #107c10;
+  border-color: #107c10;
+  color: white;
+}
+
+.btn-launch:hover {
+  background-color: #0e6b0e;
+}
+
+.view-toggle {
+  display: flex;
+  border: 1px solid #3c3c3c;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.toggle-btn {
+  padding: 6px 12px;
+  border: none;
+  background-color: #2d2d2d;
+  color: #808080;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggle-btn:first-child {
+  border-right: 1px solid #3c3c3c;
+}
+
+.toggle-btn:hover:not(:disabled) {
+  background-color: #3c3c3c;
+}
+
+.toggle-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.toggle-btn.active {
+  background-color: #0078d4;
+  color: white;
+}

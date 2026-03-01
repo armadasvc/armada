@@ -1,0 +1,526 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<title>4.3.4. Testing Strategy | Armada Documentation</title>
+<meta name="description" content="Two-tier testing strategy — unit tests with mocking patterns, E2E test projects via workbench, and CI pipeline configuration">
+<meta property="og:url" content="https://armada.services/docs/reference/deployment/testing/">
+  <meta property="og:site_name" content="Armada Documentation">
+  <meta property="og:title" content="4.3.4. Testing Strategy">
+  <meta property="og:description" content="Two-tier testing strategy — unit tests with mocking patterns, E2E test projects via workbench, and CI pipeline configuration">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+  <meta itemprop="name" content="4.3.4. Testing Strategy">
+  <meta itemprop="description" content="Two-tier testing strategy — unit tests with mocking patterns, E2E test projects via workbench, and CI pipeline configuration">
+  <meta itemprop="wordCount" content="592">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="4.3.4. Testing Strategy">
+  <meta name="twitter:description" content="Two-tier testing strategy — unit tests with mocking patterns, E2E test projects via workbench, and CI pipeline configuration">
+<link rel="preload" href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" as="style" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<link href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" rel="stylesheet" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">Armada Documentation</span></a>
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/"><span>Documentation</span></a>
+      </li>
+      </ul>
+    <div class="scroll-indicator scroll-right"></div>
+  </div>
+  <div class="td-navbar__search d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="td-sidebar-nav collapse foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
+    <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsgetting-started-li">
+    <input type="checkbox" id="m-docsgetting-started-check"/>
+    <label for="m-docsgetting-started-check"><a href="/docs/getting-started/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">1. Getting Started</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedkey_concepts-li">
+    <input type="checkbox" id="m-docsgetting-startedkey_concepts-check"/>
+    <label for="m-docsgetting-startedkey_concepts-check"><a href="/docs/getting-started/key_concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedkey_concepts"><span class="">1.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-kubernetes-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-kubernetes-check"/>
+    <label for="m-docsgetting-startedquickstart-kubernetes-check"><a href="/docs/getting-started/quickstart-kubernetes/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-kubernetes"><span class="">1.2. Quick-Start / Installation</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-local-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-local-check"/>
+    <label for="m-docsgetting-startedquickstart-local-check"><a href="/docs/getting-started/quickstart-local/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-local"><span class="">1.3. Local Development</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssetting-up-project-li">
+    <input type="checkbox" id="m-docssetting-up-project-check"/>
+    <label for="m-docssetting-up-project-check"><a href="/docs/setting-up-project/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docssetting-up-project"><span class="">2. Setting Up a Project</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectkey-concepts-li">
+    <input type="checkbox" id="m-docssetting-up-projectkey-concepts-check"/>
+    <label for="m-docssetting-up-projectkey-concepts-check"><a href="/docs/setting-up-project/key-concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectkey-concepts"><span class="">2.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectjson-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectjson-config-check"/>
+    <label for="m-docssetting-up-projectjson-config-check"><a href="/docs/setting-up-project/json-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectjson-config"><span class="">2.2. JSON Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectcsv-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectcsv-config-check"/>
+    <label for="m-docssetting-up-projectcsv-config-check"><a href="/docs/setting-up-project/csv-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectcsv-config"><span class="">2.3. CSV Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectpython-files-li">
+    <input type="checkbox" id="m-docssetting-up-projectpython-files-check"/>
+    <label for="m-docssetting-up-projectpython-files-check"><a href="/docs/setting-up-project/python-files/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectpython-files"><span class="">2.4. Python Files</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsguides-li">
+    <input type="checkbox" id="m-docsguides-check"/>
+    <label for="m-docsguides-check"><a href="/docs/guides/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsguides"><span class="">3. Guides</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-connector-li">
+    <input type="checkbox" id="m-docsguidesdatabase-connector-check"/>
+    <label for="m-docsguidesdatabase-connector-check"><a href="/docs/guides/database-connector/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-connector"><span class="">3.1. Database Connector</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesproxy-provider-li">
+    <input type="checkbox" id="m-docsguidesproxy-provider-check"/>
+    <label for="m-docsguidesproxy-provider-check"><a href="/docs/guides/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesproxy-provider"><span class="">3.2. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsguidesfingerprint-provider-check"/>
+    <label for="m-docsguidesfingerprint-provider-check"><a href="/docs/guides/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesfingerprint-provider"><span class="">3.3. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesmonitoring-client-li">
+    <input type="checkbox" id="m-docsguidesmonitoring-client-check"/>
+    <label for="m-docsguidesmonitoring-client-check"><a href="/docs/guides/monitoring-client/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesmonitoring-client"><span class="">3.4. Monitoring Client</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesci-cd-li">
+    <input type="checkbox" id="m-docsguidesci-cd-check"/>
+    <label for="m-docsguidesci-cd-check"><a href="/docs/guides/ci-cd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesci-cd"><span class="">3.5. CI/CD</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-management-li">
+    <input type="checkbox" id="m-docsguidesdatabase-management-check"/>
+    <label for="m-docsguidesdatabase-management-check"><a href="/docs/guides/database-management/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-management"><span class="">3.6. Database Management</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesstandard-output-li">
+    <input type="checkbox" id="m-docsguidesstandard-output-check"/>
+    <label for="m-docsguidesstandard-output-check"><a href="/docs/guides/standard-output/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesstandard-output"><span class="">3.7. Standard Output</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsreference-li">
+    <input type="checkbox" id="m-docsreference-check" checked/>
+    <label for="m-docsreference-check"><a href="/docs/reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreference"><span class="">4. Reference</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferencearchitecture-li">
+    <input type="checkbox" id="m-docsreferencearchitecture-check"/>
+    <label for="m-docsreferencearchitecture-check"><a href="/docs/reference/architecture/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencearchitecture"><span class="">4.1. Architecture</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureoverview-li">
+    <input type="checkbox" id="m-docsreferencearchitectureoverview-check"/>
+    <label for="m-docsreferencearchitectureoverview-check"><a href="/docs/reference/architecture/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureoverview"><span class="">4.1.1. Overview</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturerun-lifecycle-li">
+    <input type="checkbox" id="m-docsreferencearchitecturerun-lifecycle-check"/>
+    <label for="m-docsreferencearchitecturerun-lifecycle-check"><a href="/docs/reference/architecture/run-lifecycle/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturerun-lifecycle"><span class="">4.1.2. Run Lifecycle</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureconfiguration-pipeline-li">
+    <input type="checkbox" id="m-docsreferencearchitectureconfiguration-pipeline-check"/>
+    <label for="m-docsreferencearchitectureconfiguration-pipeline-check"><a href="/docs/reference/architecture/configuration-pipeline/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureconfiguration-pipeline"><span class="">4.1.3. Configuration Pipeline</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturecode-bundling-execution-li">
+    <input type="checkbox" id="m-docsreferencearchitecturecode-bundling-execution-check"/>
+    <label for="m-docsreferencearchitecturecode-bundling-execution-check"><a href="/docs/reference/architecture/code-bundling-execution/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturecode-bundling-execution"><span class="">4.1.4. Code Bundling and Execution</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureagent-internals-li">
+    <input type="checkbox" id="m-docsreferencearchitectureagent-internals-check"/>
+    <label for="m-docsreferencearchitectureagent-internals-check"><a href="/docs/reference/architecture/agent-internals/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureagent-internals"><span class="">4.1.5. Agent Internals</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureenvironment-variables-li">
+    <input type="checkbox" id="m-docsreferencearchitectureenvironment-variables-check"/>
+    <label for="m-docsreferencearchitectureenvironment-variables-check"><a href="/docs/reference/architecture/environment-variables/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureenvironment-variables"><span class="">4.1.6. Environment Variables</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturehelm-values-li">
+    <input type="checkbox" id="m-docsreferencearchitecturehelm-values-check"/>
+    <label for="m-docsreferencearchitecturehelm-values-check"><a href="/docs/reference/architecture/helm-values/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturehelm-values"><span class="">4.1.7. Helm Values</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureinfrastructure-li">
+    <input type="checkbox" id="m-docsreferencearchitectureinfrastructure-check"/>
+    <label for="m-docsreferencearchitectureinfrastructure-check"><a href="/docs/reference/architecture/infrastructure/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureinfrastructure"><span class="">4.1.8. Resource Topology</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturebootstrap-scripts-li">
+    <input type="checkbox" id="m-docsreferencearchitecturebootstrap-scripts-check"/>
+    <label for="m-docsreferencearchitecturebootstrap-scripts-check"><a href="/docs/reference/architecture/bootstrap-scripts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturebootstrap-scripts"><span class="">4.1.9. Bootstrap Scripts</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferenceservices-li">
+    <input type="checkbox" id="m-docsreferenceservices-check"/>
+    <label for="m-docsreferenceservices-check"><a href="/docs/reference/services/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferenceservices"><span class="">4.2. Services</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesorchestrator-li">
+    <input type="checkbox" id="m-docsreferenceservicesorchestrator-check"/>
+    <label for="m-docsreferenceservicesorchestrator-check"><a href="/docs/reference/services/orchestrator/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesorchestrator"><span class="">4.2.1. Orchestrator</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesagent-li">
+    <input type="checkbox" id="m-docsreferenceservicesagent-check"/>
+    <label for="m-docsreferenceservicesagent-check"><a href="/docs/reference/services/agent/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesagent"><span class="">4.2.2. Agent</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfrontend-li">
+    <input type="checkbox" id="m-docsreferenceservicesfrontend-check"/>
+    <label for="m-docsreferenceservicesfrontend-check"><a href="/docs/reference/services/frontend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfrontend"><span class="">4.2.3. Frontend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesbackend-li">
+    <input type="checkbox" id="m-docsreferenceservicesbackend-check"/>
+    <label for="m-docsreferenceservicesbackend-check"><a href="/docs/reference/services/backend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesbackend"><span class="">4.2.4. Backend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesproxy-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesproxy-provider-check"/>
+    <label for="m-docsreferenceservicesproxy-provider-check"><a href="/docs/reference/services/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesproxy-provider"><span class="">4.2.5. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesfingerprint-provider-check"/>
+    <label for="m-docsreferenceservicesfingerprint-provider-check"><a href="/docs/reference/services/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfingerprint-provider"><span class="">4.2.6. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesmeta-li">
+    <input type="checkbox" id="m-docsreferenceservicesmeta-check"/>
+    <label for="m-docsreferenceservicesmeta-check"><a href="/docs/reference/services/meta/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesmeta"><span class="">4.2.7. Meta</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsreferencedeployment-li">
+    <input type="checkbox" id="m-docsreferencedeployment-check" checked/>
+    <label for="m-docsreferencedeployment-check"><a href="/docs/reference/deployment/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencedeployment"><span class="">4.3. Deployment</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentdatabase-li">
+    <input type="checkbox" id="m-docsreferencedeploymentdatabase-check"/>
+    <label for="m-docsreferencedeploymentdatabase-check"><a href="/docs/reference/deployment/database/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentdatabase"><span class="">4.3.1. Database</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentworkbench-li">
+    <input type="checkbox" id="m-docsreferencedeploymentworkbench-check"/>
+    <label for="m-docsreferencedeploymentworkbench-check"><a href="/docs/reference/deployment/workbench/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentworkbench"><span class="">4.3.2. Workbench Mode under the hood</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentsecurity-li">
+    <input type="checkbox" id="m-docsreferencedeploymentsecurity-check"/>
+    <label for="m-docsreferencedeploymentsecurity-check"><a href="/docs/reference/deployment/security/" title="4.3.3. Security Considerations" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentsecurity"><span class="">4.3.3. Security</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsreferencedeploymenttesting-li">
+    <input type="checkbox" id="m-docsreferencedeploymenttesting-check" checked/>
+    <label for="m-docsreferencedeploymenttesting-check"><a href="/docs/reference/deployment/testing/" class="align-left ps-0  active td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymenttesting"><span class="td-sidebar-nav-active-item">4.3.4. Testing Strategy</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentcicd-li">
+    <input type="checkbox" id="m-docsreferencedeploymentcicd-check"/>
+    <label for="m-docsreferencedeploymentcicd-check"><a href="/docs/reference/deployment/cicd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentcicd"><span class="">4.3.5. CI/CD</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceglossary-li">
+    <input type="checkbox" id="m-docsreferenceglossary-check"/>
+    <label for="m-docsreferenceglossary-check"><a href="/docs/reference/glossary/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceglossary"><span class="">4.4. Glossary</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencehugo-docsy-li">
+    <input type="checkbox" id="m-docsreferencehugo-docsy-check"/>
+    <label for="m-docsreferencehugo-docsy-check"><a href="/docs/reference/hugo-docsy/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencehugo-docsy"><span class="">4.5. Docsy Documentation and landing page</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencenext-steps-li">
+    <input type="checkbox" id="m-docsreferencenext-steps-check"/>
+    <label for="m-docsreferencenext-steps-check"><a href="/docs/reference/next-steps/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencenext-steps"><span class="">4.6. Next Steps</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsfantomas-li">
+    <input type="checkbox" id="m-docsfantomas-check"/>
+    <label for="m-docsfantomas-check"><a href="/docs/fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsfantomas"><span class="">5. Fantomas</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomaswhy-fantomas-li">
+    <input type="checkbox" id="m-docsfantomaswhy-fantomas-check"/>
+    <label for="m-docsfantomaswhy-fantomas-check"><a href="/docs/fantomas/why-fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomaswhy-fantomas"><span class="">5.1. Why Fantomas</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasoverview-li">
+    <input type="checkbox" id="m-docsfantomasoverview-check"/>
+    <label for="m-docsfantomasoverview-check"><a href="/docs/fantomas/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasoverview"><span class="">5.2. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasfantomas-reference-li">
+    <input type="checkbox" id="m-docsfantomasfantomas-reference-check"/>
+    <label for="m-docsfantomasfantomas-reference-check"><a href="/docs/fantomas/fantomas-reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasfantomas-reference"><span class="">5.3. Reference</span></a></label>
+    
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </nav>
+</div>
+          </aside>
+          <aside class="td-sidebar-toc">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#strategy-overview">Strategy Overview</a></li>
+    <li><a href="#unit-tests">Unit Tests</a>
+      <ul>
+        <li><a href="#running">Running</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+      </ul>
+    </li>
+    <li><a href="#e2e-test-projects">E2E Test Projects</a>
+      <ul>
+        <li><a href="#running-1">Running</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </li>
+    <li><a href="#ci-pipeline">CI Pipeline</a>
+      <ul>
+        <li><a href="#unit-tests-githubworkflowsunit-testsyml">Unit Tests (<code>.github/workflows/unit-tests.yml</code>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#design-decisions-and-tradeoffs">Design Decisions and Tradeoffs</a>
+      <ul>
+        <li><a href="#no-frontend-tests">No Frontend Tests</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/docs/">Documentation</a></li>
+  <li class="breadcrumb-item">
+    <a href="/docs/reference/">4. Reference</a></li>
+  <li class="breadcrumb-item">
+    <a href="/docs/reference/deployment/">4.3. Deployment</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    4.3.4. Testing Strategy</li>
+  </ol>
+</nav>
+<div class="td-content">
+	<h1>4.3.4. Testing Strategy</h1>
+	<div class="lead">Two-tier testing strategy — unit tests with mocking patterns, E2E test projects via workbench, and CI pipeline configuration</div>
+	<header class="article-meta">
+		
+</header>
+	<h2 id="strategy-overview">Strategy Overview</h2>
+<p>Armada uses a two-tier testing strategy:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Tier</th>
+          <th>Scope</th>
+          <th>Runner</th>
+          <th>External Dependencies</th>
+          <th>CI</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Unit tests</strong></td>
+          <td>Individual functions and classes, all services</td>
+          <td>pytest + pytest-asyncio</td>
+          <td>None (fully mocked)</td>
+          <td>On every push and PR to <code>master</code></td>
+      </tr>
+      <tr>
+          <td><strong>E2E test projects</strong></td>
+          <td>Full agent lifecycle through the workbench</td>
+          <td>Manual via <code>python -m workbench.run_workbench</code></td>
+          <td>Redis, RabbitMQ, Chrome, Xvfb, SQL Server, proxy/fingerprint providers</td>
+          <td>Not automated</td>
+      </tr>
+  </tbody>
+</table>
+<p>Unit tests run in CI on every commit. E2E tests are run manually by operators before releases or when validating changes to the agent, Fantomas, or the project scaffold.</p>
+<hr>
+<h2 id="unit-tests">Unit Tests</h2>
+<h3 id="running">Running</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pytest tests/unit -v
+</span></span></code></pre></div><p>All external dependencies (SQL Server, Redis, RabbitMQ, HTTP APIs) are mocked. Unit tests require no running infrastructure.</p>
+<h3 id="architecture">Architecture</h3>
+<pre tabindex="0"><code>tests/unit/
+├── conftest.py                      # Root: adds fantomas and agent to sys.path
+├── pytest.ini                       # Config: asyncio_mode=auto, markers
+├── backend/
+│   ├── conftest.py                  # Adds backend to sys.path
+│   ├── test_websocket_manager.py
+│   ├── test_db.py
+│   ├── test_runs_router.py
+│   ├── test_jobs_router.py
+│   └── test_events_router.py
+├── orchestrator/
+│   ├── conftest.py                  # Cleans `app` module cache, swaps sys.path
+│   ├── test_celery_service.py
+│   ├── test_redis_service.py
+│   ├── test_bot_router.py
+│   └── test_kubernetes_service.py
+├── agent/
+│   ├── test_load_agent_message.py
+│   ├── test_fingerprint_manager.py
+│   ├── test_database_connector.py
+│   ├── test_proxy_manager.py
+│   └── test_monitoring_client.py
+├── fingerprint_provider/
+│   ├── conftest.py                  # Sets SQL_SERVER_* env vars, adds path
+│   ├── test_crypto.py
+│   ├── test_fingerprint.py
+│   ├── test_forge.py
+│   └── test_fp_db.py
+├── proxy_provider/
+│   ├── conftest.py                  # Cleans `db`/`config` cache, swaps path
+│   ├── test_proxy_endpoint.py
+│   ├── test_checks.py
+│   └── test_proxy_db.py
+└── lib/
+    ├── test_screen.py
+    ├── test_virtual_cursor_path.py
+    └── test_identity.py
+</code></pre><hr>
+<h2 id="e2e-test-projects">E2E Test Projects</h2>
+<p>E2E tests are structured as complete Armada projects — the same format users write for production workloads. They run through the full agent lifecycle: config loading, <code>$env_</code> substitution, CSV merging, <code>exec()</code> of <code>main.py</code>, Celery worker init/shutdown, and <code>ctx_script</code> execution.</p>
+<h3 id="running-1">Running</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">cd</span> tests/e2e/&lt;project_name&gt;
+</span></span><span style="display:flex;"><span>python -m workbench.run_workbench
+</span></span></code></pre></div><p>The workbench simulates the agent runtime locally: it loads config files, resolves environment variables, creates a Celery app, <code>exec()</code>s <code>main.py</code> with injected <code>app</code> and <code>agent_message</code>, then manually triggers the worker lifecycle (<code>init_worker</code> → <code>run_job</code> → <code>shutdown_worker</code>).</p>
+<h3 id="projects">Projects</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Project</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>database_connector_e2e</code></td>
+          <td>Validates the database connector&rsquo;s ability to execute SQL queries (SELECT, INSERT, UPDATE, DELETE), parameterized queries, and enable/disable toggling.</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_actions_e2e</code></td>
+          <td>Exercises the Fantomas browser automation library&rsquo;s DOM interactions: file uploads, native and xdo input methods, element selection, clicking, checkbox toggling, waiting for elements, JavaScript injection, iframe handling, tab/window management, and cookie operations.</td>
+      </tr>
+      <tr>
+          <td><code>fingerprint_provider_e2e</code></td>
+          <td>Tests fingerprint generation with configurable parameters (e.g. custom User-Agents).</td>
+      </tr>
+      <tr>
+          <td><code>monitoring_client_e2e</code></td>
+          <td>Validates the monitoring client&rsquo;s integration with the backend API to track job lifecycle: run/job creation, success and failure event recording, job status transitions.</td>
+      </tr>
+      <tr>
+          <td><code>playwright_e2e</code></td>
+          <td>Tests Playwright-based browser automation on HTML forms</td>
+      </tr>
+      <tr>
+          <td><code>proxy_provider_e2e</code></td>
+          <td>Tests the proxy manager&rsquo;s mitmproxy-based proxy with upstream support: request/response modification through custom addons, header injection, User-Agent override, proxy switching mid-run, data counting, and modifier persistence across proxy switches.</td>
+      </tr>
+      <tr>
+          <td><code>resource_reallocation_between_job_and_agent_e2e</code></td>
+          <td>Tests change in resource allocation (fingerprint provider, database, and proxy access) with heavy resources implemented at job level</td>
+      </tr>
+      <tr>
+          <td><code>selenium_e2e</code></td>
+          <td>Tests Selenium WebDriver browser automation on HTML forms</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="ci-pipeline">CI Pipeline</h2>
+<h3 id="unit-tests-githubworkflowsunit-testsyml">Unit Tests (<code>.github/workflows/unit-tests.yml</code>)</h3>
+<pre tabindex="0"><code>Trigger:  push to master + pull requests to master
+Runner:   ubuntu-latest, Python 3.10
+Installs: freetds-dev, unixodbc-dev (for pymssql)
+          All service requirements.txt
+          Fantomas as editable package (pip install -e lib/fantomas)
+Command:  pytest tests/unit -v
+</code></pre><hr>
+<h2 id="design-decisions-and-tradeoffs">Design Decisions and Tradeoffs</h2>
+<h3 id="no-frontend-tests">No Frontend Tests</h3>
+<p>The React frontend has no test suite (no Jest, Vitest, or Cypress).</p>
+<p><strong>Why:</strong> The frontend is a thin client — it uploads files, calls two API endpoints, and renders WebSocket events. The monitoring panel is a read-only display of server-pushed events with minimal client-side logic.</p>
+<p><strong>Tradeoff:</strong> UI regressions (layout, interaction bugs, WebSocket reconnection edge cases) are only caught by manual testing.</p>
+
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.84ebdea7c8b518711780f1e70e9941e62f87902362b45772946a84042a14873f.js" integrity="sha256-hOvep8i1GHEXgPHnDplB5i&#43;HkCNitFdylGqEBCoUhz8=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

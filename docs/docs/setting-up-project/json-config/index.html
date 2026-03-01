@@ -1,0 +1,640 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<title>2.2. JSON Configuration | Armada Documentation</title>
+<meta name="description" content="Config template structure, $env_ environment substitution, config tune files, and all configuration fields">
+<meta property="og:url" content="https://armada.services/docs/setting-up-project/json-config/">
+  <meta property="og:site_name" content="Armada Documentation">
+  <meta property="og:title" content="2.2. JSON Configuration">
+  <meta property="og:description" content="Config template structure, $env_ environment substitution, config tune files, and all configuration fields">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+
+  <meta itemprop="name" content="2.2. JSON Configuration">
+  <meta itemprop="description" content="Config template structure, $env_ environment substitution, config tune files, and all configuration fields">
+  <meta itemprop="wordCount" content="954">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="2.2. JSON Configuration">
+  <meta name="twitter:description" content="Config template structure, $env_ environment substitution, config tune files, and all configuration fields">
+<link rel="preload" href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" as="style" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<link href="/scss/main.min.13727b3da1e76abccbb6350a3ed23c72dbeb2127717b89d2f229f2623f1bae2e.css" rel="stylesheet" integrity="sha256-E3J7PaHnarzLtjUKPtI8ctvrISdxe4nS8inyYj8bri4=" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-page">
+    <header>
+      <nav class="td-navbar js-navbar-scroll">
+<div class="td-navbar-container container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"></span><span class="navbar-brand__name">Armada Documentation</span></a>
+  <div class="td-navbar__main td-navbar-nav-scroll td-navbar-nav-scroll--indicator" id="main_navbar">
+    <div class="scroll-indicator scroll-left"></div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/"><span>Documentation</span></a>
+      </li>
+      </ul>
+    <div class="scroll-indicator scroll-right"></div>
+  </div>
+  <div class="td-navbar__search d-none d-lg-block">
+    
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main" data-bs-spy="scroll" data-bs-target=".td-toc" data-bs-root-margin="0px 0px -10%">
+        <div class="row flex-xl-nowrap">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+    <button class="btn btn-link td-sidebar__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#td-section-nav" aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="td-sidebar-nav collapse foldable-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pe-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
+    <a href="/docs/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Documentation</span></a>
+    <ul class="ul-1">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsgetting-started-li">
+    <input type="checkbox" id="m-docsgetting-started-check"/>
+    <label for="m-docsgetting-started-check"><a href="/docs/getting-started/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsgetting-started"><span class="">1. Getting Started</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedkey_concepts-li">
+    <input type="checkbox" id="m-docsgetting-startedkey_concepts-check"/>
+    <label for="m-docsgetting-startedkey_concepts-check"><a href="/docs/getting-started/key_concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedkey_concepts"><span class="">1.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-kubernetes-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-kubernetes-check"/>
+    <label for="m-docsgetting-startedquickstart-kubernetes-check"><a href="/docs/getting-started/quickstart-kubernetes/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-kubernetes"><span class="">1.2. Quick-Start / Installation</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgetting-startedquickstart-local-li">
+    <input type="checkbox" id="m-docsgetting-startedquickstart-local-check"/>
+    <label for="m-docsgetting-startedquickstart-local-check"><a href="/docs/getting-started/quickstart-local/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsgetting-startedquickstart-local"><span class="">1.3. Local Development</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docssetting-up-project-li">
+    <input type="checkbox" id="m-docssetting-up-project-check" checked/>
+    <label for="m-docssetting-up-project-check"><a href="/docs/setting-up-project/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docssetting-up-project"><span class="">2. Setting Up a Project</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectkey-concepts-li">
+    <input type="checkbox" id="m-docssetting-up-projectkey-concepts-check"/>
+    <label for="m-docssetting-up-projectkey-concepts-check"><a href="/docs/setting-up-project/key-concepts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectkey-concepts"><span class="">2.1. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docssetting-up-projectjson-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectjson-config-check" checked/>
+    <label for="m-docssetting-up-projectjson-config-check"><a href="/docs/setting-up-project/json-config/" class="align-left ps-0  active td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectjson-config"><span class="td-sidebar-nav-active-item">2.2. JSON Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectcsv-config-li">
+    <input type="checkbox" id="m-docssetting-up-projectcsv-config-check"/>
+    <label for="m-docssetting-up-projectcsv-config-check"><a href="/docs/setting-up-project/csv-config/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectcsv-config"><span class="">2.3. CSV Configuration</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssetting-up-projectpython-files-li">
+    <input type="checkbox" id="m-docssetting-up-projectpython-files-check"/>
+    <label for="m-docssetting-up-projectpython-files-check"><a href="/docs/setting-up-project/python-files/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docssetting-up-projectpython-files"><span class="">2.4. Python Files</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsguides-li">
+    <input type="checkbox" id="m-docsguides-check"/>
+    <label for="m-docsguides-check"><a href="/docs/guides/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsguides"><span class="">3. Guides</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-connector-li">
+    <input type="checkbox" id="m-docsguidesdatabase-connector-check"/>
+    <label for="m-docsguidesdatabase-connector-check"><a href="/docs/guides/database-connector/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-connector"><span class="">3.1. Database Connector</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesproxy-provider-li">
+    <input type="checkbox" id="m-docsguidesproxy-provider-check"/>
+    <label for="m-docsguidesproxy-provider-check"><a href="/docs/guides/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesproxy-provider"><span class="">3.2. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsguidesfingerprint-provider-check"/>
+    <label for="m-docsguidesfingerprint-provider-check"><a href="/docs/guides/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesfingerprint-provider"><span class="">3.3. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesmonitoring-client-li">
+    <input type="checkbox" id="m-docsguidesmonitoring-client-check"/>
+    <label for="m-docsguidesmonitoring-client-check"><a href="/docs/guides/monitoring-client/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesmonitoring-client"><span class="">3.4. Monitoring Client</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesci-cd-li">
+    <input type="checkbox" id="m-docsguidesci-cd-check"/>
+    <label for="m-docsguidesci-cd-check"><a href="/docs/guides/ci-cd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesci-cd"><span class="">3.5. CI/CD</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesdatabase-management-li">
+    <input type="checkbox" id="m-docsguidesdatabase-management-check"/>
+    <label for="m-docsguidesdatabase-management-check"><a href="/docs/guides/database-management/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesdatabase-management"><span class="">3.6. Database Management</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsguidesstandard-output-li">
+    <input type="checkbox" id="m-docsguidesstandard-output-check"/>
+    <label for="m-docsguidesstandard-output-check"><a href="/docs/guides/standard-output/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsguidesstandard-output"><span class="">3.7. Standard Output</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreference-li">
+    <input type="checkbox" id="m-docsreference-check"/>
+    <label for="m-docsreference-check"><a href="/docs/reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreference"><span class="">4. Reference</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferencearchitecture-li">
+    <input type="checkbox" id="m-docsreferencearchitecture-check"/>
+    <label for="m-docsreferencearchitecture-check"><a href="/docs/reference/architecture/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencearchitecture"><span class="">4.1. Architecture</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureoverview-li">
+    <input type="checkbox" id="m-docsreferencearchitectureoverview-check"/>
+    <label for="m-docsreferencearchitectureoverview-check"><a href="/docs/reference/architecture/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureoverview"><span class="">4.1.1. Overview</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturerun-lifecycle-li">
+    <input type="checkbox" id="m-docsreferencearchitecturerun-lifecycle-check"/>
+    <label for="m-docsreferencearchitecturerun-lifecycle-check"><a href="/docs/reference/architecture/run-lifecycle/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturerun-lifecycle"><span class="">4.1.2. Run Lifecycle</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureconfiguration-pipeline-li">
+    <input type="checkbox" id="m-docsreferencearchitectureconfiguration-pipeline-check"/>
+    <label for="m-docsreferencearchitectureconfiguration-pipeline-check"><a href="/docs/reference/architecture/configuration-pipeline/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureconfiguration-pipeline"><span class="">4.1.3. Configuration Pipeline</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturecode-bundling-execution-li">
+    <input type="checkbox" id="m-docsreferencearchitecturecode-bundling-execution-check"/>
+    <label for="m-docsreferencearchitecturecode-bundling-execution-check"><a href="/docs/reference/architecture/code-bundling-execution/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturecode-bundling-execution"><span class="">4.1.4. Code Bundling and Execution</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureagent-internals-li">
+    <input type="checkbox" id="m-docsreferencearchitectureagent-internals-check"/>
+    <label for="m-docsreferencearchitectureagent-internals-check"><a href="/docs/reference/architecture/agent-internals/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureagent-internals"><span class="">4.1.5. Agent Internals</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureenvironment-variables-li">
+    <input type="checkbox" id="m-docsreferencearchitectureenvironment-variables-check"/>
+    <label for="m-docsreferencearchitectureenvironment-variables-check"><a href="/docs/reference/architecture/environment-variables/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureenvironment-variables"><span class="">4.1.6. Environment Variables</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturehelm-values-li">
+    <input type="checkbox" id="m-docsreferencearchitecturehelm-values-check"/>
+    <label for="m-docsreferencearchitecturehelm-values-check"><a href="/docs/reference/architecture/helm-values/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturehelm-values"><span class="">4.1.7. Helm Values</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitectureinfrastructure-li">
+    <input type="checkbox" id="m-docsreferencearchitectureinfrastructure-check"/>
+    <label for="m-docsreferencearchitectureinfrastructure-check"><a href="/docs/reference/architecture/infrastructure/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitectureinfrastructure"><span class="">4.1.8. Resource Topology</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencearchitecturebootstrap-scripts-li">
+    <input type="checkbox" id="m-docsreferencearchitecturebootstrap-scripts-check"/>
+    <label for="m-docsreferencearchitecturebootstrap-scripts-check"><a href="/docs/reference/architecture/bootstrap-scripts/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencearchitecturebootstrap-scripts"><span class="">4.1.9. Bootstrap Scripts</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferenceservices-li">
+    <input type="checkbox" id="m-docsreferenceservices-check"/>
+    <label for="m-docsreferenceservices-check"><a href="/docs/reference/services/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferenceservices"><span class="">4.2. Services</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesorchestrator-li">
+    <input type="checkbox" id="m-docsreferenceservicesorchestrator-check"/>
+    <label for="m-docsreferenceservicesorchestrator-check"><a href="/docs/reference/services/orchestrator/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesorchestrator"><span class="">4.2.1. Orchestrator</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesagent-li">
+    <input type="checkbox" id="m-docsreferenceservicesagent-check"/>
+    <label for="m-docsreferenceservicesagent-check"><a href="/docs/reference/services/agent/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesagent"><span class="">4.2.2. Agent</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfrontend-li">
+    <input type="checkbox" id="m-docsreferenceservicesfrontend-check"/>
+    <label for="m-docsreferenceservicesfrontend-check"><a href="/docs/reference/services/frontend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfrontend"><span class="">4.2.3. Frontend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesbackend-li">
+    <input type="checkbox" id="m-docsreferenceservicesbackend-check"/>
+    <label for="m-docsreferenceservicesbackend-check"><a href="/docs/reference/services/backend/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesbackend"><span class="">4.2.4. Backend</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesproxy-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesproxy-provider-check"/>
+    <label for="m-docsreferenceservicesproxy-provider-check"><a href="/docs/reference/services/proxy-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesproxy-provider"><span class="">4.2.5. Proxy Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesfingerprint-provider-li">
+    <input type="checkbox" id="m-docsreferenceservicesfingerprint-provider-check"/>
+    <label for="m-docsreferenceservicesfingerprint-provider-check"><a href="/docs/reference/services/fingerprint-provider/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesfingerprint-provider"><span class="">4.2.6. Fingerprint Provider</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceservicesmeta-li">
+    <input type="checkbox" id="m-docsreferenceservicesmeta-check"/>
+    <label for="m-docsreferenceservicesmeta-check"><a href="/docs/reference/services/meta/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceservicesmeta"><span class="">4.2.7. Meta</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsreferencedeployment-li">
+    <input type="checkbox" id="m-docsreferencedeployment-check"/>
+    <label for="m-docsreferencedeployment-check"><a href="/docs/reference/deployment/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsreferencedeployment"><span class="">4.3. Deployment</span></a></label>
+    
+    <ul class="ul-3 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentdatabase-li">
+    <input type="checkbox" id="m-docsreferencedeploymentdatabase-check"/>
+    <label for="m-docsreferencedeploymentdatabase-check"><a href="/docs/reference/deployment/database/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentdatabase"><span class="">4.3.1. Database</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentworkbench-li">
+    <input type="checkbox" id="m-docsreferencedeploymentworkbench-check"/>
+    <label for="m-docsreferencedeploymentworkbench-check"><a href="/docs/reference/deployment/workbench/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentworkbench"><span class="">4.3.2. Workbench Mode under the hood</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentsecurity-li">
+    <input type="checkbox" id="m-docsreferencedeploymentsecurity-check"/>
+    <label for="m-docsreferencedeploymentsecurity-check"><a href="/docs/reference/deployment/security/" title="4.3.3. Security Considerations" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentsecurity"><span class="">4.3.3. Security</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymenttesting-li">
+    <input type="checkbox" id="m-docsreferencedeploymenttesting-check"/>
+    <label for="m-docsreferencedeploymenttesting-check"><a href="/docs/reference/deployment/testing/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymenttesting"><span class="">4.3.4. Testing Strategy</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencedeploymentcicd-li">
+    <input type="checkbox" id="m-docsreferencedeploymentcicd-check"/>
+    <label for="m-docsreferencedeploymentcicd-check"><a href="/docs/reference/deployment/cicd/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencedeploymentcicd"><span class="">4.3.5. CI/CD</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferenceglossary-li">
+    <input type="checkbox" id="m-docsreferenceglossary-check"/>
+    <label for="m-docsreferenceglossary-check"><a href="/docs/reference/glossary/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferenceglossary"><span class="">4.4. Glossary</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencehugo-docsy-li">
+    <input type="checkbox" id="m-docsreferencehugo-docsy-check"/>
+    <label for="m-docsreferencehugo-docsy-check"><a href="/docs/reference/hugo-docsy/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencehugo-docsy"><span class="">4.5. Docsy Documentation and landing page</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreferencenext-steps-li">
+    <input type="checkbox" id="m-docsreferencenext-steps-check"/>
+    <label for="m-docsreferencenext-steps-check"><a href="/docs/reference/next-steps/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsreferencenext-steps"><span class="">4.6. Next Steps</span></a></label>
+    
+  </li>
+    </ul>
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsfantomas-li">
+    <input type="checkbox" id="m-docsfantomas-check"/>
+    <label for="m-docsfantomas-check"><a href="/docs/fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__section" id="m-docsfantomas"><span class="">5. Fantomas</span></a></label>
+    
+    <ul class="ul-2 foldable">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomaswhy-fantomas-li">
+    <input type="checkbox" id="m-docsfantomaswhy-fantomas-check"/>
+    <label for="m-docsfantomaswhy-fantomas-check"><a href="/docs/fantomas/why-fantomas/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomaswhy-fantomas"><span class="">5.1. Why Fantomas</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasoverview-li">
+    <input type="checkbox" id="m-docsfantomasoverview-check"/>
+    <label for="m-docsfantomasoverview-check"><a href="/docs/fantomas/overview/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasoverview"><span class="">5.2. Key Concepts</span></a></label>
+    
+  </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfantomasfantomas-reference-li">
+    <input type="checkbox" id="m-docsfantomasfantomas-reference-check"/>
+    <label for="m-docsfantomasfantomas-reference-check"><a href="/docs/fantomas/fantomas-reference/" class="align-left ps-0  td-sidebar-link td-sidebar-link__page" id="m-docsfantomasfantomas-reference"><span class="">5.3. Reference</span></a></label>
+    
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+    </ul>
+  </nav>
+</div>
+          </aside>
+          <aside class="td-sidebar-toc">
+            <div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+
+</div>
+
+            <div class="td-toc" data-proofer-ignore>
+<div class="td-toc-title">
+      <span class="td-toc-title__text">On this page</span>
+      <a class="td-toc-title__link" title="Top of page" href="#"></a>
+    </div>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#config_templatejson">config_template.json</a></li>
+    <li><a href="#run_message--infrastructure-settings">run_message — Infrastructure Settings</a></li>
+    <li><a href="#default_agent_message--agent-configuration">default_agent_message — Agent Configuration</a>
+      <ul>
+        <li><a href="#config_fantomas-browser-automation">config_fantomas (Browser Automation)</a></li>
+        <li><a href="#config_proxy-proxy-layer">config_proxy (Proxy Layer)</a></li>
+        <li><a href="#config_fingerprint-fingerprint-forging">config_fingerprint (Fingerprint Forging)</a></li>
+      </ul>
+    </li>
+    <li><a href="#default_job_message--job-configuration">default_job_message — Job Configuration</a></li>
+    <li><a href="#environment-substitution">Environment Substitution</a>
+      <ul>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#type-substitution">Type Substitution</a></li>
+        <li><a href="#where-substitution-happens">Where Substitution Happens</a></li>
+        <li><a href="#adding-a-new-placeholder">Adding a New Placeholder</a></li>
+      </ul>
+    </li>
+    <li><a href="#config-tune-files">Config Tune Files</a>
+      <ul>
+        <li><a href="#config_localjson--local-development">config_local.json — Local Development</a></li>
+        <li><a href="#config_distantjson--kubernetes-production">config_distant.json — Kubernetes Production</a></li>
+      </ul>
+    </li>
+    <li><a href="#adding-custom-fields">Adding Custom Fields</a></li>
+  </ul>
+</nav>
+  </div>
+
+            
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="td-breadcrumbs">
+  <ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/docs/">Documentation</a></li>
+  <li class="breadcrumb-item">
+    <a href="/docs/setting-up-project/">2. Setting Up a Project</a></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    2.2. JSON Configuration</li>
+  </ol>
+</nav>
+<div class="td-content">
+	<h1>2.2. JSON Configuration</h1>
+	<div class="lead">Config template structure, $env_ environment substitution, config tune files, and all configuration fields</div>
+	<header class="article-meta">
+		
+</header>
+	<h2 id="config_templatejson">config_template.json</h2>
+<p>The config template is the main configuration blueprint for your project. It is a JSON file with three top-level sections:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;run_message&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#a40000">...</span> <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;default_agent_message&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#a40000">...</span> <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;default_job_message&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#a40000">...</span> <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><ul>
+<li><strong><code>run_message</code></strong> — controls the infrastructure: how many agents, how many jobs, resource limits.</li>
+<li><strong><code>default_agent_message</code></strong> — the default configuration received by every agent (browser, proxy, fingerprint, and any custom fields).</li>
+<li><strong><code>default_job_message</code></strong> — the default configuration received by every job dispatched to agents.</li>
+</ul>
+<hr>
+<h2 id="run_message--infrastructure-settings">run_message — Infrastructure Settings</h2>
+<p>Controls how many agents and jobs are created, and their resource allocation.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;run_message&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;image_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;armada-agent&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;image_version&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;latest&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;number_of_agents&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;number_of_jobs&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;agent_cpu&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;500m&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;agent_memory&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>image_name</code></td>
+          <td>string</td>
+          <td>Docker image name for agent pods</td>
+      </tr>
+      <tr>
+          <td><code>image_version</code></td>
+          <td>string</td>
+          <td>Image tag (e.g. <code>&quot;latest&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>number_of_agents</code></td>
+          <td>int</td>
+          <td>Number of agent pods to deploy (parallelism)</td>
+      </tr>
+      <tr>
+          <td><code>number_of_jobs</code></td>
+          <td>int</td>
+          <td>Total number of job messages to dispatch to the queue</td>
+      </tr>
+      <tr>
+          <td><code>agent_cpu</code></td>
+          <td>string</td>
+          <td>CPU request per agent (Kubernetes notation, e.g. <code>&quot;500m&quot;</code>)</td>
+      </tr>
+      <tr>
+          <td><code>agent_memory</code></td>
+          <td>string</td>
+          <td>Memory request per agent (Kubernetes notation, e.g. <code>&quot;512Mi&quot;</code>)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="default_agent_message--agent-configuration">default_agent_message — Agent Configuration</h2>
+<p>This is the default configuration every agent receives. It typically includes browser, proxy, and fingerprint settings. You can add any custom fields your script needs — they will be accessible through <code>agent_ctx.agent_message</code> in your code.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;default_agent_message&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;config_fantomas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;config_browser&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;fantomas_browser_options&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;--proxy-server=http://127.0.0.1:8081&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;--ignore-certificate-errors&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;--window-size=1500,1200&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#4e9a06">&#34;--start-fullscreen&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;fantomas_emulate_movement&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;fantomas_show_cursor&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;fantomas_emulate_keyboard&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;config_screen&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;screen_visible&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;$env_SCREEN_VISIBLE&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;screen_height&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1500</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&#34;screen_width&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">2000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;config_proxy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_enabled&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;upstream_proxy_broker_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;provider&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;proxy_provider_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;iproyal&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;verify_ip&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;verify_quality&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;max_queries_number&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">3</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;config_fingerprint&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;antibot_vendor&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;arkose&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;website&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;X&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;collection_date_day&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;01&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;collection_date_month&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;12&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;collection_date_year&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2025&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="config_fantomas-browser-automation">config_fantomas (Browser Automation)</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>fantomas_browser_options</code></td>
+          <td>Chrome command-line flags</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_emulate_movement</code></td>
+          <td>Enable WindMouse human-like cursor movement (1/0)</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_show_cursor</code></td>
+          <td>Render cursor on screen for debugging (1/0)</td>
+      </tr>
+      <tr>
+          <td><code>fantomas_emulate_keyboard</code></td>
+          <td>Enable randomized keystroke emulation (1/0)</td>
+      </tr>
+      <tr>
+          <td><code>screen_visible</code></td>
+          <td>Show Xvfb display (1 = visible, 0 = headless). Use <code>$env_SCREEN_VISIBLE</code> for runtime control</td>
+      </tr>
+      <tr>
+          <td><code>screen_height</code> / <code>screen_width</code></td>
+          <td>Virtual display resolution</td>
+      </tr>
+  </tbody>
+</table>
+<p>For details on WindMouse and keystroke emulation, see the <a href="/docs/fantomas/overview/">Fantomas Overview</a>.</p>
+<h3 id="config_proxy-proxy-layer">config_proxy (Proxy Layer)</h3>
+<p>Controls the local mitmproxy and optional upstream proxy. Key fields: <code>upstream_proxy_enabled</code> (0/1), <code>upstream_proxy_broker_type</code> (<code>&quot;provider&quot;</code>/<code>&quot;direct&quot;</code>), <code>proxy_provider_name</code>, <code>proxy_location</code>, <code>verify_ip</code>, <code>verify_quality</code>, <code>quality_threshold</code>, <code>max_queries_number</code>.</p>
+<p>For the complete field reference, proxy modes, addon system, and usage examples, see the <a href="/docs/guides/proxy-provider/">Proxy Provider guide</a>.</p>
+<h3 id="config_fingerprint-fingerprint-forging">config_fingerprint (Fingerprint Forging)</h3>
+<p>Controls browser fingerprint retrieval. Key fields: <code>antibot_vendor</code>, <code>website</code>, <code>collection_date_day</code>/<code>_month</code>/<code>_year</code>.</p>
+<p>For the complete field reference and usage examples, see the <a href="/docs/guides/fingerprint-provider/">Fingerprint Provider guide</a>.</p>
+<hr>
+<h2 id="default_job_message--job-configuration">default_job_message — Job Configuration</h2>
+<p>This is the default payload every job receives. Add any fields your script needs at the job level — they will be accessible through <code>job_ctx.job_message</code> in your code.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;default_job_message&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;job_content&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;default_job_content&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>You can add any arbitrary keys both in default_job_message and default_agent_message. They are all passed as-is to the agent.</p>
+<hr>
+<h2 id="environment-substitution">Environment Substitution</h2>
+<p>Environment substitution lets the same <code>config_template.json</code> work across different environments (local development vs. Kubernetes production) without modification. Values that need to change between environments are expressed as <strong><code>$env_</code> placeholders</strong> and resolved at launch time.</p>
+<h3 id="how-it-works">How It Works</h3>
+<p>Any string value in <code>config_template.json</code> that starts with <code>$env_</code> is a placeholder. At launch time, the system <strong>recursively walks</strong> the entire JSON tree — objects, arrays, nested structures — and replaces every <code>$env_</code> string with the corresponding value from the selected <strong>config tune file</strong> (<code>config_local.json</code> or <code>config_distant.json</code>).</p>
+<p>The resolution rule is simple:</p>
+<ol>
+<li>Strip the <code>$env_</code> prefix → the remainder is the <strong>lookup key</strong>.</li>
+<li>Search for that key in the config tune file.</li>
+<li>If found, replace the placeholder with the tune value. If not found, keep the original placeholder string unchanged.</li>
+</ol>
+<h3 id="example">Example</h3>
+<p>In <code>config_template.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;screen_visible&#34;</span><span style="color:#a40000">:</span> <span style="color:#4e9a06">&#34;$env_SCREEN_VISIBLE&#34;</span>
+</span></span></code></pre></div><p>In <code>config_local.json</code> (for local development):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;SCREEN_VISIBLE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>In <code>config_distant.json</code> (for Kubernetes production):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;SCREEN_VISIBLE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p><strong>Result:</strong> when launching in local mode (container or workbench), <code>screen_visible</code> becomes <code>1</code> (visible for debugging). When launching in distant mode, it becomes <code>0</code> (headless).</p>
+<h3 id="type-substitution">Type Substitution</h3>
+<p>Although the placeholder itself is always a JSON string (<code>&quot;$env_SCREEN_VISIBLE&quot;</code>), the <strong>replacement value</strong> takes the type defined in the config tune file. In the example above, the integer <code>1</code> replaces the string placeholder — the resulting config contains a number, not a string.</p>
+<p>This means tune files can inject any JSON-compatible type: strings, numbers, booleans, objects, or arrays.</p>
+<h3 id="where-substitution-happens">Where Substitution Happens</h3>
+<p>Environment substitution is performed in two places depending on the launch mode:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Launch mode</th>
+          <th>Performed by</th>
+          <th>When</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Frontend</strong> (distant mode or container mode)</td>
+          <td><code>configProcessor.ts</code> → <code>replaceEnvValues()</code></td>
+          <td>Before sending the config to the orchestrator</td>
+      </tr>
+      <tr>
+          <td><strong>Workbench</strong> (workbench mode)</td>
+          <td><code>get_messages.py</code> → <code>replace_env_values()</code></td>
+          <td>When loading config from disk at startup (see <a href="/docs/reference/deployment/workbench/">Workbench Mode</a>)</td>
+      </tr>
+  </tbody>
+</table>
+<p>Both implementations use the same recursive algorithm, so behavior is identical regardless of launch mode.</p>
+<h3 id="adding-a-new-placeholder">Adding a New Placeholder</h3>
+<ol>
+<li>In <code>config_template.json</code>, use a <code>$env_</code>-prefixed string as the value for any field:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;my_custom_field&#34;</span><span style="color:#a40000">:</span> <span style="color:#4e9a06">&#34;$env_MY_CUSTOM_VALUE&#34;</span>
+</span></span></code></pre></div><ol start="2">
+<li>Add the corresponding key (without the <code>$env_</code> prefix) to both config tune files:</li>
+</ol>
+<p>In <code>config_local.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;SCREEN_VISIBLE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;MY_CUSTOM_VALUE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;local_value&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>In <code>config_distant.json</code>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;SCREEN_VISIBLE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;MY_CUSTOM_VALUE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;production_value&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>The placeholder name after <code>$env_</code> must match the key name in the config tune file exactly.</p>
+<hr>
+<h2 id="config-tune-files">Config Tune Files</h2>
+<p>Config tune files provide the environment-specific values that replace <code>$env_</code> placeholders.</p>
+<h3 id="config_localjson--local-development">config_local.json — Local Development</h3>
+<p>Used when running via Docker Compose. Typically enables visible screens for debugging:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;SCREEN_VISIBLE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h3 id="config_distantjson--kubernetes-production">config_distant.json — Kubernetes Production</h3>
+<p>Used when deploying to a Kubernetes cluster. Typically disables visible screens:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;SCREEN_VISIBLE&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>You choose which config tune file to use in the frontend before launching. The default is <code>config_distant.json</code>.</p>
+<hr>
+<h2 id="adding-custom-fields">Adding Custom Fields</h2>
+<p>Both <code>default_agent_message</code> and <code>default_job_message</code> accept arbitrary keys. To add a custom field:</p>
+<ol>
+<li>Add it to the appropriate section in <code>config_template.json</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#4e9a06">&#34;default_agent_message&#34;</span><span style="color:#a40000">:</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;config_fantomas&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#a40000">...</span> <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;config_proxy&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#a40000">...</span> <span style="color:#000;font-weight:bold">},</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&#34;my_custom_setting&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;some_value&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><ol start="2">
+<li>Access it in your script:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">async</span> <span style="color:#204a87;font-weight:bold">def</span> <span style="color:#000">ctx_script</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">job_ctx</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">agent_ctx</span><span style="color:#000;font-weight:bold">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000">my_setting</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">agent_ctx</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">agent_message</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;my_custom_setting&#34;</span><span style="color:#000;font-weight:bold">]</span>
+</span></span></code></pre></div><p>The same applies to <code>default_job_message</code> — any key you add is accessible via <code>job_ctx.job_message</code>. See <a href="/docs/setting-up-project/python-files/">Python Files</a> for the full <code>AgentContext</code> and <code>JobContext</code> APIs.</p>
+
+	
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.min.84ebdea7c8b518711780f1e70e9941e62f87902362b45772946a84042a14873f.js" integrity="sha256-hOvep8i1GHEXgPHnDplB5i&#43;HkCNitFdylGqEBCoUhz8=" crossorigin="anonymous"></script>
+<script defer src="/js/click-to-copy.min.24576ff9fe9f85bb1948ecae52ce227cafce53757a3ad52301f2a79260f6b97d.js" integrity="sha256-JFdv&#43;f6fhbsZSOyuUs4ifK/OU3V6OtUjAfKnkmD2uX0=" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

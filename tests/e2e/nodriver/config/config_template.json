@@ -1,0 +1,25 @@
+{
+  "run_message": {
+    "image_name": "armada-agent",
+    "image_version": "latest",
+    "number_of_agents": 1,
+    "number_of_jobs": 1,
+    "agent_cpu": "500m",
+    "agent_memory": "512Mi"
+  },
+  "default_agent_message": {
+    "config_nodriver": {
+      "headless": "$env_HEADLESS",
+      "browser_arguments": [
+        "--ignore-certificate-errors",
+        "--window-size=1500,1200",
+        "--disable-infobars",
+        "--disable-blink-features=AutomationControlled",
+        "--disable-search-engine-choice-screen"
+      ]
+    }
+  },
+  "default_job_message": {
+    "job_content": "default_job_content"
+  }
+}

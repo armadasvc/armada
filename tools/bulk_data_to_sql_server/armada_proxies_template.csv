@@ -1,0 +1,2 @@
+proxy_url,proxy_provider_name,proxy_type,proxy_rotation_strategy,proxy_location
+http://USER:PASS@HOST:PORT,iproyal (for eg),residential|mobile|datacenter,sticky|rotating,

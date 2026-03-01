@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: armada-orchestrator
+spec:
+  type: ClusterIP
+  selector:
+    app: armada-orchestrator
+  ports:
+  - port: 8080
+    targetPort: 8080

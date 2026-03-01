@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: armada-rabbitmq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: armada-rabbitmq
+  template:
+    metadata:
+      labels:
+        app: armada-rabbitmq
+    spec:
+      containers:
+      - name: armada-rabbitmq
+        image: rabbitmq:3-management
+        ports:
+        - containerPort: 5672
+          name: amqp
+        - containerPort: 15672
+          name: management

@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0","wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fantomas"
+version = "0.1.5"
+description = "Augmented OS-Level Web Automation based on nodriver"
+authors = [
+  { name="Marc Arnal", email="hello@marcarnal.com" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+dependencies = [
+  "nodriver",
+  "PyVirtualDisplay",
+  "Faker",
+  "random-password-generator",
+  "numpy",
+  "Pillow",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,111 @@
+.file-tree {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #252526;
+  border-right: 1px solid #3c3c3c;
+  min-width: 250px;
+  max-width: 350px;
+  overflow: hidden;
+}
+
+.file-tree-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid #3c3c3c;
+  font-weight: 600;
+  color: #cccccc;
+}
+
+.root-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-tree-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.tree-node {
+  user-select: none;
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: #cccccc;
+  font-size: 13px;
+  transition: background-color 0.1s;
+}
+
+.tree-item:hover {
+  background-color: #2a2d2e;
+}
+
+.tree-item.selected {
+  background-color: #094771;
+}
+
+.tree-item.modified .file-name {
+  color: #e2c08d;
+}
+
+.folder-icon {
+  font-size: 10px;
+  width: 16px;
+  color: #808080;
+  flex-shrink: 0;
+}
+
+.folder-icon.expanded {
+  color: #cccccc;
+}
+
+.file-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.modified-dot {
+  color: #e2c08d;
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.tree-children {
+  /* Children container */
+}
+
+/* Scrollbar styling */
+.file-tree-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.file-tree-content::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.file-tree-content::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 4px;
+}
+
+.file-tree-content::-webkit-scrollbar-thumb:hover {
+  background: #4f4f4f;
+}

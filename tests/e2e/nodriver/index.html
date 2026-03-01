@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], select { padding: 8px; width: 300px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        #click_counter { margin-top: 10px; }
+        iframe { width: 400px; height: 200px; border: 1px solid #ccc; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <h1>Simple Form</h1>
+    <h2>Testing nodriver actions</h2>
+
+    <div class="form-group">
+        <label for="upload_area">File upload:</label>
+        <input type="file" id="upload_area">
+    </div>
+
+    <div class="form-group">
+        <label for="nom">Name:</label>
+        <input type="text" id="nom" placeholder="Enter your name">
+    </div>
+
+    <div class="form-group">
+        <label for="nom2">Name 2:</label>
+        <input type="text" id="nom2" placeholder="Enter your name again">
+    </div>
+
+    <div class="form-group">
+        <label for="pays">Country:</label>
+        <select id="pays">
+            <option value="">-- Select --</option>
+            <option value="fr">France</option>
+            <option value="be">Belgium</option>
+            <option value="ca">Canada</option>
+            <option value="ch">Switzerland</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Click button:</label>
+        <button id="btn_click" onclick="document.getElementById('click_counter').innerText = parseInt(document.getElementById('click_counter').innerText) + 1">Click here</button>
+        <div id="click_counter">0</div>
+    </div>
+
+    <div class="form-group">
+        <label>Checkbox:</label>
+        <input type="checkbox" id="checkbox_test">
+        <label for="checkbox_test" style="display:inline;">Accept terms and conditions</label>
+    </div>
+
+    <div id="existing_element" data-info="test_attribute">Visible element</div>
+
+    <iframe id="test_iframe" srcdoc='
+        <html>
+        <body>
+            <p id="iframe_text" data-custom="iframe_value">Iframe content</p>
+            <span class="iframe_span">Span in iframe</span>
+            <button id="iframe_btn">Click iframe</button>
+            <div id="iframe_counter">0</div>
+            <input type="text" id="iframe_input" placeholder="Input iframe">
+            <script>
+            document.getElementById("iframe_btn").addEventListener("click", function() {
+                var c = document.getElementById("iframe_counter");
+                c.innerText = parseInt(c.innerText) + 1;
+            });
+            </script>
+        </body>
+        </html>
+    '></iframe>
+</body>
+</html>

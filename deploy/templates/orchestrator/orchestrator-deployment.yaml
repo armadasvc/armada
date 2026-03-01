@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: armada-orchestrator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: armada-orchestrator
+  template:
+    metadata:
+      labels:
+        app: armada-orchestrator
+    spec:
+{{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+{{- toYaml . | nindent 8 }}
+{{- end }}
+      containers:
+      - name: armada-orchestrator
+        image: {{ .Values.dockerHubName }}/armada-orchestrator:latest
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PLATFORM
+          value: "distant"
+        - name: DISTRIB
+          value: {{ .Values.distrib }}
+        - name: RABBITMQ_URL
+          value: "amqp://armada-rabbitmq:5672" 
+        - name: REDIS_HOST
+          value: "armada-redis"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: PROXY_PROVIDER_URL
+          value: "http://armada-proxy-provider-service"
+        - name: FINGERPRINT_PROVIDER_URL
+          value: "http://armada-fingerprint-provider-service"
+        - name: BACKEND_URL
+          value: "http://armada-backend:8000"
+        - name: SQL_SERVER_USER
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_USER
+        - name: SQL_SERVER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_PASSWORD
+        - name: SQL_SERVER_DB
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_DB
+        - name: SQL_SERVER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: armada-sql-server-secret
+              key: SQL_SERVER_NAME  
+        - name: DOCKER_HUB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: armada-docker-username-secret
+              key: username      
